@@ -1,0 +1,71 @@
+﻿@model SAGRE.Models.GruposRiscoModel
+
+@{
+    ViewData["Title"] = "Cadastro do Grupo de Risco";
+}
+
+<div class="col mt-2">
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Ínicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col">
+            <div class=" ml-1">
+                <div class="card">
+                    <div class="row"></div>
+                    <div class="card-header">
+                        Cadastro de um Novo Grupo de Risco
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <h4>Informação</h4>
+                                Área para cadastro de um novo Grupo de Risco onde são Agrupados e classificados. O objetivo desta classificação é universalizar os riscos,
+                                de modo que um mesmo grupo seja identificável em qualquer empresa, fábrica ou indústria, facilitando a vida e memória dos funcionários.
+                            </div>
+                            <div class="col-6">
+                                <form asp-action="Create">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <div class="form-group">
+                                        <label asp-for="Nome" class="control-label small mb-0"></label>
+                                        <input asp-for="Nome" class="form-control" />
+                                        <span asp-validation-for="Nome" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Descricao" class="control-label small mb-0"></label>
+                                        <textarea asp-for="Descricao" class="form-control"></textarea>
+                                        <span asp-validation-for="Descricao" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="checkbox">
+                                            <label class="small mb-0">Status</label>
+                                            <p>
+                                                <input asp-for="Inativo" /> @Html.DisplayNameFor(model => model.Inativo)
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <a asp-action="Index" class="btn btn-warning">Voltar</a>
+                                        <input type="submit" value="Cadastrar" class="btn btn-success" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

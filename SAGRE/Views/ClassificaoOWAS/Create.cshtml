@@ -1,0 +1,48 @@
+﻿@model SAGRE.Models.MetodosAnalise.ClassificaoOWAS
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>ClassificaoOWAS</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NumCosta" class="control-label"></label>
+                <input asp-for="NumCosta" class="form-control" />
+                <span asp-validation-for="NumCosta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumBraco" class="control-label"></label>
+                <input asp-for="NumBraco" class="form-control" />
+                <span asp-validation-for="NumBraco" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumPernas" class="control-label"></label>
+                <input asp-for="NumPernas" class="form-control" />
+                <span asp-validation-for="NumPernas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumForca" class="control-label"></label>
+                <input asp-for="NumForca" class="form-control" />
+                <span asp-validation-for="NumForca" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

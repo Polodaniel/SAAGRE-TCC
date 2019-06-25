@@ -1,0 +1,332 @@
+﻿@model SAGRE.Models.BoletimModel
+
+@{
+    ViewData["Title"] = "Detalhe do Boletim de Risco";
+}
+
+<div class="col mt-2">
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Ínicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col">
+            <div class=" ml-1">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <form asp-action="Create">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <p class="">
+                                        <div class="alert alert-dark" role="alert" data-toggle="" href="#MenuAnalisePostura" aria-expanded="false" aria-controls="MenuAnalisePostura">
+                                            Dados do Boletim - OWAS
+                                        </div>
+                                    </p>
+
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <label asp-for="ID" class="control-label mb-0 small"></label>
+                                            <input asp-for="ID" class="form-control form-control-sm" id="CampoData" disabled />
+                                            <span asp-validation-for="ID" class="text-danger"></span>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label asp-for="Data" class="control-label mb-0 small"></label>
+                                                <input type="date" asp-for="Data" class="form-control form-control-sm" id="CampoData" disabled />
+                                                <span asp-validation-for="Data" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label class="control-label mb-0 small">Nome do Avaliador</label>
+                                                <input asp-for="NomeFiscal" class="form-control form-control-sm" id="NomeAvaliador" disabled />
+                                                <span asp-validation-for="NomeFiscal" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label asp-for="Setor" class="control-label mb-0"></label>
+                                                        <input asp-for="Setor" class="form-control form-control-sm" id="SetorSelecionado" disabled>
+                                                        <span asp-validation-for="Setor" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label class="control-label mb-0">Atividade</label>
+                                                        <input asp-for="Atividade" class="form-control form-control-sm" id="AtividadeSelecionado" disabled>
+                                                        <span asp-validation-for="Atividade" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label asp-for="Descricao" class="control-label mb-0"></label>
+                                                <textarea asp-for="Descricao" class="form-control form-control-sm" style="height:105px;" id="DescricaoSelecionado" disabled></textarea>
+                                                <span asp-validation-for="Descricao" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p>
+                                        @{
+                                            //var QntOWAS = ViewBag.AnalisePostura.Count;
+                                            var QntOWAS = @Model.ListaAnalisePostura.Count;
+
+                                            string AnaliseNasaTLX = String.Empty;
+                                            string CorNasa = String.Empty;
+
+                                            if (@Model.listanasa.BoletimModel == null)
+                                            {
+                                                AnaliseNasaTLX = "Não";
+                                                CorNasa = "text-danger";
+                                            }
+                                            else
+                                            {
+                                                AnaliseNasaTLX = "Sim";
+                                                CorNasa = "text-success";
+                                            }
+                                        }
+                                        <div class="alert alert-dark small" role="alert">
+                                            <div class="row font-weight-bold">
+                                                <div class="col">
+                                                    Análises Lançadas
+                                                </div>
+                                                <div class="col">
+                                                    Análise Postura - OWAS: @QntOWAS
+                                                </div>
+                                                <div class="col">
+                                                    Análise Cognitiva - NASA TLX: <span class="@CorNasa"> @AnaliseNasaTLX </span>
+                                                </div>
+                                                <div class="col">
+                                                    Análise Ambiente - LVE:
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </p>
+
+                                    <p>
+                                        <div class="alert alert-dark" role="alert" data-toggle="collapse" href="#MenuAnalisePostura" aria-expanded="false" aria-controls="MenuAnalisePostura">
+                                            Análise Postura - OWAS
+                                        </div>
+                                    </p>
+                                    <div class="collapse" id="MenuAnalisePostura">
+                                        <div class="card card-body">
+
+                                            <div class="row">
+
+                                                @*@foreach (var item in ViewBag.AnalisePostura)*@
+
+                                                @{
+                                                    if (Model.ListaAnalisePostura.Count == 0)
+                                                    {
+                                                        <div class="col text-center">
+                                                            <p class="mb-0 text-center" style="font-size:12px;"><span class="font-weight-bold font-italic"> Não foi adicionado nenhuma Análise de Postura !</span></p>
+                                                        </div>
+                                                    }
+                                                }
+
+                                                @foreach (var item in @Model.ListaAnalisePostura)
+                                                {
+                                                    var CorAcao = String.Empty;
+
+                                                    if (@item.AcaoDescricao == "Não são necessarias medidas corretivas.")
+                                                    {
+                                                        CorAcao = "text-success";
+                                                    }
+                                                    else if (@item.AcaoDescricao == "São necessarias correções em um futuro próximo.")
+                                                    {
+                                                        CorAcao = "text-warning";
+                                                    }
+                                                    else if (@item.AcaoDescricao == "São necessárias correções tão logo quanto possível.")
+                                                    {
+                                                        CorAcao = "text-warning";
+                                                    }
+                                                    else if (@item.AcaoDescricao == "São necessárias correções imediatas.")
+                                                    {
+                                                        CorAcao = "text-danger";
+                                                    }
+
+                                                    <div class="col-6">
+                                                        <div class="alert alert-secondary" role="alert">
+                                                            <p class="mb-0" style="font-size:11.5px;"><span class="font-weight-bold"> Postura das Costa:</span> @item.ICDescricao</p>
+                                                            <p class="mb-0" style="font-size:11.5px;"><span class="font-weight-bold"> Postura dos Braços:</span> @item.IBDescricao</p>
+                                                            <p class="mb-0" style="font-size:11.5px;"><span class="font-weight-bold"> Postura das Pernas:</span> @item.IPDescricao</p>
+                                                            <p class="mb-0" style="font-size:11.5px;"><span class="font-weight-bold"> Esforço:</span> @item.IEDescricao</p>
+                                                            <p class="mb-0 @CorAcao" style="font-size:11.5px;"><span class="font-weight-bold"> Ação: @item.AcaoDescricao</span></p>
+                                                        </div>
+                                                    </div>
+                                                }
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <p>
+                                        <div class="alert alert-dark" role="alert" data-toggle="collapse" href="#MenuAnaliseCorpo" aria-expanded="false" aria-controls="MenuAnaliseCorpo">
+                                            Análise Cognitiva - NASA TLX
+                                        </div>
+                                    </p>
+                                    <div class="collapse" id="MenuAnaliseCorpo">
+                                        <div class="card card-body">
+
+                                            <div class="row">
+                                                @{
+                                                    var ValorTotal = ViewBag.ValorTotal;
+
+                                                    if (Model.listanasa.BoletimModel != null)
+                                                    {
+                                                        <div class="col">
+                                                            <table class='table table-sm small border-top-0'>
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th scope='col' class=''>FATOR</th>
+                                                                        <th scope='col' class=''>PESO<p class='small mb-0'>(Comparação por pares)</p></th>
+                                                                        <th scope='col' class=''>VALOR<p class='small mb-0'>(Comparação por pares)</p></th>
+                                                                        <th scope='col' class=''>AJUSTE<p class='small mb-0'>(Peso X Valor)</p></th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <th scope='row'>Demanda Mental</th>
+                                                                        <td>  @Model.listanasa.escalaMental  </td>
+                                                                        <td>  @Model.listanasa.rangeDM  </td>
+                                                                        <td>  @ViewBag.ValorMental</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th scope='row'>Demanda Física</th>
+                                                                        <td>  @Model.listanasa.escalaFisica  </td>
+                                                                        <td>  @Model.listanasa.rangeDF  </td>
+                                                                        <td>  @ViewBag.ValorFisico  </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th scope='row'>Demanda Temporal</th>
+                                                                        <td>  @Model.listanasa.escalaTemporal  </td>
+                                                                        <td>  @Model.listanasa.rangeDT  </td>
+                                                                        <td>  @ViewBag.ValorTemporal  </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th scope='row'>Performace</th>
+                                                                        <td>  @Model.listanasa.escalaPerformace  </td>
+                                                                        <td>  @Model.listanasa.rangePE  </td>
+                                                                        <td>  @ViewBag.ValorPerformace  </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th scope='row'>Esforço</th>
+                                                                        <td>  @Model.listanasa.escalaEsforco  </td>
+                                                                        <td>  @Model.listanasa.rangeDE  </td>
+                                                                        <td>  @ViewBag.ValorEsforco  </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th scope='row'>Frustração</th>
+                                                                        <td>  @Model.listanasa.escalaFrustacao  </td>
+                                                                        <td>  @Model.listanasa.rangeFR  </td>
+                                                                        <td>  @ViewBag.ValorFrustracao  </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th scope='row' colspan='2'>PONTUAÇÃO<p class='small mb-0'>(Soma dos Ajuste dividido por 15)</p></th>
+                                                                        <td class='small'></td>
+                                                                        @*<th>  @ViewBag.ValorTotal  </th>*@
+                                                                        <th>  @ValorTotal  </th>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="col text-center">
+                                                            <p class="mb-0 text-center" style="font-size:12px;"><span class="font-weight-bold font-italic"> Não foi adicionado nenhuma Análise NASA-TLX !</span></p>
+                                                        </div>
+                                                    }
+                                                }
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    @{
+                                                        if (Model.listanasa.BoletimModel != null)
+                                                        {
+                                                            if (ValorTotal >= 0 && ValorTotal <= 20)
+                                                            {
+                                                                <div class="alert alert-light" role="alert">
+                                                                    Intensidade da Carga Mental: <strong>Mínimo</strong>
+                                                                </div>
+                                                            }
+                                                            else if (ValorTotal >= 21 && ValorTotal <= 40)
+                                                            {
+                                                                <div class="alert alert-info" role="alert">
+                                                                    Intensidade da Carga Mental: <strong>Baixa</strong>
+
+                                                                </div>
+                                                            }
+                                                            else if (ValorTotal >= 41 && ValorTotal <= 60)
+                                                            {
+                                                                <div class="alert alert-success" role="alert">
+                                                                    Intensidade da Carga Mental: <strong>Moderada</strong>
+                                                                </div>
+                                                            }
+                                                            else if (ValorTotal >= 61 && ValorTotal <= 80)
+                                                            {
+                                                                <div class="alert alert-warning" role="alert">
+                                                                    Intensidade da Carga Mental: <strong>Alta</strong>
+                                                                </div>
+                                                            }
+                                                            else if (ValorTotal >= 81 && ValorTotal <= 100)
+                                                            {
+                                                                <div class="alert alert-danger" role="alert">
+                                                                    Intensidade da Carga Mental: <strong>Intolerável</strong>
+                                                                </div>
+                                                            }
+                                                        }
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p>
+                                        <div class="alert alert-dark" role="alert" data-toggle="collapse" href="#MenuAnaliseAmbiete" aria-expanded="false" aria-controls="MenuAnaliseAmbiete">
+                                            Análise Ambiente
+                                        </div>
+                                    </p>
+                                    <div class="collapse" id="MenuAnaliseAmbiete">
+                                        <div class="card card-body">
+                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div id="AreaAnalisesInformada"></div>
+                                    </div>
+
+                                    <div id="RetornoLancamento">
+
+                                    </div>
+
+                                    <div class="form-group mt-5">
+                                        <a asp-action="Index" class="btn btn-primary btn-sm">Voltar</a>
+                                        @*<a asp-action="Edit" asp-route-id="@Model.ID" value="Editar" class="btn btn-warning" />Editar</a>*@
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

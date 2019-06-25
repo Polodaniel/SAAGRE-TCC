@@ -1,0 +1,64 @@
+﻿@model SAGRE.Models.AtividadesModel
+
+@{
+    ViewData["Title"] = "Cadastro de Atividade";
+}
+
+<div class="col mt-2">
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Ínicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col">
+            <div class=" ml-1">
+                <div class="card">
+                    <div class="row"></div>
+                    <div class="card-header">
+                        Cadastro de Atividade
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <h4>Informação</h4>
+                                Aqui vem um Texto sobre a Atividade
+                            </div>
+                            <div class="col-6">
+                                <form asp-action="Create">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <div class="form-group">
+                                        <label asp-for="NomeAtividade" class="control-label small mb-0"></label>
+                                        <input asp-for="NomeAtividade" class="form-control" />
+                                        <span asp-validation-for="NomeAtividade" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="DescricaoAtividade" class="control-label small mb-0"></label>
+                                        <textarea asp-for="DescricaoAtividade" class="form-control"></textarea>
+                                        <span asp-validation-for="DescricaoAtividade" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="checkbox">
+                                            <label class="small mb-0">Status</label>
+                                            <p>
+                                                <input asp-for="Inativo" /> @Html.DisplayNameFor(model => model.Inativo)
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <a asp-action="Index" class="btn btn-warning">Voltar</a>
+                                        <input type="submit" value="Cadastrar" class="btn btn-success" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.452
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAGRE", "SAGRE\SAGRE.csproj", "{FA4BB6F6-2096-4EA0-8751-087DF1E8DC2B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FA4BB6F6-2096-4EA0-8751-087DF1E8DC2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA4BB6F6-2096-4EA0-8751-087DF1E8DC2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA4BB6F6-2096-4EA0-8751-087DF1E8DC2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA4BB6F6-2096-4EA0-8751-087DF1E8DC2B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {57F33E35-85FF-4E95-9DA8-8F9D4C23EAEF}
+	EndGlobalSection
+EndGlobal

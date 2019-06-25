@@ -1,0 +1,191 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema de Gerenciamento e Prevenção de Risco Ambiental</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/css/Estilos.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+              integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+              integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+              integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+              integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    </environment>
+</head>
+<body class="p-0 m-0 bg-light">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="btn fas fa-bars text-light float-right" data-toggle="collapse" href="#MenuLateral" role="button"
+               aria-expanded="false" aria-controls="MenuLateral"></a>
+            <a class="navbar-brand" href="#">
+                <span class="badge badge-dark">
+                    Sistema de Análise e Apoio a Gestão de Risco Ergonômico - <span class="badge badge-secondary">
+                        SAAGRE
+                    </span>
+                </span>
+            </a>
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado"
+                        aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+                    <ul class="navbar-nav mr-auto"></ul>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Seja Bem Vindo @UserManager.GetUserName(User)
+                        </button>
+                        <div class="dropdown-menu w-25" aria-labelledby="dropdownMenuButton">
+                            <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action(" Index", "Home" , new { area="" })" method="post" id="logoutForm" class="navbar-right form-inline my-2 my-lg-0">
+                                <button type="submit" class="dropdown-item small"><i class="fas fa-sign-out-alt mr-3 ml-0"></i> Sair</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+                    <ul class="navbar-nav mr-auto"></ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a asp-area="Identity" asp-page="/Account/Register" class="btn btn-sm btn-secondary mr-1">Registrar</a></li>
+                            <li><a asp-area="Identity" asp-page="/Account/Login" class="btn btn-sm btn-secondary mr-1">Logar-se</a></li>
+                        </ul>
+                    </form>
+                </div>
+            }
+        </nav>
+    }
+
+    <partial name="_CookieConsentPartial" />
+
+    <div class="container-fluid row " style="height: 91.1%;">
+
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <div class="col-2 bg-light p-0 border border-top-0 collapse show " id="MenuLateral" style="height:598px;">
+                <ul class="list-group rounded-0 border-left-0">
+                    <a class="list-group-item rounded-0 active border-right-0 border-left-0" asp-controller="Home" asp-action="Index">Ínicio</a>
+                    <a class="list-group-item rounded-0 border-right-0 border-left-0" asp-controller="Boletim" asp-action="Index">Lançar Boletim</a>
+
+                    @*Risco Ergonomico*@
+                    <li class="mt-1 list-group-item rounded-0 border-right-0 border-left-0" data-toggle="collapse"
+                        href="#MenuRiscoErgonomico" role="button" aria-expanded="false" aria-controls="MenuRiscoErgonomico">
+                        Risco Ergonômicos
+                        <i class="far fa-caret-square-down float-right align-bottom mt-1"></i>
+                    </li>
+                    <div class="collapse border-left-0" id="MenuRiscoErgonomico">
+                        <div class="card rounded-0 border-bottom-0 border-right-0 border-left-0 pl-3 pt-2">
+                            <a class="ml-1 mb-0 small font-weight-bold"><span class="mr-2 small font-weight-bold">Cadastros</span></a>
+                            <hr class="mt-1">
+                            <a class="ml-4 small mb-1" asp-controller="Atividades" asp-action="Index"><i class="fas fa-people-carry mr-3"></i><span class="mr-2">Atividades</span></a>
+                            <a class="ml-4 small mb-1" href="#"><i class="fas fa-people-carry mr-3"></i><span class="mr-2">Menu 2</span></a>
+                            <a class="ml-4 small mb-1" href="#"><i class="fas fa-people-carry mr-3"></i><span class="mr-2">Menu 3</span></a>
+                            <a class="ml-4 small mb-1" href="#"><i class="fas fa-people-carry mr-3"></i><span class="mr-2">Menu 4</span></a>
+                            <a class="ml-4 small mb-3" href="#"><i class="fas fa-people-carry mr-3"></i><span class="mr-2">Menu 5</span></a>
+
+                            <a class="ml-1 mb-0 small font-weight-bold"><span class="mr-2 small font-weight-bold">Configuração</span></a>
+                            <hr class="mt-1">
+                            <a class="ml-4 small mb-1" href="#"><i class="fas fa-people-carry mr-3"></i><span class="mr-2">Menu 1</span></a>
+                            <a class="ml-4 small mb-1" href="#"><i class="fas fa-people-carry mr-3"></i><span class="mr-2">Menu 2</span></a>
+                            <a class="ml-4 small mb-1" href="#"><i class="fas fa-people-carry mr-3"></i><span class="mr-2">Menu 3</span></a>
+                            <a class="ml-4 mb-3 small" href="#"><i class="fas fa-people-carry mr-3"></i><span class="mr-2">Menu 4</span></a>
+
+                        </div>
+                    </div>
+
+                    @*Menu Relatorios*@
+                    <li class="list-group-item rounded-0 border-right-0 border-left-0" data-toggle="collapse"
+                        href="#MenuRelatorios" role="button" aria-expanded="false" aria-controls="MenuRelatorios">
+                        Relatórios <i class="far fa-caret-square-down float-right align-bottom mt-1"></i>
+                    </li>
+                    <div class="collapse border-left-0" id="MenuRelatorios">
+                        <div class="card rounded-0 border-bottom border-right-0 border-left-0 pl-3 pt-2">
+                            <a class="ml-1 mb-0 small font-weight-bold"><span class="mr-2 small font-weight-bold">Risco Ergonômico</span></a>
+                            <hr class="mt-1">
+                            <a class="ml-4 small mb-1" href="#"><i class="fas fa-people-carry mr-3"></i><span class="mr-2">Relatório Completo</span></a>
+                            <a class="ml-4 small mb-1" href="#"><i class="fas fa-people-carry mr-3"></i><span class="mr-2">Relatório por Atividade</span></a>
+                            <a class="ml-4 small mb-1" href="#"><i class="fas fa-people-carry mr-3"></i><span class="mr-2">Relatório por Setor</span></a>
+                        </div>
+                    </div>
+
+                    @*Menu Configuração*@
+                    <li class="list-group-item rounded-0 border-right-0 border-left-0" data-toggle="collapse"
+                        href="#MenuConfig" role="button" aria-expanded="false" aria-controls="MenuConfig">
+                        Configuração
+                        <i class="far fa-caret-square-down float-right align-bottom mt-1"></i>
+                    </li>
+                    <div class="collapse border-left-0" id="MenuConfig">
+                        <div class="card rounded-0 border-bottom-0 border-right-0 border-left-0 pl-3 pt-2">
+                            <a class="ml-1 mb-0 small font-weight-bold"><span class="mr-2 small font-weight-bold">Configuração de Sistema</span></a>
+                            <hr class="mt-1">
+                            <a class="ml-4 small mb-1" asp-controller="GruposRisco" asp-action="Index"><i class="fas fa-layer-group mr-3"></i><span class="mr-2">Grupo de Risco</span></a>
+                            <a class="ml-4 small mb-1" asp-controller="Setor" asp-action="Index"><i class="fas fa-layer-group mr-3"></i><span class="mr-2">Setor</span></a>
+                            <a class="ml-4 small mb-1" asp-area="Identity" asp-page="/Account/Register"><i class="fas fa-users mr-3"></i><span class="mr-2">Usuário</span></a>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        }
+
+        @RenderBody()
+
+    </div>
+
+    @*<footer>
+            <p>&copy; 2019 - SGPRA</p>
+        </footer>*@
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        @*<script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>*@
+            <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+        @*
+            <script src="~/lib/jquery/dist/jquery.js"></script>
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
+            <script>
+                $(function () {
+                    $('[data-toggle="tooltip"]').tooltip()
+                });
+            </script>
+    </environment>
+    <environment exclude="Development">
+        @*
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+            <script>
+                $(function () {
+                    $('[data-toggle="tooltip"]').tooltip()
+                });
+            </script>*@
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

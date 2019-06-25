@@ -1,0 +1,107 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="col mt-2">
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Ínicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page"></li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col-9">
+
+            @{
+                var Config = @UserManager.GetUserName(User).ToString();
+
+                Config = Config.Replace("_", " ")
+                               .Replace("-", " ")
+                               .Replace(".", " ");
+
+                var Indice = Config.IndexOf("@");
+
+                Config = Config.Substring(0, Indice);
+
+                var Nome = Config ;
+
+            }
+
+            <div class="jumbotron pt-5 pl-5" style="height:498px">
+                <h1 class="display-4">Olá,<span class="text-capitalize"> @Nome!</span></h1>
+                <p class="lead">Sistema de Análise e Apoio a Gestão de Risco Ergonômico com base nos apontamentos realizado pelo fiscal.</p>
+                <hr class="my-4">
+                <p>Segue ao lado direito a contagem de Boletins lançados no Sistema com os seus respectivos status.</p>
+                <p>Futuramente nessa área contara com graficos para ánalise.</p>
+            </div>
+
+        </div>
+
+        <div class="col">
+            <div class="row">
+                <div class="col small">
+                    <div class="card">
+                        <div class="card-header">Boletins Lançados</div>
+                        <div class="card-body p-0">
+                            <div class="row p-2">
+                                <div class="col">Risco Ergonômicos</div>
+                                <div class="col-3 text-right mr-3">@ViewBag.TotalBoletins</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*<div class="row mt-2">
+                <div class="col small">
+                    <div class="card">
+                        <div class="card-header">Boletins em Analise</div>
+                        <div class="card-body p-0">
+                            <div class="row p-2">
+                                <div class="col">Risco Ergonômicos</div>
+                                <div class="col-3 text-right mr-3">00</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col small">
+                    <div class="card">
+                        <div class="card-header">Boletins Fechado</div>
+                        <div class="card-body p-0">
+                            <div class="row p-2">
+                                <div class="col">Risco Ergonômicos</div>
+                                <div class="col-3 text-right mr-3">00</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+
+            <div class="row mt-2">
+                <div class="col small">
+                    <div class="card">
+                        <div class="card-header">Grafico</div>
+                        <div class="card-body p-0">
+                            <div class="row p-2" style="height:185px;">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
