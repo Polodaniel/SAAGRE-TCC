@@ -1,42 +1,80 @@
 ﻿@model SAGRE.Models.MetodosAnalise.ClassificaoOWAS
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalhes Classificação OWAS";
 }
 
-<h2>Details</h2>
+    <div class="col mt-2">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Ínicio</a></li>
+                <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+            </ol>
+        </nav>
 
-<div>
-    <h4>ClassificaoOWAS</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NumCosta)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.NumCosta)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.NumBraco)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.NumBraco)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.NumPernas)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.NumPernas)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.NumForca)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.NumForca)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h5> <i class="fas fa-people-carry mr-3"></i> Classificação OWAS</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <div class="row">
+                                    <div class="col-2 font-weight-bold">
+                                        Costa:
+                                    </div>
+                                    <div class="col">
+                                        @Html.DisplayFor(model => model.NumCosta)
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-2 font-weight-bold">
+                                        Braço:
+                                    </div>
+                                    <div class="col">
+                                        @Html.DisplayFor(model => model.NumBraco)
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-2 font-weight-bold">
+                                        Pernas:
+                                    </div>
+                                    <div class="col">
+                                        @Html.DisplayFor(model => model.NumPernas)
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-2 font-weight-bold">
+                                        Esforço:
+                                    </div>
+                                    <div class="col">
+                                        @Html.DisplayFor(model => model.NumForca)
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-2 font-weight-bold">
+                                        Ação:
+                                    </div>
+                                    <div class="col">
+                                        @Html.DisplayFor(model => model.Categoria)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col text-right">
+                                <a asp-action="Index" class="btn btn-sm btn-secondary">Voltar</a>
+                                <a asp-action="Edit" asp-route-id="@Model.ID" class="btn btn-sm btn-warning">Editar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

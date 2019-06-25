@@ -1,46 +1,93 @@
 ﻿@model SAGRE.Models.MetodosAnalise.ClassificaoOWAS
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Nova Classificação";
 }
 
-<h2>Create</h2>
 
-<h4>ClassificaoOWAS</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="NumCosta" class="control-label"></label>
-                <input asp-for="NumCosta" class="form-control" />
-                <span asp-validation-for="NumCosta" class="text-danger"></span>
+<div class="col mt-2">
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Ínicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col">
+            <div class=" ml-1">
+                <div class="card">
+                    <div class="row"></div>
+                    <div class="card-header">
+                        Cadastro de Atividade
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <div class="row">
+                                    <div class="col-2 font-weight-bold">
+                                        <label class="control-label">Costa</label>
+                                    </div>
+                                    <div class="col">
+                                        <input asp-for="NumCosta" class="form-control" min="1" max="4"/>
+                                        <span asp-validation-for="NumCosta" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-2 font-weight-bold">
+                                        <label class="control-label">Braço</label>
+                                    </div>
+                                    <div class="col">
+                                        <input asp-for="NumBraco" class="form-control" min="1" max="3"/>
+                                        <span asp-validation-for="NumBraco" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-2 font-weight-bold">
+                                        <label class="control-label">Pernas</label>
+                                    </div>
+                                    <div class="col">
+                                        <input asp-for="NumPernas" class="form-control" min="1" max="7"/>
+                                        <span asp-validation-for="NumPernas" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-2 font-weight-bold">
+                                        <label class="control-label">Esforço</label>
+                                    </div>
+                                    <div class="col">
+                                        <input asp-for="NumForca" class="form-control" min="1" max="3"/>
+                                        <span asp-validation-for="NumForca" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-2 font-weight-bold">
+                                        <label class="control-label">Categoria</label>
+                                    </div>
+                                    <div class="col">
+                                        <input asp-for="NumCategoria" class="form-control" min="1" max="4" />
+                                        <span asp-validation-for="NumCategoria" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col text-right">
+                                <a asp-action="Index" class="btn btn-sm btn-secondary">Voltar</a>
+                                <input type="submit" value="Salvar" class="btn btn-sm btn-success" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="NumBraco" class="control-label"></label>
-                <input asp-for="NumBraco" class="form-control" />
-                <span asp-validation-for="NumBraco" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NumPernas" class="control-label"></label>
-                <input asp-for="NumPernas" class="form-control" />
-                <span asp-validation-for="NumPernas" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NumForca" class="control-label"></label>
-                <input asp-for="NumForca" class="form-control" />
-                <span asp-validation-for="NumForca" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </form>
+
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

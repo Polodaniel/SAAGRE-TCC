@@ -1,53 +1,164 @@
 ﻿@model IEnumerable<SAGRE.Models.MetodosAnalise.ClassificaoOWAS>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Classificação OWAS";
 }
 
-<h2>Index</h2>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.bootstrap4.min.css" />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NumCosta)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumBraco)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumPernas)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumForca)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumCosta)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumBraco)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumPernas)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumForca)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
+<div class="col mt-2">
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Ínicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col">
+            <div class="row mb-3">
+                <div class="col">
+                    <a asp-action="Create" class="btn btn-primary">Adicionar Novo</a>
+                </div>
+            </div>
+
+            <table class="table table-hover table-sm small" style="font-size:12px;" id="table_id">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>
+                            Costa
+                        </th>
+                        <th>
+                            Braço
+                        </th>
+                        <th>
+                            Pernas
+                        </th>
+                        <th>
+                            Esforço
+                        </th>
+                        <th>
+                            Ação
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td class="align-middle text-center">
+                            @Html.DisplayFor(modelItem => item.NumCosta)
+                        </td>
+                        <td class="align-middle text-center">
+                            @Html.DisplayFor(modelItem => item.NumBraco)
+                        </td>
+                        <td class="align-middle text-center">
+                            @Html.DisplayFor(modelItem => item.NumPernas)
+                        </td>
+                        <td class="align-middle text-center">
+                            @Html.DisplayFor(modelItem => item.NumForca)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.Categoria)
+                        </td>
+                        <td class="align-middle">
+                            <a asp-action="Details" asp-route-id="@item.ID" class="btn btn-sm btn-dark" style="padding:2px;" data-toggle="tooltip" data-placement="bottom" title="Visualizar">
+                                <i class="far fa-eye"></i>
+                            </a>
+                            <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-sm btn-dark" style="padding:2px;" data-toggle="tooltip" data-placement="bottom" title="Editar">
+                                <i class="far fa-edit"></i>
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-sm btn-dark" style="padding:2px;" data-toggle="tooltip" data-placement="bottom" title="Excluir">
+                                <i class="far fa-trash-alt"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.bootstrap4.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#table_id').DataTable();
+        });
+    </script>
+
+    <script type="text/javascript">
+        $("#table_id").dataTable({
+            "bJQueryUI": true,
+            pageLength: 5,
+            "oLanguage": {
+                "sProcessing": "Processando...",
+                "sLengthMenu": "Mostrar _MENU_ registros",
+                "sZeroRecords": "Não foram encontrados resultados",
+                "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando de 0 até 0 de 0 registros",
+                "sInfoFiltered": "",
+                "sInfoPostFix": "",
+                "sSearch": "Buscar:",
+                "sUrl": "",
+                "oPaginate": {
+                    "sFirst": "Primeiro",
+                    "sPrevious": "Anterior",
+                    "sNext": "Seguinte",
+                    "sLast": "Último"
+                }
+            },
+            dom: 'Bfrtip',
+            buttons: [
+                {
+                    extend: 'copy',
+                    //text: 'Copiar',
+                    text: '<i class="fa fa-files-o"></i>',
+                    titleAttr: 'Copiar',
+
+                },
+                {
+                    extend: 'excel',
+                    //text: 'Excel',
+                    text: '<i class="fa fa-file-excel-o"></i>',
+                    titleAttr: 'Converter para Excel',
+                    messageTop: 'The information in this table is copyright to Sirius Cybernetics Corp.'
+                },
+                {
+                    extend: 'pdf',
+                    //text: 'PDF',
+                    text: '<i class="fa fa-file-pdf-o"></i>',
+                    titleAttr: 'Converter para PDF',
+                    //messageTop: 'Grupo de Riscos Cadastrados',
+                    title: 'Atividades Cadastrados',
+                    orientation: 'A4',
+                    pageSize: 'LEGAL',
+                    download: 'open',
+                    messageBottom: null
+                },
+                {
+                    extend: 'print',
+                    text: 'Imprimir',
+                    titleAttr: 'Imprimir',
+                    messageBottom: null
+                }
+            ]
+        })
+
+    </script>
 }
-    </tbody>
-</table>
