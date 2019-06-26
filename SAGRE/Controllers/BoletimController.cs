@@ -17,8 +17,6 @@ namespace SAGRE.Controllers
         private List<ClassificaoOWAS> ListaAnalises = new List<ClassificaoOWAS>();
         private List<AnalisePosturaModel> ListaRecebida = new List<AnalisePosturaModel>();
 
-
-
         public BoletimController(ApplicationDbContext context)
         {
             _context = context;
@@ -74,7 +72,7 @@ namespace SAGRE.Controllers
             var ValorPerformace = Convert.ToInt32(boletimModel.listanasa.escalaPerformace) * Convert.ToInt32(boletimModel.listanasa.rangePE);
             var ValorEsforco = Convert.ToInt32(boletimModel.listanasa.escalaEsforco) * Convert.ToInt32(boletimModel.listanasa.rangeDE);
             var ValorFrustracao = Convert.ToInt32(boletimModel.listanasa.escalaFrustacao) * Convert.ToInt32(boletimModel.listanasa.rangeFR);
-            var ValorTotal = (ValorMental + ValorFisico + ValorTemporal + ValorPerformace + ValorEsforco + ValorFrustracao) / 15 ;
+            var ValorTotal = (ValorMental + ValorFisico + ValorTemporal + ValorPerformace + ValorEsforco + ValorFrustracao) / 15;
 
             ViewBag.ValorMental = ValorMental;
             ViewBag.ValorFisico = ValorFisico;
@@ -311,11 +309,22 @@ namespace SAGRE.Controllers
             if (Equals(analisepostura.descricao, null))
                 analisepostura.descricao = "Sem descrição Adicionada !";
 
+            if (Equals(analisepostura.local, null))
+                analisepostura.local = " ";
+
             Boletim.NomeFiscal = analisepostura.nomefiscal;
 
             Boletim.Setor = analisepostura.setor;
 
             Boletim.Atividade = analisepostura.atividade;
+
+            Boletim.Local = analisepostura.local;
+
+            Boletim.HoraInicio = analisepostura.horainicio;
+
+            Boletim.HoraTermino = analisepostura.horatermino;
+
+            Boletim.TempoDuracao = analisepostura.tempogasto;
 
             Boletim.Data = Convert.ToDateTime(analisepostura.dataanalise);
 
@@ -417,6 +426,19 @@ namespace SAGRE.Controllers
             return Json(TabelaString);
         }
 
+        [HttpGet]
+        public IActionResult ConsomeTempo(string HoraInicio, string HoraTermino)
+        {
+            var Inicio = Convert.ToDateTime(HoraInicio);
+            var Termino = Convert.ToDateTime(HoraTermino);
+
+            TimeSpan TempoGasto = Termino.Subtract(Inicio);
+
+            var Tempo = TempoGasto.ToString("hh\\:mm");
+
+            return Json(Tempo);
+        }
+
     }
 
     public class Boletim
@@ -431,8 +453,13 @@ namespace SAGRE.Controllers
         public string setor { get; set; }
         public string atividade { get; set; }
         public string descricao { get; set; }
+        public string local { get; set; }
+        public string horainicio { get; set; }
+        public string horatermino { get; set; }
+        public string tempogasto { get; set; }
         public List<AnalisePosturaModel> lista { get; set; }
         public AnaliseNASATLXModel listanasa { get; set; }
+
     }
 
     public class AnaliseNASATLXa

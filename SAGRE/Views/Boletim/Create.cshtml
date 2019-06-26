@@ -67,13 +67,44 @@
                                 </div>
 
                                 <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label asp-for="Setor" class="control-label mb-0"></label>
+                                            <select asp-for="Setor" asp-items="@ViewBag.Setor" class="form-control form-control-sm" id="SetorSelecionado"></select>
+                                            <span asp-validation-for="Setor" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label class="control-label mb-0 small">Hora de Ínicio</label>
+                                            <input type="time" class="form-control form-control-sm" id="HoraInicio" onBlur="javascript: ConsomeTempo(this.value,1);" />
+                                            <span asp-validation-for="HoraInicio" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label class="control-label mb-0 small">Hora de Termino</label>
+                                            <input type="time" class="form-control form-control-sm" id="HoraTermino" onBlur="javascript: ConsomeTempo(this.value,2);" />
+                                            <span asp-validation-for="HoraTermino" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label class="control-label mb-0 small">Tempo Gasto</label>
+                                            <input type="text" class="form-control form-control-sm" id="TempoGastoInput" disabled />
+                                            <span asp-validation-for="TempoDuracao" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
                                     <div class="col">
                                         <div class="row">
                                             <div class="col">
                                                 <div class="form-group">
-                                                    <label asp-for="Setor" class="control-label mb-0"></label>
-                                                    <select asp-for="Setor" asp-items="@ViewBag.Setor" class="form-control form-control-sm" id="SetorSelecionado"></select>
-                                                    <span asp-validation-for="Setor" class="text-danger"></span>
+                                                    <label asp-for="Local" class="control-label mb-0"></label>
+                                                    <select asp-for="Local" asp-items="@ViewBag.Setor" class="form-control form-control-sm" id="LocalSelecionado"></select>
+                                                    <span asp-validation-for="Local" class="text-danger"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -81,8 +112,8 @@
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label class="control-label mb-0">Atividade</label>
-                                                    <select asp-for="Setor" asp-items="@ViewBag.Atividade" class="form-control form-control-sm" id="AtividadeSelecionado"></select>
-                                                    <span asp-validation-for="Setor" class="text-danger"></span>
+                                                    <select asp-for="Atividade" asp-items="@ViewBag.Atividade" class="form-control form-control-sm" id="AtividadeSelecionado"></select>
+                                                    <span asp-validation-for="Atividade" class="text-danger"></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -505,23 +536,23 @@
                                         </p>
                                         <div class='collapse mt-0' id="CheckListDois">
                                             <div class="card card-body">
-                                            
-                                            </div>
-                                        </div>
 
                                             </div>
                                         </div>
 
-                                        <div><div id="AreaAnalisesOWASInformada"></div></div>
-                                        <div><div id="AreaAnalisesNASATLXInformada"></div></div>
-
-                                        <div id="RetornoLancamento"></div>
-
-                                        <div class="form-group mt-5">
-                                            <a asp-action="Index" class="btn btn-primary">Voltar</a>
-                                            <input type="button" value="Lançar Boletim" class="btn btn-success" onclick="PreCadastro()" />
-                                        </div>
                                     </div>
+                                </div>
+
+                                <div><div id="AreaAnalisesOWASInformada"></div></div>
+                                <div><div id="AreaAnalisesNASATLXInformada"></div></div>
+
+                                <div id="RetornoLancamento"></div>
+
+                                <div class="form-group mt-5">
+                                    <a asp-action="Index" class="btn btn-primary">Voltar</a>
+                                    <input type="button" value="Lançar Boletim" class="btn btn-success" onclick="PreCadastro()" />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -561,6 +592,21 @@
                     <div class="row p-2">
                         <div class="col small">
                             <span class="font-weight-bold">Setor:</span> <span id="rSetor"></span>
+                        </div>
+                        <div class="col small">
+                            <span class="font-weight-bold">Hora Ínicio:</span> <span id="rInicio"></span>
+                        </div>
+                        <div class="col small">
+                            <span class="font-weight-bold">Hora Termino:</span> <span id="rTermino"></span>
+                        </div>
+                        <div class="col small">
+                            <span class="font-weight-bold">Tempo Gasto:</span> <span id="rGasto"></span>
+                        </div>
+                    </div>
+
+                    <div class="row p-2">
+                        <div class="col small">
+                            <span class="font-weight-bold">Local:</span> <span id="rLocal"></span>
                         </div>
                         <div class="col small">
                             <span class="font-weight-bold">Atividade:</span> <span id="rAtividade"></span>
@@ -636,6 +682,9 @@
         var EscalaPerformace = 0;
         var EscalaEsforco = 0;
         var EscalaFrustracao = 0;
+        var HoraInicio = "";
+        var HoraTermino = "";
+        var TempoGasto = "";
         var Comparacoes = 0;
         var UltimoIndice = 0;
         var TabelaAnaliseNASATLX = "";
@@ -668,6 +717,35 @@
             $('#posEsf').text(IndiceEsforco);
             BuscaTipoAnalise();
         });
+
+        function ConsomeTempo(Hora, Origem) {
+
+            if (Origem === 1) {
+                HoraInicio = Hora;
+            }
+            else if (Origem === 2) {
+                HoraTermino = Hora;
+            }
+
+            if (HoraInicio !== "" && HoraTermino !== "") {
+
+                $.ajax({
+                    type: "GET",
+                    url: "/Boletim/ConsomeTempo",
+                    data: { HoraInicio, HoraTermino },
+                    dataType: "html",
+                    success: function (response) {
+
+                        TempoGasto = response.substring(2, 6);
+
+                        var Tempo = $('#TempoGastoInput');
+
+                        Tempo.val(TempoGasto);
+                    }
+                });
+
+            }
+        }
 
         function BuscaTipoAnalise() {
 
@@ -892,6 +970,10 @@
             var Setor = $('#SetorSelecionado').val();
             var Atividade = $('#AtividadeSelecionado').val();
             var Descricao = $('#DescricaoSelecionado').val();
+            //var HoraInicio = $('#HoraInicio').val();
+            //var HoraFinal = $('#HoraTermino').val();
+            //var TempoGasto = $('#TempoDuracao').val();
+            var Local = $('#LocalSelecionado').val();
             var ListaPostura = ListaAnalisePostura;
             var ListaNasaTlx = ListaAnaliseNASATLX;
 
@@ -902,7 +984,11 @@
                 nomefiscal: NomeAvaliador,
                 setor: Setor,
                 lista: ListaPostura,
-                listanasa: ListaNasaTlx
+                listanasa: ListaNasaTlx,
+                horainicio: HoraInicio,
+                horatermino: HoraTermino,
+                tempogasto: TempoGasto,
+                local: Local
             };
 
             $.ajax({
@@ -1144,6 +1230,10 @@
             $('#rSetor').text($('#SetorSelecionado option:selected').text());
             $('#rAtividade').text($('#AtividadeSelecionado option:selected').text());
             $('#rDescricao').text($('#DescricaoSelecionado').val());
+            $('#rInicio').text($('#HoraInicio').val());
+            $('#rTermino').text($('#HoraTermino').val());
+            $('#rGasto').text($('#TempoGastoInput').val());
+            $('#rLocal').text($('#LocalSelecionado option:selected').text());
 
             var ListaOWASReviscao = [];
             ListaOWASReviscao = ListaAnalisePostura;

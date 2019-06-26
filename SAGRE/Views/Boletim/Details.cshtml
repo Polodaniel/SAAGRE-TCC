@@ -51,13 +51,40 @@
                                     </div>
 
                                     <div class="row">
+                                        <div class="col-6">
+                                            <label asp-for="Setor" class="control-label mb-0 small"></label>
+                                            <input asp-for="Setor" class="form-control form-control-sm" id="SetorSelecionado" disabled />
+                                            <span asp-validation-for="Setor" class="text-danger"></span>
+                                        </div>
+                                        <div class="col">
+                                            <label class="control-label mb-0 small">Hora Ínicio</label>
+                                            <input type="time" asp-for="HoraInicio" class="form-control form-control-sm" id="" disabled />
+                                            <span asp-validation-for="HoraInicio" class="text-danger"></span>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label class="control-label mb-0 small">Hora Termino</label>
+                                                <input type="time" asp-for="HoraTermino" class="form-control form-control-sm" id="" disabled />
+                                                <span asp-validation-for="HoraTermino" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label class="control-label mb-0 small">Tempo Gasto</label>
+                                                <input type="text" asp-for="TempoDuracao" class="form-control form-control-sm" id="NomeAvaliador" disabled />
+                                                <span asp-validation-for="TempoDuracao" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
                                         <div class="col">
                                             <div class="row">
                                                 <div class="col">
                                                     <div class="form-group">
-                                                        <label asp-for="Setor" class="control-label mb-0"></label>
-                                                        <input asp-for="Setor" class="form-control form-control-sm" id="SetorSelecionado" disabled>
-                                                        <span asp-validation-for="Setor" class="text-danger"></span>
+                                                        <label asp-for="Local" class="control-label mb-0"></label>
+                                                        <input asp-for="Local" class="form-control form-control-sm" id="LocalSelecionado" disabled>
+                                                        <span asp-validation-for="Local" class="text-danger"></span>
                                                     </div>
                                                 </div>
                                             </div>

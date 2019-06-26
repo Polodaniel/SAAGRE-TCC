@@ -42,6 +42,15 @@ namespace SAGRE.Models
 
         public int Flag { get; set; }
 
+        [Required]
+        public string Local { get; set; }
+
+        public string HoraInicio { get; set; }
+
+        public string HoraTermino { get; set; }
+
+        public string TempoDuracao { get; set; }
+
         public List<AnalisePosturaModel> ListaAnalisePostura { get; set; }
 
         public AnaliseNASATLXModel listanasa { get; set; }
