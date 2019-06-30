@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SAGRE.Data;
 
 namespace SAGRE.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190627000834_Cria_Tabela_Local")]
+    partial class Cria_Tabela_Local
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -259,30 +261,6 @@ namespace SAGRE.Data.Migrations
                     b.ToTable("GruposRiscoModel");
                 });
 
-            modelBuilder.Entity("SAGRE.Models.LocalModel", b =>
-                {
-                    b.Property<int>("ID_Local")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Descricao");
-
-                    b.Property<int>("ID");
-
-                    b.Property<bool>("Inativo");
-
-                    b.Property<string>("Nome")
-                        .IsRequired();
-
-                    b.Property<string>("Sigla");
-
-                    b.HasKey("ID_Local");
-
-                    b.HasIndex("ID");
-
-                    b.ToTable("Local");
-                });
-
             modelBuilder.Entity("SAGRE.Models.MetodosAnalise.AnaliseNASATLXModel", b =>
                 {
                     b.Property<int>("ID_Analise")
@@ -441,14 +419,6 @@ namespace SAGRE.Data.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("SAGRE.Models.LocalModel", b =>
-                {
-                    b.HasOne("SAGRE.Models.SetorModel", "Setor")
-                        .WithMany()
-                        .HasForeignKey("ID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

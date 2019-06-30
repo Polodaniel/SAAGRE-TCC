@@ -7,10 +7,16 @@ using System.Threading.Tasks;
 
 namespace SAGRE.Models
 {
-    public class SetorModel
+    [Table("Local")]
+    public class LocalModel
     {
         [Key]
+        public int ID_Local { get; set; }
+
         public int ID { get; set; }
+
+        [ForeignKey("ID")]
+        public SetorModel Setor { get; set; }
 
         [Display(Name = "Sigla")]
         public string Sigla { get; set; }
@@ -34,6 +40,5 @@ namespace SAGRE.Models
                     return "Inativo";
             }
         }
-
     }
 }

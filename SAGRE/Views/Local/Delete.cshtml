@@ -1,7 +1,7 @@
-﻿@model SAGRE.Models.SetorModel
+﻿@model SAGRE.Models.LocalModel
 
 @{
-    ViewData["Title"] = "Deletar o Setor";
+    ViewData["Title"] = "Delete o Local da Empresa";
 }
 
 <div class="col mt-2">
@@ -54,6 +54,15 @@
                                             @Html.DisplayFor(model => model.Descricao)
                                         }
                                     }
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-2 font-weight-bold">
+                                    Setor
+                                </div>
+                                <div class="col">
+                                    @Html.DisplayFor(model => model.Setor.Nome)
                                 </div>
                             </div>
                             <hr />

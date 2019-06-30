@@ -19,6 +19,7 @@ namespace SAGRE.Data
         public DbSet<SetorModel> SetorModel { get; set; }
         public DbSet<AtividadesModel> AtividadesModel { get; set; }
         public DbSet<BoletimModel> BoletimModel { get; set; }
+        public DbSet<LocalModel> LocalModel { get; set; }
 
         // Model de Analise
         public DbSet<ClassificaoOWAS> ClassificaoOWAS { get; set; }

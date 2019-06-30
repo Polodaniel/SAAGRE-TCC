@@ -70,7 +70,7 @@
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label asp-for="Setor" class="control-label mb-0"></label>
-                                            <select asp-for="Setor" asp-items="@ViewBag.Setor" class="form-control form-control-sm" id="SetorSelecionado"></select>
+                                            <select asp-for="Setor" asp-items="@ViewBag.Setor" class="form-control form-control-sm" id="SetorSelecionado" onchange="javascript: BuscaLocal(this.value);"></select>
                                             <span asp-validation-for="Setor" class="text-danger"></span>
                                         </div>
                                     </div>
@@ -103,7 +103,7 @@
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label asp-for="Local" class="control-label mb-0"></label>
-                                                    <select asp-for="Local" asp-items="@ViewBag.Setor" class="form-control form-control-sm" id="LocalSelecionado"></select>
+                                                    <select asp-for="Local" asp-items="@ViewBag.Local" class="form-control form-control-sm" id="LocalSelecionado"></select>
                                                     <span asp-validation-for="Local" class="text-danger"></span>
                                                 </div>
                                             </div>
@@ -692,6 +692,12 @@
         // Lista de Analises
         var ListaAnalisePostura = [];
         var ListaAnaliseNASATLX;
+
+        window.onload = function(){
+            var Setor = $('#SetorSelecionado').val();
+
+            BuscaLocal(Setor);
+        }
 
         // Eventos
         $('#sPosCos').change(function () {
@@ -1295,6 +1301,33 @@
             var Ano = data.substring(0, 4);
 
             return Dia + "/" + Mes + "/" + Ano;
+            }
+
+        function BuscaLocal(CodSetor)
+        {
+            $.ajax({
+                type: "GET",
+                url: "/Boletim/BuscaLocal",
+                data: { CodSetor },
+                dataType: "html",
+                success: function (response) {
+
+                    locais = JSON.parse(response);
+
+                // Limpo o Combobox
+                $('#LocalSelecionado').empty();
+               
+                // Adiciona as demais linhas (dinâmico).
+                $.each(locais, function(id, locais) {
+                    $("#LocalSelecionado").append($('<option>', {
+                        value: locais.iD_Local,
+                        text: locais.nome
+                    }));
+                });
+
+                }
+            });
+
         }
 
     </script>

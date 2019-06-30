@@ -62,9 +62,13 @@ namespace SAGRE.Controllers
 
             var Setor = _context.SetorModel.Where(x => x.ID == (Convert.ToInt32(boletimModel.Setor))).Select(x => x.Nome).FirstOrDefault();
             var Atividade = _context.AtividadesModel.Where(x => x.ID == (Convert.ToInt32(boletimModel.Atividade))).Select(x => x.NomeAtividade).FirstOrDefault();
+            var Local = _context.LocalModel.Where(x => x.ID_Local == (Convert.ToInt32(boletimModel.Local)) &&
+                                                       x.ID == (Convert.ToInt32(boletimModel.Setor))
+                                                 ).Select(x => x.Nome).FirstOrDefault();
 
             boletimModel.Setor = Setor;
             boletimModel.Atividade = Atividade;
+            boletimModel.Local = Local;
 
             var ValorMental = Convert.ToInt32(boletimModel.listanasa.escalaMental) * Convert.ToInt32(boletimModel.listanasa.rangeDM);
             var ValorFisico = Convert.ToInt32(boletimModel.listanasa.escalaFisica) * Convert.ToInt32(boletimModel.listanasa.rangeDF);
@@ -106,6 +110,18 @@ namespace SAGRE.Controllers
                 itemsAtividade.Add(new SelectListItem { Text = atividade.NomeAtividade, Value = atividade.ID.ToString() });
 
             ViewBag.Atividade = itemsAtividade;
+
+            List<SelectListItem> itemsLocal = new List<SelectListItem>();
+
+            //Local
+            var CodigoPrimeiro = itemsSetor.Select(x => x.Value).FirstOrDefault();
+
+            var Local = _context.LocalModel.Where(x => x.Inativo != true && x.Setor.ID == (Convert.ToInt32(CodigoPrimeiro))).ToList();
+
+            foreach (var local in Local)
+                itemsLocal.Add(new SelectListItem { Text = local.Nome, Value = local.ID_Local.ToString() });
+
+            ViewBag.Local = itemsLocal;
 
             //@ViewBag.Atividade
 
@@ -437,6 +453,26 @@ namespace SAGRE.Controllers
             var Tempo = TempoGasto.ToString("hh\\:mm");
 
             return Json(Tempo);
+        }
+
+        [HttpGet]
+        public IActionResult BuscaLocal(int CodSetor)
+        {
+            var NomeSetor = string.Empty;
+
+            var Setor = _context.SetorModel.Where(x => x.Inativo != true &&
+                                                            x.ID == CodSetor).ToList();
+
+            if (!Equals(Setor, null))
+            {
+                NomeSetor = Setor.Select(y => y.Nome).FirstOrDefault().ToString();
+            }
+
+            var ListaLocal = _context.LocalModel.Include("Setor").Where(x => x.Inativo != true &&
+                                                            x.Setor.ID == CodSetor && x.Setor.Nome == NomeSetor)
+                                                .ToList();
+
+            return Json(ListaLocal);
         }
 
     }
