@@ -472,13 +472,12 @@
                                                 </div>
                                                 <div class="col text-right ml-0">
                                                     <a class="btn btn-sm btn-warning text-light" onclick="AbilitaBotoesComparacao()">Abilitar Botões</a>
-                                                    <a id="btnInformaAnaliise" class="btn btn-sm btn-success text-light" onclick="InformarAnaliseCargaMental()">Informar Análise</a>
+                                                    <button id="btnInformaAnaliise" class="btn btn-sm btn-success text-light" onclick="InformarAnaliseCargaMental()">Informar Análise</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                                 <p>
                                     <div class="alert alert-dark" role="alert" data-toggle="collapse" href="#MenuAnaliseAmbiete" aria-expanded="false" aria-controls="MenuAnaliseAmbiete">
                                         Análise Ambiente - LVE
@@ -486,60 +485,30 @@
                                 </p>
                                 <div class='collapse show' id="MenuAnaliseAmbiete">
                                     <div class="card card-body">
-
-                                        <p class="mb-0 mt-0">
-                                            <div class="alert alert-dark small mb-0 font-weight-bold" role="alert" data-toggle="collapse" href="#CheckListUm" aria-expanded="false" aria-controls="MenuAnaliseAmbiete">
-                                                CHECKLIST PARA AVALIAÇÃO SIMPLIFICADA DAS CONDIÇÕES BIOMEC NICAS DO POSTO DE TRABALHO
-                                            </div>
-                                        </p>
-                                        <div class='collapse mt-0' id="CheckListUm">
-                                            <div class="card card-body">
-                                                <div class="row small">
-                                                    <div class="col-11">
-                                                        <p>A bancada de trabalho/máquIna está localizada em altura correta (trabalho pesado: ao nível do púbis / trabalho moderado: na altura do cotovelo / trabalho teve: a 30 cm dos olhos)?</p>
-                                                    </div>
-                                                    <div class="col-1">
-                                                        <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="opcao1">
-                                                            <label class="form-check-label" for="inlineRadio1">Não</label>
-                                                        </div>
-                                                        <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="opcao2">
-                                                            <label class="form-check-label" for="inlineRadio2">Sim</label>
-                                                        </div>
+                                        <p class="mb-0 mt-0 small">
+                                            <div class="row">
+                                                <div class="col-10 col-sm-10 col-md-9 col-lg-10">
+                                                    <div class="alert alert-dark small mb-0 pt-2 pb-2 font-weight-bold" style="font-size:11px;" role="alert" data-toggle="collapse" href="#CheckListUm" aria-expanded="false" aria-controls="MenuAnaliseAmbiete">
+                                                    CHECKLIST PARA AVALIAÇÃO DAS CONDIÇÕES BIOMECÂNICAS DO POSTO DE TRABALHO
                                                     </div>
                                                 </div>
-                                                <hr class="mt-0 mb-3" />
-                                                <div class="row small">
-                                                    <div class="col-11">
-                                                        <p>A bancada ou máquina tem regulagem de altura deforma a possibilitar ao trabalhador adequar a altura do posto de trabalho á sua?</p>
-                                                    </div>
-                                                    <div class="col-1">
-                                                        <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="opcao1">
-                                                            <label class="form-check-label" for="inlineRadio1">Não</label>
-                                                        </div>
-                                                        <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="opcao2">
-                                                            <label class="form-check-label" for="inlineRadio2">Sim</label>
-                                                        </div>
-                                                    </div>
+                                                <div class="col col-sm col-md col-lg">
+                                                    <button class="btn btn-sm btn-primary" style="height: 33px;" data-toggle="modal" data-target="#ModelQuestionario1">Íniciar Check-List</button>
                                                 </div>
                                             </div>
-                                        </div>
-
-                                        <p class="mb-0 mt-0">
-                                            <div class="alert alert-dark small mb-0 font-weight-bold" role="alert" data-toggle="collapse" href="#CheckListDois" aria-expanded="false" aria-controls="MenuAnaliseAmbiete">
-                                                CHECKLIST PARA AVALIAÇÃO SIMPLIFICADA DE POSTOS DE TRABALHO COM TERMINAL OU COM COMPUTADOR
-
+                                        </p>
+                                        <p class="mb-0 mt-0 small">
+                                            <div class="row">
+                                                <div class="col-10 col-sm-10 col-md-9 col-lg-10">
+                                                    <div class="alert alert-dark small mb-0 pt-2 pb-2 font-weight-bold" style="font-size:11px;" role="alert" data-toggle="collapse" href="#CheckListUm" aria-expanded="false" aria-controls="MenuAnaliseAmbiete">
+                                                    CHECKLIST PARA AVALIAÇÃO DE CONDIÇÕES ERGONÔMICAS GERAIS DO AMBIENTE DE TRABALHO
+                                                    </div>
+                                                </div>
+                                                <div class="col col-sm col-md col-lg">
+                                                    <button class="btn btn-sm btn-primary" style="height: 33px;" data-toggle="modal" data-target="#ModelQuestionario2">Íniciar Check-List</button>
+                                                </div>
                                             </div>
                                         </p>
-                                        <div class='collapse mt-0' id="CheckListDois">
-                                            <div class="card card-body">
-
-                                            </div>
-                                        </div>
-
                                     </div>
                                 </div>
 
@@ -629,9 +598,39 @@
 
                         </div>
                     </div>
+                    <div class="row small mt-1">
+                        <div class="col">
+                            <div>
+                                <div class="ml-1 mb-0 alert alert-secondary" role="alert" data-toggle="collapse" href="#CheckListResult" aria-expanded="false" aria-controls="CheckListResult">
+                                    CheckList Respondidos
+                                </div>
+                                <div class="collapse ml-1 mt-0" id="CheckListResult">
+                                    <div class="card card-body">
+
+                                        <div class="row">
+                                            <div class="col-11 font-weight-bold small">
+                                                CHECKLIST PARA AVALIAÇÃO DAS CONDIÇÕES BIOMECÂNICAS DO POSTO DE TRABALHO
+                                            </div>
+                                            <div class="col small font-weight-bold">
+                                                <div id="checkList1Confirma">Sim</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-11 font-weight-bold small">
+                                                CHECKLIST PARA AVALIAÇÃO DE CONDIÇÕES ERGONÔMICAS GERAIS DO AMBIENTE DE TRABALHO
+                                            </div>
+                                            <div class="col small font-weight-bold">
+                                                <div id="checkList2Confirma">Sim</div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-
             </div>
             <div class="modal-footer">
                 <a class="btn btn-danger btn-sm text-light" data-dismiss="modal">Cancelar</a>
@@ -656,6 +655,604 @@
             <div class="modal-footer">
                 <a class="btn btn-info btn-sm" asp-action="Index">Voltar</a>
                 <a class="btn btn-success btn-sm text-light" onClick='parent.location="javascript:location.reload()"'>Novo Boletim</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* Models de CheckList *@
+<div class="modal fade" id="ModelQuestionario1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="">CHECKLIST PARA AVALIAÇÃO SIMPLIFICADA DAS CONDIÇÕES BIOMECÂNICAS DO POSTO DE TRABALHO </h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="">
+
+                <div class="row">
+                    <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                            <div class=" p-1 nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                <a class="card mb-1 nav-link active btn btn-sm" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-bancada" role="tab" aria-controls="v-pills-bancada" aria-selected="true">Bancada</a>
+                                <a class="card mb-1 nav-link btn btn-sm" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-acoes" role="tab" aria-controls="v-pills-acoes" aria-selected="false">Ações</a>
+                                <a class="card mb-1 nav-link btn btn-sm" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-sentado" role="tab" aria-controls="v-pills-sentado" aria-selected="false">Sentado</a>
+                            </div>
+                        </div>
+                    <div class="col col-sm col-md col-lg">
+                        <div class="tab-content" id="v-pills-tabContent">
+                            <div class="tab-pane fade show active" id="v-pills-bancada" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                                <table class="table table-sm table-bordered">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th class="small text-center" style="width: 80%;">Pergunta</th>
+                                            <th class="small text-center">Resposta</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="small">
+                                                A bancada de trabalho/máquIna está localizada em altura correta
+                                                (trabalho pesado: ao nível do púbis / trabalho moderado: na altura
+                                                do cotovelo / trabalho teve: a 30 cm dos olhos)?
+                                            </td>
+                                            <td class="align-middle" id="grupo1pergunta1">
+                                                <select class="custom-select custom-select-sm">
+                                                    <option selected>Escolha</option>
+                                                    <option value="0">Não</option>
+                                                    <option value="1">Sim</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="small">
+                                                A bancada ou máquina tem regulagem de altura deforma a possibilitar
+                                                ao trabalhador adequar a altura do posto de trabalho á sua?
+                                            </td>
+                                            <td class="align-middle" id="grupo1pergunta2">
+                                                <select class="custom-select custom-select-sm">
+                                                    <option selected>Escolha</option>
+                                                    <option value="0">Não</option>
+                                                    <option value="1">Sim</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="small">
+                                                Os objetos e materiais de uso freqüente estão dentro da área de alcance?
+                                            </td>
+                                            <td class="align-middle" id="grupo1pergunta3">
+                                                <select class="custom-select custom-select-sm">
+                                                    <option selected>Escolha</option>
+                                                    <option value="0">Não</option>
+                                                    <option value="1">Sim</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="v-pills-acoes" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                                <table class="table table-sm table-bordered">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th class="small text-center" style="width: 80%;">Pergunta</th>
+                                            <th class="small text-center">Resposta</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="small">
+                                                Tem-se que sustentar pesos com os membros superiores para evitar seu
+                                                deslocamento seja na vertical seja na horizontal?
+                                            </td>
+                                            <td class="align-middle" id="grupo1pergunta4">
+                                                <select class="custom-select custom-select-sm">
+                                                    <option selected>Escolha</option>
+                                                    <option value="1">Não</option>
+                                                    <option value="0">Sim</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="small">
+                                                Tem-se que apertar pedais estando de pé, em freqüência maior que 3 vezes por minuto?
+                                            </td>
+                                            <td class="align-middle" id="grupo1pergunta5">
+                                                <select class="custom-select custom-select-sm">
+                                                    <option selected>Escolha</option>
+                                                    <option value="1">Não</option>
+                                                    <option value="0">Sim</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="small">
+                                                O trabalho exige a elevação dos braços acima do nível dos ombros?
+                                            </td>
+                                            <td class="align-middle" id="grupo1pergunta6">
+                                                <select class="custom-select custom-select-sm">
+                                                    <option selected>Escolha</option>
+                                                    <option value="1">Não</option>
+                                                    <option value="0">Sim</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="small">O trabalho exige ficar parado na posição de pé durante grande parte do tempo (mais que 60%)?</td>
+                                            <td class="align-middle" id="grupo1pergunta7">
+                                                <select class="custom-select custom-select-sm">
+                                                    <option selected>Escolha</option>
+                                                    <option value="1">Não</option>
+                                                    <option value="0">Sim</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="small"> Os membros superiores têm que sustentar pesos? </td>
+                                            <td class="align-middle" id="grupo1pergunta8">
+                                                <select class="custom-select custom-select-sm">
+                                                    <option selected>Escolha</option>
+                                                    <option value="1">Não</option>
+                                                    <option value="0">Sim</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="small">  Ficar-se de pé, parado, durante a maior parte da jornada?  </td>
+                                            <td class="align-middle" id="grupo1pergunta9">
+                                                <select class="custom-select custom-select-sm">
+                                                    <option selected>Escolha</option>
+                                                    <option value="1">Não</option>
+                                                    <option value="0">Sim</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="small">
+                                                Existem pequenas contrações estáticas, porém por muito tempo (por exemplo, pescoço excessivamente
+                                                estendido, braços suspensos, sustentação dos antebraços pelos braços, falta de apoio para os antebraços)?
+                                            </td>
+                                            <td class="align-middle" id="grupo1pergunta10">
+                                                <select class="custom-select custom-select-sm">
+                                                    <option selected>Escolha</option>
+                                                    <option value="1">Não</option>
+                                                    <option value="0">Sim</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="v-pills-sentado" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                                <table class="table table-sm table-bordered">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th class="small text-center" style="width: 80%;">Pergunta</th>
+                                            <th class="small text-center">Resposta</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="small">
+                                                No caso de se trabalhar sentado, há espaço suficiente para as pernas?
+                                            </td>
+                                            <td class="align-middle" id="grupo1pergunta11">
+                                                <select class="custom-select custom-select-sm">
+                                                    <option selected>Escolha</option>
+                                                    <option value="0">Não</option>
+                                                    <option value="1">Sim</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="small">
+                                                A cadeira tem inclinação correta, compatível com o trabalho executado?
+                                            </td>
+                                            <td class="align-middle" id="grupo1pergunta12">
+                                                <select class="custom-select custom-select-sm">
+                                                    <option selected>Escolha</option>
+                                                    <option value="0">Não</option>
+                                                    <option value="1">Sim</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="small">
+                                                O corpo trabalha no eixo vertical natural, ou em ângulo de 100 graus entre
+                                                as coxas e o tronco (no caso de trabalho sentado?)
+                                            </td>
+                                            <td class="align-middle" id="grupo1pergunta13">
+                                                <select class="custom-select custom-select-sm">
+                                                    <option selected>Escolha</option>
+                                                    <option value="0">Não</option>
+                                                    <option value="1">Sim</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="small"> Estando sentado, fica-se em posição estática? </td>
+                                            <td class="align-middle" id="grupo1pergunta14">
+                                                <select class="custom-select custom-select-sm">
+                                                    <option selected>Escolha</option>
+                                                    <option value="1">Não</option>
+                                                    <option value="0">Sim</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="AreaGrupo1">
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button id="btnCorrigirGrupo1" class="btn btn-warning btn-sm text-light" onclick="CorrigirCheckList('1')" disabled>Corrigir</button>
+                <a id="btnFecharGrupo1" class="btn btn-danger btn-sm text-light" data-dismiss="modal">Fechar</a>
+                <button id="btnConfirmaGrupo1" class="btn btn-success btn-sm text-light" onclick="ConfirmaCheckList('1')">Confirmar o CheckList</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ModelQuestionario2">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title text-center" id="">
+                    CHECKLIST PARA AVALIAÇÃO DE CONDIÇÕES ERGONÔMICAS GERAIS DO AMBIENTE
+                </h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                        <div class=" p-1 nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <a class="card mb-1 nav-link active btn btn-sm" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-p1" role="tab" aria-controls="v-pills-p1" aria-selected="true">Parte 1</a>
+                            <a class="card mb-1 nav-link btn btn-sm" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-p2" role="tab" aria-controls="v-pills-p2" aria-selected="false">Parte 2</a>
+                            <a class="card mb-1 nav-link btn btn-sm" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-p3" role="tab" aria-controls="v-pills-p3" aria-selected="false">Parte 3</a>
+                        </div>
+                    </div>
+                    <div class="col-10 col-sm col-md col-lg">
+                        <div class="tab-content" id="v-pills-tabContent">
+                            <div class="tab-pane fade show active" id="v-pills-p1" role="tabpanel" aria-labelledby="v-pills-home-tab">
+
+                                <table class="table table-sm table-bordered">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th class="small text-center" style="width: 80%;">Pergunta</th>
+                                            <th class="small text-center">Resposta</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="small">
+                                                Exigências de trabalho excessivamente complexas em relação à habilitação dos funcionários?
+                                            </td>
+                                            <td class="align-middle" id="grupo2pergunta1">
+                                                <select class="custom-select custom-select-sm">
+                                                    <option selected>Escolha</option>
+                                                    <option value="1">Não</option>
+                                                    <option value="0">Sim</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="small">
+                                                Fatores externos que tornam o trabalho mais pesado (calor, barulho, odor, vibração)
+                                            </td>
+                                            <td class="align-middle" id="grupo2pergunta2">
+                                                <select class="custom-select custom-select-sm">
+                                                    <option selected>Escolha</option>
+                                                    <option value="1">Não</option>
+                                                    <option value="0">Sim</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="small">
+                                                Outros fatores de organização do trabalho que o tornam mais pesado (ausência de pausas, trabalho contra o relógio)
+                                            </td>
+                                            <td class="align-middle" id="grupo2pergunta3">
+                                                <select class="custom-select custom-select-sm">
+                                                    <option selected>Escolha</option>
+                                                    <option value="1">Não</option>
+                                                    <option value="0">Sim</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="small">
+                                                A altura do posto de trabalho está correta? (precisão: 30 cm dos olhos / normal: altura do cotovelo)
+                                            </td>
+                                            <td class="align-middle" id="grupo2pergunta4">
+                                                <select class="custom-select custom-select-sm">
+                                                    <option selected>Escolha</option>
+                                                    <option value="0">Não</option>
+                                                    <option value="1">Sim</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="small">A área mínima por pessoa (4 a 6 m2) é observada?</td>
+                                            <td class="align-middle" id="grupo2pergunta5">
+                                                <select class="custom-select custom-select-sm">
+                                                    <option selected>Escolha</option>
+                                                    <option value="0">Não</option>
+                                                    <option value="1">Sim</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="small">Existe espaço suficiente para movimentação?</td>
+                                            <td class="align-middle" id="grupo2pergunta6">
+                                                <select class="custom-select custom-select-sm">
+                                                    <option selected>Escolha</option>
+                                                    <option value="0">Não</option>
+                                                    <option value="1">Sim</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="small">
+                                                A temperatura efetiva do ambiente está entre 20º e 23º C?
+                                            </td>
+                                            <td class="align-middle" id="grupo2pergunta7">
+                                                <select class="custom-select custom-select-sm">
+                                                    <option selected>Escolha</option>
+                                                    <option value="0">Não</option>
+                                                    <option value="1">Sim</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="small">
+                                                Existe alguma forma de calor radiante que contribui para o desconforto térmico?
+                                            </td>
+                                            <td class="align-middle" id="grupo2pergunta8">
+                                                <select class="custom-select custom-select-sm">
+                                                    <option selected>Escolha</option>
+                                                    <option value="1">Não</option>
+                                                    <option value="0">Sim</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <div class="tab-pane fade" id="v-pills-p2" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+
+                                <table class="table table-sm table-bordered">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th class="small text-center" style="width: 80%;">Pergunta</th>
+                                            <th class="small text-center">Resposta</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="small">
+                                                A circulação de ar ocorre de forma suficiente?
+                                            </td>
+                                            <td class="align-middle" id="grupo2pergunta9">
+                                                <select class="custom-select custom-select-sm">
+                                                    <option selected>Escolha</option>
+                                                    <option value="0">Não</option>
+                                                    <option value="1">Sim</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="small">
+                                                Iluminação suficiente de dia?
+                                            </td>
+                                            <td class="align-middle" id="grupo2pergunta10">
+                                                <select class="custom-select custom-select-sm">
+                                                    <option selected>Escolha</option>
+                                                    <option value="0">Não</option>
+                                                    <option value="1">Sim</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="small">
+                                                Iluminação suficiente á noite?
+                                            </td>
+                                            <td class="align-middle" id="grupo2pergunta11">
+                                                <select class="custom-select custom-select-sm">
+                                                    <option selected>Escolha</option>
+                                                    <option value="0">Não</option>
+                                                    <option value="1">Sim</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="small">
+                                                Objetos ou letras podem ser vistos ou lidos de forma nítida uma distância de 30 cm dos olhos?
+                                            </td>
+                                            <td class="align-middle" id="grupo2pergunta12">
+                                                <select class="custom-select custom-select-sm">
+                                                    <option selected>Escolha</option>
+                                                    <option value="0">Não</option>
+                                                    <option value="1">Sim</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="small">Há sombras comprometendo a visibilidade? </td>
+                                            <td class="align-middle" id="grupo2pergunta13">
+                                                <select class="custom-select custom-select-sm">
+                                                    <option selected>Escolha</option>
+                                                    <option value="1">Não</option>
+                                                    <option value="0">Sim</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="small">As mesas estão em ângulo correto em relação às janelas (perpendiculares)?</td>
+                                            <td class="align-middle" id="grupo2pergunta14">
+                                                <select class="custom-select custom-select-sm">
+                                                    <option selected>Escolha</option>
+                                                    <option value="0">Não</option>
+                                                    <option value="1">Sim</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="small">
+                                                Paredes de cor clara, com boa difusão de luz?
+                                            </td>
+                                            <td class="align-middle" id="grupo2pergunta15">
+                                                <select class="custom-select custom-select-sm">
+                                                    <option selected>Escolha</option>
+                                                    <option value="0">Não</option>
+                                                    <option value="1">Sim</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="small">
+                                                Reflexos de luz na mesa de trabalho?
+                                            </td>
+                                            <td class="align-middle" id="grupo2pergunta16">
+                                                <select class="custom-select custom-select-sm">
+                                                    <option selected>Escolha</option>
+                                                    <option value="1">Não</option>
+                                                    <option value="0">Sim</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <div class="tab-pane fade" id="v-pills-p3" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                                    <table class="table table-sm table-bordered">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th class="small text-center" style="width: 80%;">Pergunta</th>
+                                                <th class="small text-center">Resposta</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="small">
+                                                    Reflexos de luz nos equipamentos?
+                                                </td>
+                                                <td class="align-middle" id="grupo2pergunta17">
+                                                    <select class="custom-select custom-select-sm">
+                                                        <option selected>Escolha</option>
+                                                        <option value="1">Não</option>
+                                                        <option value="0">Sim</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="small">
+                                                    Contraste satisfatório dos formulários?
+                                                </td>
+                                                <td class="align-middle" id="grupo2pergunta18">
+                                                    <select class="custom-select custom-select-sm">
+                                                        <option selected>Escolha</option>
+                                                        <option value="0">Não</option>
+                                                        <option value="1">Sim</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="small">
+                                                    Iluminação por lâmpadas fluorescentes?
+                                                </td>
+                                                <td class="align-middle" id="grupo2pergunta19">
+                                                    <select class="custom-select custom-select-sm">
+                                                        <option selected>Escolha</option>
+                                                        <option value="0">Não</option>
+                                                        <option value="1">Sim</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="small">
+                                                    Lâmpadas queimadas?
+                                                </td>
+                                                <td class="align-middle" id="grupo2pergunta20">
+                                                    <select class="custom-select custom-select-sm">
+                                                        <option selected>Escolha</option>
+                                                        <option value="1">Não</option>
+                                                        <option value="0">Sim</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="small">Claridade das janelas interferindo no campo visual? </td>
+                                                <td class="align-middle" id="grupo2pergunta21">
+                                                    <select class="custom-select custom-select-sm">
+                                                        <option selected>Escolha</option>
+                                                        <option value="1">Não</option>
+                                                        <option value="0">Sim</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="small">lncidência de luz do sol sobre a superfície de trabalho?</td>
+                                                <td class="align-middle" id="grupo2pergunta22">
+                                                    <select class="custom-select custom-select-sm">
+                                                        <option selected>Escolha</option>
+                                                        <option value="1">Não</option>
+                                                        <option value="0">Sim</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="small">
+                                                    Há poluição visual?
+                                                </td>
+                                                <td class="align-middle" id="grupo2pergunta23">
+                                                    <select class="custom-select custom-select-sm">
+                                                        <option selected>Escolha</option>
+                                                        <option value="1">Não</option>
+                                                        <option value="0">Sim</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="small">
+                                                    Nível de ruído menor que 65 dB?
+                                                </td>
+                                                <td class="align-middle" id="grupo2pergunta24">
+                                                    <select class="custom-select custom-select-sm">
+                                                        <option selected>Escolha</option>
+                                                        <option value="0">Não</option>
+                                                        <option value="1">Sim</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="AreaGrupo2">
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button id="btnCorrigirGrupo2" class="btn btn-warning btn-sm text-light" onclick="CorrigirCheckList('2')" disabled>Corrigir</button>
+                <a id="btnFecharGrupo2" class="btn btn-danger btn-sm text-light" data-dismiss="modal">Fechar</a>
+                <button id="btnConfirmaGrupo2" class="btn btn-success btn-sm text-light" onclick="ConfirmaCheckList('2')">Confirmar o CheckList</button>
             </div>
         </div>
     </div>
@@ -688,6 +1285,10 @@
         var Comparacoes = 0;
         var UltimoIndice = 0;
         var TabelaAnaliseNASATLX = "";
+
+        // Grupos de Perguntas
+        var Grupo_Um_Sim = 00;
+        var Grupo_Um_Nao = 00;
 
         // Lista de Analises
         var ListaAnalisePostura = [];
@@ -723,6 +1324,196 @@
             $('#posEsf').text(IndiceEsforco);
             BuscaTipoAnalise();
         });
+
+        function ConfirmaCheckList(GrupoPergunta) {
+
+            if (GrupoPergunta === '1')
+            {
+                var Zero = 0;
+                var Um = 0;
+
+                for (var i = 1; i < 15; i++) {
+
+                    if (($("#grupo1pergunta" + i + " option:selected").text()) === "Escolha") {
+                        alert("Ops! Acabou Esquecendo de Responder algum item do CheckList ! Para continuar responda-o.");
+                        Um = 0;
+                        Zero = 0;
+                        return;
+                    }
+
+                    if (($("#grupo1pergunta" + i + " option:selected").val()) === "1") {
+                        Um++;
+                    }
+                    else (($("#grupo1pergunta" + i + " option:selected").val()) === "0")
+                    {
+                        Zero++;
+                    }
+
+                }
+
+                Dados = {
+                    TipoCheckList: GrupoPergunta,
+                    Questao01: $("#grupo1pergunta1 option:selected").val(),
+                    Questao02: $("#grupo1pergunta2 option:selected").val(),
+                    Questao03: $("#grupo1pergunta3 option:selected").val(),
+                    Questao04: $("#grupo1pergunta4 option:selected").val(),
+                    Questao05: $("#grupo1pergunta5 option:selected").val(),
+                    Questao06: $("#grupo1pergunta6 option:selected").val(),
+                    Questao07: $("#grupo1pergunta7 option:selected").val(),
+                    Questao08: $("#grupo1pergunta8 option:selected").val(),
+                    Questao09: $("#grupo1pergunta9 option:selected").val(),
+                    Questao10: $("#grupo1pergunta10 option:selected").val(),
+                    Questao11: $("#grupo1pergunta11 option:selected").val(),
+                    Questao12: $("#grupo1pergunta12 option:selected").val(),
+                    Questao13: $("#grupo1pergunta13 option:selected").val(),
+                    Questao14: $("#grupo1pergunta14 option:selected").val()
+                }
+
+                TmpCheckList(Dados, GrupoPergunta);
+
+        }   else if (GrupoPergunta === '2')
+            {
+                var Zero = 0;
+                var Um = 0;
+
+                for (var i = 1; i < 15; i++) {
+
+                    if (($("#grupo2pergunta" + i + " option:selected").text()) === "Escolha") {
+                        alert("Ops! Acabou Esquecendo de Responder algum item do CheckList ! Para continuar responda-o.");
+                        Um = 0;
+                        Zero = 0;
+                        return;
+                    }
+
+                    if (($("#grupo1pergunta" + i + " option:selected").val()) === "1") {
+                        Um++;
+                    }
+                    else (($("#grupo1pergunta" + i + " option:selected").val()) === "0")
+                    {
+                        Zero++;
+                    }
+
+                }
+
+                Dados = {
+                    TipoCheckList: GrupoPergunta,
+                    Questao01: $("#grupo2pergunta1 option:selected").val(),
+                    Questao02: $("#grupo2pergunta2 option:selected").val(),
+                    Questao03: $("#grupo2pergunta3 option:selected").val(),
+                    Questao04: $("#grupo2pergunta4 option:selected").val(),
+                    Questao05: $("#grupo2pergunta5 option:selected").val(),
+                    Questao06: $("#grupo2pergunta6 option:selected").val(),
+                    Questao07: $("#grupo2pergunta7 option:selected").val(),
+                    Questao08: $("#grupo2pergunta8 option:selected").val(),
+                    Questao09: $("#grupo2pergunta9 option:selected").val(),
+                    Questao10: $("#grupo2pergunta10 option:selected").val(),
+                    Questao11: $("#grupo2pergunta11 option:selected").val(),
+                    Questao12: $("#grupo2pergunta12 option:selected").val(),
+                    Questao13: $("#grupo2pergunta13 option:selected").val(),
+                    Questao14: $("#grupo2pergunta14 option:selected").val(),
+                    Questao15: $("#grupo2pergunta15 option:selected").val(),
+                    Questao16: $("#grupo2pergunta16 option:selected").val(),
+                    Questao17: $("#grupo2pergunta17 option:selected").val(),
+                    Questao18: $("#grupo2pergunta18 option:selected").val(),
+                    Questao19: $("#grupo2pergunta19 option:selected").val(),
+                    Questao20: $("#grupo2pergunta20 option:selected").val(),
+                    Questao21: $("#grupo2pergunta21 option:selected").val(),
+                    Questao22: $("#grupo2pergunta22 option:selected").val(),
+                    Questao23: $("#grupo2pergunta23 option:selected").val(),
+                    Questao24: $("#grupo2pergunta24 option:selected").val(),
+                }
+
+                console.log(Dados)
+
+                TmpCheckList(Dados, GrupoPergunta);
+            }
+        }
+
+        function CorrigirCheckList(GrupoPergunta)
+        {
+            var idcheck = $('#SubAreaGrupoID' + GrupoPergunta).text();
+
+            var SubArea = $('#SubAreaGrupo' + GrupoPergunta);
+            SubArea.remove();
+
+            console.log(idcheck);
+
+            $.ajax({
+                type: "POST",
+                url: "/Boletim/TmpCheckListCorrigir",
+                data: { idcheck },
+                dataType: "html",
+                success: function (response) {
+
+                    console.log(response);
+                    console.log(response.id);
+                    console.log(response.msg);
+
+                    // Desabilitar o Botão
+                    var btnConfirma = "btnConfirmaGrupo" + GrupoPergunta;
+                    document.getElementById(btnConfirma).disabled = false;
+
+                    var btnCorrige = "btnCorrigirGrupo" + GrupoPergunta;
+                    document.getElementById(btnCorrige).disabled = true;
+
+                    var AreaGrupo = $('#AreaGrupo' + GrupoPergunta);
+                    AreaGrupo.append("<div class=\"mb-1 mt-1\"id=\"SubAreaGrupo" + GrupoPergunta + "\"></div>");
+
+                    var SubArea = $('#SubAreaGrupo' + GrupoPergunta);
+                    SubArea.append("<div class=\"alert alert-warning mb-1 mt-1\" role=\"alert\">" + 
+                                      "CheckList Excluido com Sucesso! <span id=\"SubAreaGrupoID_"+GrupoPergunta+">"+ response.id +
+                                    "</span></div>");
+
+                },
+                failure: function (response) {
+
+                },
+                error: function (response) {
+
+                }
+            });
+        }
+
+        function TmpCheckList(Dados,GrupoPergunta)
+        {
+            console.log(Dados);
+            console.log(GrupoPergunta);
+            
+                $.ajax({
+                    type: "POST",
+                    url: "/Boletim/TmpCheckList",
+                    data: Dados,
+                    dataType: "html",
+                    success: function (response) {
+
+                                            console.log(response);
+                        console.log(response[0].id);
+                        console.log(response[0].msg);
+
+                        // Desabilitar o Botão
+                        var btnConfirma = "btnConfirmaGrupo" + GrupoPergunta;
+                        document.getElementById(btnConfirma).disabled = true;
+
+                        var btnCorrige = "btnCorrigirGrupo" + GrupoPergunta;
+                        document.getElementById(btnCorrige).disabled = false;
+
+                        var AreaGrupo = $('#AreaGrupo' + GrupoPergunta);
+                        AreaGrupo.append("<div class=\"mb-1 mt-1\"id=\"SubAreaGrupo" + GrupoPergunta + "\"></div>");
+
+                        var SubArea = $('#SubAreaGrupo' + GrupoPergunta);
+                        SubArea.append("<div class=\"alert alert-success mb-1 mt-1\" role=\"alert\">" + 
+                            "CheckList Informado com Sucesso! N° de Registro provisorio: <b id=\"SubAreaGrupoID" + GrupoPergunta + "\">" + response + "</b>" +
+                            "</div >");
+
+                    },
+                    failure: function (response) {
+
+                    },
+                    error: function (response) {
+
+                    }
+                });
+        }
 
         function ConsomeTempo(Hora, Origem) {
 
@@ -976,12 +1767,14 @@
             var Setor = $('#SetorSelecionado').val();
             var Atividade = $('#AtividadeSelecionado').val();
             var Descricao = $('#DescricaoSelecionado').val();
-            //var HoraInicio = $('#HoraInicio').val();
-            //var HoraFinal = $('#HoraTermino').val();
-            //var TempoGasto = $('#TempoDuracao').val();
+            var HoraInicio = $('#HoraInicio').val();
+            var HoraFinal = $('#HoraTermino').val();
+            var TempoGasto = $('#TempoGastoInput').val();
             var Local = $('#LocalSelecionado').val();
             var ListaPostura = ListaAnalisePostura;
             var ListaNasaTlx = ListaAnaliseNASATLX;
+            var CheckListUm = $('#SubAreaGrupoID1').text();
+            var CheckListDois = $('#SubAreaGrupoID2').text();
 
             var Boletim = {
                 atividade: Atividade,
@@ -994,8 +1787,13 @@
                 horainicio: HoraInicio,
                 horatermino: HoraTermino,
                 tempogasto: TempoGasto,
-                local: Local
+                local: Local,
+                checklistum: CheckListUm,
+                checklistdois: CheckListDois
             };
+
+            console.log("CheckListUm: " + CheckListUm);
+            console.log("CheckListDois: " + CheckListDois);
 
             $.ajax({
                 type: "POST",
@@ -1179,6 +1977,7 @@
 
             for (var i = 1; i != 31; i++) {
                 var btn = "btn_" + i + "_Comp";
+            
                 document.getElementById(btn).disabled = false;
             }
         }
@@ -1328,7 +2127,7 @@
                 }
             });
 
-        }
+            }
 
     </script>
 

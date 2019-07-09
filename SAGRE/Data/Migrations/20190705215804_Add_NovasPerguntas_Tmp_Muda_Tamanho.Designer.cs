@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SAGRE.Data;
 
 namespace SAGRE.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190705215804_Add_NovasPerguntas_Tmp_Muda_Tamanho")]
+    partial class Add_NovasPerguntas_Tmp_Muda_Tamanho
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -182,216 +184,6 @@ namespace SAGRE.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("SAGRE.Models.AnaliseAmbiente.CheckListAnaliseCondBio", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ID_Boletim");
-
-                    b.Property<string>("Questao01")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao02")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao03")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao04")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao05")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao06")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao07")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao08")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao09")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao10")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao11")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao12")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao13")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao14")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao15")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao16")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao17")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao18")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao19")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao20")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao21")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao22")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao23")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao24")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao25")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao26")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao27")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao28")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao29")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao30")
-                        .HasMaxLength(3);
-
-                    b.Property<int>("TipoCheckList");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("CheckListAnaliseCondBio");
-                });
-
-            modelBuilder.Entity("SAGRE.Models.AnaliseAmbiente.CheckListAnaliseCondErg", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ID_Boletim");
-
-                    b.Property<string>("Questao01")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao02")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao03")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao04")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao05")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao06")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao07")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao08")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao09")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao10")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao11")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao12")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao13")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao14")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao15")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao16")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao17")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao18")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao19")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao20")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao21")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao22")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao23")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao24")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao25")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao26")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao27")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao28")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao29")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Questao30")
-                        .HasMaxLength(3);
-
-                    b.Property<int>("TipoCheckList");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("CheckListAnaliseCondErg");
                 });
 
             modelBuilder.Entity("SAGRE.Models.AnaliseAmbiente.TmpCheckList", b =>

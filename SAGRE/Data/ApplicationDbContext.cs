@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SAGRE.Models;
 using SAGRE.Models.MetodosAnalise;
+using SAGRE.Models.AnaliseAmbiente;
 
 namespace SAGRE.Data
 {
@@ -25,5 +26,12 @@ namespace SAGRE.Data
         public DbSet<ClassificaoOWAS> ClassificaoOWAS { get; set; }
         public DbSet<AnalisePosturaModel> AnalisePosturaModel { get; set; }
         public DbSet<AnaliseNASATLXModel> AnaliseNASATLXModel { get; set; }
+        public DbSet<CheckListAnaliseCondBio> CheckListAnaliseCondBio { get; set; }
+        public DbSet<CheckListAnaliseCondErg> CheckListAnaliseCondErg { get; set; }
+
+
+        // Tabelas Temporarias
+        public DbSet<TmpCheckList> TmpCheckList { get; set; }
+        
     }
 }

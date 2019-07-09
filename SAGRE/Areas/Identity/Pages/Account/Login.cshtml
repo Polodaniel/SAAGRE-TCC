@@ -5,89 +5,95 @@
     ViewData["Title"] = "Log in";
 }
 
-    <body style="background-color:lightgray">
-        <div class="col-md-4">
-            <section>
-                @{
-                    if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                    {
+<body style="background-color:lightgray">
+    <div class="col-md-3">
+        <section>
+            @{
+                if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                {
 
-                    }
-                    else
-                    {
-                        <form asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                            <div>
-                                <p>
-                                    @foreach (var provider in Model.ExternalLogins)
-                                    {
-                                        <button type="submit" class="btn btn-default" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                    }
-                                </p>
-                            </div>
-                        </form>
-                    }
                 }
-            </section>
-        </div>
-        <div class="col-md col-md-offset-2 mt-5">
-            <section>
-                <form method="post">
-                    <div class="card text-black bg-secondy mb-3" style="max-width: 30rem;">
-                        <div class="card-header">
-                            <label class="text-center">Seja Bem Vindo ao Sistema de Gerenciamento e Prevenção de Risco Ergonômico</label>
+                else
+                {
+                    <form asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                        <div>
+                            <p>
+                                @foreach (var provider in Model.ExternalLogins)
+                                {
+                                    <button type="submit" class="btn btn-default" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                }
+                            </p>
                         </div>
-                        <div asp-validation-summary="All" class="text-danger mt-0"></div>
-                        <div class="card-body pt-0">
-                            <label asp-for="Input.Email"></label>
-                            <div class="form-group">
-                                <label class="sr-only" for="inlineFormInputGroup">Usuário</label>
-                                <div class="input-group mb-2">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text"><i class="fas fa-user"></i></div>
-                                    </div>
-                                    <input type="text" asp-for="Input.Email" class="form-control" />
-                                </div>
-                                <span asp-validation-for="Input.Email" class="text-danger"></span>
-                            </div>
-                            <label asp-for="Input.Password"></label>
-                            <div class="form-group">
-                                <label class="sr-only" for="inlineFormInputGroup">Usuário</label>
-                                <div class="input-group mb-2">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text"><i class="fas fa-key"></i></div>
-                                    </div>
-                                    <input asp-for="Input.Password" class="form-control" />
-                                </div>
-                                <span asp-validation-for="Input.Password" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <div class="checkbox">
-                                    <label asp-for="Input.RememberMe">
-                                        <input asp-for="Input.RememberMe" />
-                                        @Html.DisplayNameFor(m => m.Input.RememberMe)
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-default btn-success btn-sm">Logar-se</button>
-                            </div>
-                            <div class="form-group">
-                                <p>
-                                    <a asp-page="./ForgotPassword">Esqueceu sua senha?</a>
-                                </p>
-                                <p>
-                                    @*<a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>*@
-                                </p>
-                            </div>
-
-                        </div>
+                    </form>
+                }
+            }
+        </section>
+    </div>
+    <div class="col-md col-md-offset-2 mt-5">
+        <section class="small">
+            <form method="post">
+                <div class="card text-black bg-secondy mb-3" style="max-width: 40rem;">
+                    <div class="text-center align-middle text-uppercase card-header bg-dark text-light pb-0">
+                        <label class="font-italic font-weight-bold">Seja Bem Vindo ao Sistema de Análise e Apoio a Gestão de Risco Ergonômico</label>
                     </div>
-                </form>
-            </section>
+                    <div asp-validation-summary="All" class="text-danger mt-0"></div>
+                    <div class="card-body pt-0">
+                        <label asp-for="Input.Email" class="mb-1"></label>
+                        <div class="form-group mt-0">
+                            <label class="sr-only" for="inlineFormInputGroup">Usuário</label>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fas fa-user"></i></div>
+                                </div>
+                                <input type="text" asp-for="Input.Email" class="form-control mt-0" />
+                            </div>
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
+                        <label asp-for="Input.Password" class="mb-0"></label>
+                        <div class="form-group">
+                            <label class="sr-only" for="inlineFormInputGroup">Usuário</label>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fas fa-key"></i></div>
+                                </div>
+                                <input asp-for="Input.Password" class="form-control" />
+                            </div>
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
 
-        </div>
-        <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-sm btn-secondary mr-1">Registrar</a>
-    </body>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <div class="checkbox align-middle">
+                                        <label asp-for="Input.RememberMe">
+                                            <input asp-for="Input.RememberMe" />
+                                            @Html.DisplayNameFor(m => m.Input.RememberMe)
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group text-right">
+                                    <button type="submit" class="btn btn-default btn-success btn-sm w-75">Logar-se</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <p>
+                                <a asp-page="./ForgotPassword">Esqueceu sua senha?</a>
+                            </p>
+                            <p>
+                                <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </section>
+
+    </div>
+</body>
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

@@ -19,6 +19,8 @@ namespace SAGRE.Controllers
         {
             _context = context;
         }
+
+        [Authorize]
         public IActionResult Index()
         {
             var TotalBoletins = _context.BoletimModel.Count().ToString();

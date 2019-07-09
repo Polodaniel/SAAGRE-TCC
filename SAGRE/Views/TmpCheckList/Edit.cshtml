@@ -1,0 +1,179 @@
+﻿@model SAGRE.Models.AnaliseAmbiente.TmpCheckList
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>TmpCheckList</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="TipoCheckList" class="control-label"></label>
+                <input asp-for="TipoCheckList" class="form-control" />
+                <span asp-validation-for="TipoCheckList" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ID_Boletim" class="control-label"></label>
+                <input asp-for="ID_Boletim" class="form-control" />
+                <span asp-validation-for="ID_Boletim" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Questao01" /> @Html.DisplayNameFor(model => model.Questao01)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Questao02" /> @Html.DisplayNameFor(model => model.Questao02)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Questao03" /> @Html.DisplayNameFor(model => model.Questao03)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Questao04" /> @Html.DisplayNameFor(model => model.Questao04)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Questao05" /> @Html.DisplayNameFor(model => model.Questao05)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Questao06" /> @Html.DisplayNameFor(model => model.Questao06)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Questao07" /> @Html.DisplayNameFor(model => model.Questao07)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Questao08" /> @Html.DisplayNameFor(model => model.Questao08)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Questao09" /> @Html.DisplayNameFor(model => model.Questao09)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Questao10" /> @Html.DisplayNameFor(model => model.Questao10)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Questao11" /> @Html.DisplayNameFor(model => model.Questao11)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Questao12" /> @Html.DisplayNameFor(model => model.Questao12)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Questao13" /> @Html.DisplayNameFor(model => model.Questao13)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Questao14" /> @Html.DisplayNameFor(model => model.Questao14)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Questao15" /> @Html.DisplayNameFor(model => model.Questao15)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Questao16" /> @Html.DisplayNameFor(model => model.Questao16)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Questao17" /> @Html.DisplayNameFor(model => model.Questao17)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Questao18" /> @Html.DisplayNameFor(model => model.Questao18)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Questao19" /> @Html.DisplayNameFor(model => model.Questao19)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Questao20" /> @Html.DisplayNameFor(model => model.Questao20)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

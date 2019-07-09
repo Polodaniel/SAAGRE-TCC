@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SAGRE.Data;
 using SAGRE.Models;
+using SAGRE.Models.AnaliseAmbiente;
 using SAGRE.Models.MetodosAnalise;
 
 namespace SAGRE.Controllers
@@ -320,13 +321,35 @@ namespace SAGRE.Controllers
         public IActionResult GravarAnalise(Boletim analisepostura)
         {
             BoletimModel Boletim = new BoletimModel();
+
             List<AnalisePosturaModel> ListaPostura = new List<AnalisePosturaModel>();
+
+            CheckListAnaliseCondBio CheckListAnaliseCondBio = new CheckListAnaliseCondBio();
+            CheckListAnaliseCondErg CheckListAnaliseCondErg = new CheckListAnaliseCondErg(); ;
 
             if (Equals(analisepostura.descricao, null))
                 analisepostura.descricao = "Sem descrição Adicionada !";
 
             if (Equals(analisepostura.local, null))
                 analisepostura.local = " ";
+
+            if (!Equals(analisepostura.checklistum, null))
+            {
+                var CheckList = _context.TmpCheckList.Where(x => x.ID == Convert.ToInt32(analisepostura.checklistum)).FirstOrDefault();
+
+                CheckListAnaliseCondBio.ID_Boletim = Boletim.ID;
+                CheckListAnaliseCondBio = MontaCheckListCondBio(CheckListAnaliseCondBio, CheckList);
+
+            }
+
+            if (!Equals(analisepostura.checklistdois, null))
+            {
+                var CheckList = _context.TmpCheckList.Where(x => x.ID == Convert.ToInt32(analisepostura.checklistdois)).FirstOrDefault();
+
+                CheckListAnaliseCondErg.ID_Boletim = Boletim.ID;
+                CheckListAnaliseCondErg = MontaCheckListCondErgo(CheckListAnaliseCondErg, CheckList);
+
+            }
 
             Boletim.NomeFiscal = analisepostura.nomefiscal;
 
@@ -346,27 +369,71 @@ namespace SAGRE.Controllers
 
             Boletim.Descricao = analisepostura.descricao;
 
-            // Teste
             Boletim.listanasa = analisepostura.listanasa;
+
             Boletim.ListaAnalisePostura = analisepostura.lista;
 
             _context.BoletimModel.Add(Boletim);
+            _context.CheckListAnaliseCondBio.Add(CheckListAnaliseCondBio);
+            _context.CheckListAnaliseCondErg.Add(CheckListAnaliseCondErg);
 
             _context.SaveChanges();
 
-            //foreach (var item in analisepostura.lista)
-            //{
-            //    item.ID = Boletim.ID;
-            //    ListaPostura.Add(item);
-            //}
-
-            //Boletim.listanasa = analisepostura.listanasa;
-
-            //_context.AnalisePosturaModel.AddRange(ListaPostura);
-
-            //_context.SaveChanges();
-
             return Json(Boletim.ID);
+        }
+
+        private CheckListAnaliseCondErg MontaCheckListCondErgo(CheckListAnaliseCondErg checkListAnaliseCondErg, TmpCheckList checkList)
+        {
+            checkListAnaliseCondErg.TipoCheckList = checkList.TipoCheckList;
+
+            checkListAnaliseCondErg.Questao01 = checkList.Questao01;
+            checkListAnaliseCondErg.Questao02 = checkList.Questao02;
+            checkListAnaliseCondErg.Questao03 = checkList.Questao03;
+            checkListAnaliseCondErg.Questao04 = checkList.Questao04;
+            checkListAnaliseCondErg.Questao05 = checkList.Questao05;
+            checkListAnaliseCondErg.Questao06 = checkList.Questao06;
+            checkListAnaliseCondErg.Questao07 = checkList.Questao07;
+            checkListAnaliseCondErg.Questao08 = checkList.Questao08;
+            checkListAnaliseCondErg.Questao09 = checkList.Questao09;
+            checkListAnaliseCondErg.Questao10 = checkList.Questao10;
+            checkListAnaliseCondErg.Questao11 = checkList.Questao11;
+            checkListAnaliseCondErg.Questao12 = checkList.Questao12;
+            checkListAnaliseCondErg.Questao13 = checkList.Questao13;
+            checkListAnaliseCondErg.Questao14 = checkList.Questao14;
+            checkListAnaliseCondErg.Questao15 = checkList.Questao15;
+            checkListAnaliseCondErg.Questao16 = checkList.Questao16;
+            checkListAnaliseCondErg.Questao17 = checkList.Questao17;
+            checkListAnaliseCondErg.Questao18 = checkList.Questao18;
+            checkListAnaliseCondErg.Questao19 = checkList.Questao19;
+            checkListAnaliseCondErg.Questao20 = checkList.Questao20;
+            checkListAnaliseCondErg.Questao21 = checkList.Questao21;
+            checkListAnaliseCondErg.Questao22 = checkList.Questao22;
+            checkListAnaliseCondErg.Questao23 = checkList.Questao23;
+            checkListAnaliseCondErg.Questao24 = checkList.Questao24;
+
+            return checkListAnaliseCondErg;
+        }
+
+        private CheckListAnaliseCondBio MontaCheckListCondBio(CheckListAnaliseCondBio checkListAnaliseCondBio, TmpCheckList checkList)
+        {
+            checkListAnaliseCondBio.TipoCheckList = checkList.TipoCheckList;
+
+            checkListAnaliseCondBio.Questao01 = checkList.Questao01;
+            checkListAnaliseCondBio.Questao02 = checkList.Questao02;
+            checkListAnaliseCondBio.Questao03 = checkList.Questao03;
+            checkListAnaliseCondBio.Questao04 = checkList.Questao04;
+            checkListAnaliseCondBio.Questao05 = checkList.Questao05;
+            checkListAnaliseCondBio.Questao06 = checkList.Questao06;
+            checkListAnaliseCondBio.Questao07 = checkList.Questao07;
+            checkListAnaliseCondBio.Questao08 = checkList.Questao08;
+            checkListAnaliseCondBio.Questao09 = checkList.Questao09;
+            checkListAnaliseCondBio.Questao10 = checkList.Questao10;
+            checkListAnaliseCondBio.Questao11 = checkList.Questao11;
+            checkListAnaliseCondBio.Questao12 = checkList.Questao12;
+            checkListAnaliseCondBio.Questao13 = checkList.Questao13;
+            checkListAnaliseCondBio.Questao14 = checkList.Questao14;
+
+            return checkListAnaliseCondBio;
         }
 
         [HttpGet]
@@ -475,6 +542,104 @@ namespace SAGRE.Controllers
             return Json(ListaLocal);
         }
 
+        [HttpPost]
+        public IActionResult TmpCheckList(TmpCheckListClass Dados)
+        {
+            TmpCheckList CheckListTemporario = new TmpCheckList();
+
+            CheckListTemporario.TipoCheckList = Dados.TipoCheckList;
+            CheckListTemporario.Questao01 = Dados.Questao01;
+            CheckListTemporario.Questao02 = Dados.Questao02;
+            CheckListTemporario.Questao03 = Dados.Questao03;
+            CheckListTemporario.Questao04 = Dados.Questao04;
+            CheckListTemporario.Questao05 = Dados.Questao05;
+            CheckListTemporario.Questao06 = Dados.Questao06;
+            CheckListTemporario.Questao07 = Dados.Questao07;
+            CheckListTemporario.Questao08 = Dados.Questao08;
+            CheckListTemporario.Questao09 = Dados.Questao09;
+            CheckListTemporario.Questao10 = Dados.Questao10;
+            CheckListTemporario.Questao11 = Dados.Questao11;
+            CheckListTemporario.Questao12 = Dados.Questao12;
+            CheckListTemporario.Questao13 = Dados.Questao13;
+            CheckListTemporario.Questao14 = Dados.Questao14;
+            CheckListTemporario.Questao15 = Dados.Questao15;
+            CheckListTemporario.Questao16 = Dados.Questao16;
+            CheckListTemporario.Questao17 = Dados.Questao17;
+            CheckListTemporario.Questao18 = Dados.Questao18;
+            CheckListTemporario.Questao19 = Dados.Questao19;
+            CheckListTemporario.Questao20 = Dados.Questao20;
+            CheckListTemporario.Questao21 = Dados.Questao21;
+            CheckListTemporario.Questao22 = Dados.Questao22;
+            CheckListTemporario.Questao23 = Dados.Questao23;
+            CheckListTemporario.Questao24 = Dados.Questao24;
+            CheckListTemporario.Questao25 = Dados.Questao25;
+            CheckListTemporario.Questao26 = Dados.Questao26;
+            CheckListTemporario.Questao27 = Dados.Questao27;
+            CheckListTemporario.Questao28 = Dados.Questao28;
+            CheckListTemporario.Questao29 = Dados.Questao29;
+            CheckListTemporario.Questao30 = Dados.Questao30;
+
+            _context.TmpCheckList.Add(CheckListTemporario);
+
+            _context.SaveChanges();
+
+            return Json(CheckListTemporario.ID);
+        }
+
+        [HttpPost]
+        public IActionResult TmpCheckListCorrigir(string idcheck)
+        {
+            var query = _context.TmpCheckList.Where(x => x.ID == Convert.ToInt32(idcheck)).FirstOrDefault();
+
+            if (!Equals(query, null))
+            {
+                _context.TmpCheckList.Remove(query);
+                _context.SaveChanges();
+
+                return Json("OK");
+
+            }
+
+            return Json("Erro");
+        }
+
+    }
+
+    public class TmpCheckListClass
+    {
+        public int TipoCheckList { get; set; }
+        public int ID_Boletim { get; set; }
+        public string Questao01 { get; set; }
+        public string Questao02 { get; set; }
+        public string Questao03 { get; set; }
+        public string Questao04 { get; set; }
+        public string Questao05 { get; set; }
+        public string Questao06 { get; set; }
+        public string Questao07 { get; set; }
+        public string Questao08 { get; set; }
+        public string Questao09 { get; set; }
+        public string Questao10 { get; set; }
+        public string Questao11 { get; set; }
+        public string Questao12 { get; set; }
+        public string Questao13 { get; set; }
+        public string Questao14 { get; set; }
+        public string Questao15 { get; set; }
+        public string Questao16 { get; set; }
+        public string Questao17 { get; set; }
+        public string Questao18 { get; set; }
+        public string Questao19 { get; set; }
+        public string Questao20 { get; set; }
+        public string Questao21 { get; set; }
+        public string Questao22 { get; set; }
+        public string Questao23 { get; set; }
+        public string Questao24 { get; set; }
+        public string Questao25 { get; set; }
+        public string Questao26 { get; set; }
+        public string Questao27 { get; set; }
+        public string Questao28 { get; set; }
+        public string Questao29 { get; set; }
+        public string Questao30 { get; set; }
+
     }
 
     public class Boletim
@@ -493,6 +658,9 @@ namespace SAGRE.Controllers
         public string horainicio { get; set; }
         public string horatermino { get; set; }
         public string tempogasto { get; set; }
+        public string checklistum { get; set; }
+        public string checklistdois { get; set; }
+
         public List<AnalisePosturaModel> lista { get; set; }
         public AnaliseNASATLXModel listanasa { get; set; }
 

@@ -1,0 +1,161 @@
+﻿@model IEnumerable<SAGRE.Models.AnaliseAmbiente.TmpCheckList>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoCheckList)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ID_Boletim)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Questao01)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Questao02)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Questao03)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Questao04)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Questao05)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Questao06)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Questao07)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Questao08)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Questao09)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Questao10)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Questao11)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Questao12)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Questao13)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Questao14)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Questao15)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Questao16)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Questao17)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Questao18)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Questao19)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Questao20)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoCheckList)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID_Boletim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Questao01)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Questao02)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Questao03)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Questao04)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Questao05)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Questao06)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Questao07)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Questao08)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Questao09)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Questao10)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Questao11)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Questao12)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Questao13)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Questao14)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Questao15)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Questao16)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Questao17)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Questao18)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Questao19)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Questao20)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
