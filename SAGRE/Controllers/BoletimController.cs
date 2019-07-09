@@ -87,7 +87,91 @@ namespace SAGRE.Controllers
             ViewBag.ValorFrustracao = ValorFrustracao;
             ViewBag.ValorTotal = ValorTotal;
 
+            CheckListAnaliseCondBio CheckListBio = _context.CheckListAnaliseCondBio.Where(x => x.ID_Boletim == id).FirstOrDefault();
+            CheckListAnaliseCondErg CheckListErg = _context.CheckListAnaliseCondErg.Where(x => x.ID_Boletim == id).FirstOrDefault();
+
+            ViewBag.AnaliseLVE = "Não";
+
+            if (!Equals(CheckListBio, null))
+            {
+                ViewBag.CheckListBio = CheckListBio;
+                ViewBag.AnaliseLVE = "Sim";
+            }
+            else
+                ViewBag.CheckListBio = null;
+
+            if (!Equals(CheckListErg, null))
+            {
+                ViewBag.CheckListErg = CheckListErg;
+                ViewBag.AnaliseLVE = "Sim";
+            }
+            else
+                ViewBag.CheckListErg = null;
+
+            ViewBag.ResultadoCheckListBio = ContaResultadoBio(CheckListBio);
+            ViewBag.ResultadoCheckListErg = ContaResultadoErg(CheckListErg);
+
             return View(boletimModel);
+        }
+
+        private string ContaResultadoErg(CheckListAnaliseCondErg checkListErg)
+        {
+            int TotalErg = 0;
+
+            if (!Equals(checkListErg, null))
+            {
+                if (checkListErg.Questao01 == "1") TotalErg++;
+                if (checkListErg.Questao02 == "1") TotalErg++;
+                if (checkListErg.Questao03 == "1") TotalErg++;
+                if (checkListErg.Questao04 == "1") TotalErg++;
+                if (checkListErg.Questao05 == "1") TotalErg++;
+                if (checkListErg.Questao06 == "1") TotalErg++;
+                if (checkListErg.Questao07 == "1") TotalErg++;
+                if (checkListErg.Questao08 == "1") TotalErg++;
+                if (checkListErg.Questao09 == "1") TotalErg++;
+                if (checkListErg.Questao10 == "1") TotalErg++;
+                if (checkListErg.Questao11 == "1") TotalErg++;
+                if (checkListErg.Questao12 == "1") TotalErg++;
+                if (checkListErg.Questao13 == "1") TotalErg++;
+                if (checkListErg.Questao14 == "1") TotalErg++;
+                if (checkListErg.Questao15 == "1") TotalErg++;
+                if (checkListErg.Questao16 == "1") TotalErg++;
+                if (checkListErg.Questao17 == "1") TotalErg++;
+                if (checkListErg.Questao18 == "1") TotalErg++;
+                if (checkListErg.Questao19 == "1") TotalErg++;
+                if (checkListErg.Questao20 == "1") TotalErg++;
+                if (checkListErg.Questao21 == "1") TotalErg++;
+                if (checkListErg.Questao22 == "1") TotalErg++;
+                if (checkListErg.Questao23 == "1") TotalErg++;
+                if (checkListErg.Questao24 == "1") TotalErg++;
+            }
+
+            return ((TotalErg * 100) / 24).ToString();
+        }
+
+        private string ContaResultadoBio(CheckListAnaliseCondBio checkListBio)
+        {
+            int TotalBio = 0 ;
+
+            if (!Equals(checkListBio,null))
+            {
+                if (checkListBio.Questao01 == "1") TotalBio++;
+                if (checkListBio.Questao02 == "1") TotalBio++;
+                if (checkListBio.Questao03 == "1") TotalBio++;
+                if (checkListBio.Questao04 == "1") TotalBio++;
+                if (checkListBio.Questao05 == "1") TotalBio++;
+                if (checkListBio.Questao06 == "1") TotalBio++;
+                if (checkListBio.Questao07 == "1") TotalBio++;
+                if (checkListBio.Questao08 == "1") TotalBio++;
+                if (checkListBio.Questao09 == "1") TotalBio++;
+                if (checkListBio.Questao10 == "1") TotalBio++;
+                if (checkListBio.Questao11 == "1") TotalBio++;
+                if (checkListBio.Questao12 == "1") TotalBio++;
+                if (checkListBio.Questao13 == "1") TotalBio++;
+                if (checkListBio.Questao14 == "1") TotalBio++;
+
+            }
+            return TotalBio.ToString();
         }
 
         // GET: Boletim/Create
@@ -324,32 +408,11 @@ namespace SAGRE.Controllers
 
             List<AnalisePosturaModel> ListaPostura = new List<AnalisePosturaModel>();
 
-            CheckListAnaliseCondBio CheckListAnaliseCondBio = new CheckListAnaliseCondBio();
-            CheckListAnaliseCondErg CheckListAnaliseCondErg = new CheckListAnaliseCondErg(); ;
-
             if (Equals(analisepostura.descricao, null))
                 analisepostura.descricao = "Sem descrição Adicionada !";
 
             if (Equals(analisepostura.local, null))
                 analisepostura.local = " ";
-
-            if (!Equals(analisepostura.checklistum, null))
-            {
-                var CheckList = _context.TmpCheckList.Where(x => x.ID == Convert.ToInt32(analisepostura.checklistum)).FirstOrDefault();
-
-                CheckListAnaliseCondBio.ID_Boletim = Boletim.ID;
-                CheckListAnaliseCondBio = MontaCheckListCondBio(CheckListAnaliseCondBio, CheckList);
-
-            }
-
-            if (!Equals(analisepostura.checklistdois, null))
-            {
-                var CheckList = _context.TmpCheckList.Where(x => x.ID == Convert.ToInt32(analisepostura.checklistdois)).FirstOrDefault();
-
-                CheckListAnaliseCondErg.ID_Boletim = Boletim.ID;
-                CheckListAnaliseCondErg = MontaCheckListCondErgo(CheckListAnaliseCondErg, CheckList);
-
-            }
 
             Boletim.NomeFiscal = analisepostura.nomefiscal;
 
@@ -374,6 +437,34 @@ namespace SAGRE.Controllers
             Boletim.ListaAnalisePostura = analisepostura.lista;
 
             _context.BoletimModel.Add(Boletim);
+
+            _context.SaveChanges();
+
+            CheckListAnaliseCondBio CheckListAnaliseCondBio = new CheckListAnaliseCondBio();
+            CheckListAnaliseCondErg CheckListAnaliseCondErg = new CheckListAnaliseCondErg();
+
+            if (!Equals(analisepostura.checklistum, null))
+            {
+                var CheckList = _context.TmpCheckList.Where(x => x.ID == Convert.ToInt32(analisepostura.checklistum)).FirstOrDefault();
+
+                CheckListAnaliseCondBio.ID_Boletim = Boletim.ID;
+                CheckListAnaliseCondBio = MontaCheckListCondBio(CheckListAnaliseCondBio, CheckList);
+
+                _context.TmpCheckList.Remove(CheckList);
+
+            }
+
+            if (!Equals(analisepostura.checklistdois, null))
+            {
+                var CheckList = _context.TmpCheckList.Where(x => x.ID == Convert.ToInt32(analisepostura.checklistdois)).FirstOrDefault();
+
+                CheckListAnaliseCondErg.ID_Boletim = Boletim.ID;
+                CheckListAnaliseCondErg = MontaCheckListCondErgo(CheckListAnaliseCondErg, CheckList);
+
+                _context.TmpCheckList.Remove(CheckList);
+
+            }
+
             _context.CheckListAnaliseCondBio.Add(CheckListAnaliseCondBio);
             _context.CheckListAnaliseCondErg.Add(CheckListAnaliseCondErg);
 

@@ -13,7 +13,7 @@
         </ol>
     </nav>
 
-    <div class="row">   
+    <div class="row">
 
         <div class="col">
             <div class=" ml-1">
@@ -24,8 +24,8 @@
                                 <form asp-action="Create">
                                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                     <p class="">
-                                        <div class="alert alert-dark" role="alert" data-toggle="" href="#MenuAnalisePostura" aria-expanded="false" aria-controls="MenuAnalisePostura">
-                                            Dados do Boletim - OWAS
+                                        <div class="alert alert-dark font-weight-bold" role="alert" data-toggle="" href="#MenuAnalisePostura" aria-expanded="false" aria-controls="MenuAnalisePostura">
+                                            <i class="fas fa-paste mr-2"></i> Dados do Boletim
                                         </div>
                                     </p>
 
@@ -110,11 +110,11 @@
 
                                     <p>
                                         @{
-                                            //var QntOWAS = ViewBag.AnalisePostura.Count;
                                             var QntOWAS = @Model.ListaAnalisePostura.Count;
 
                                             string AnaliseNasaTLX = String.Empty;
                                             string CorNasa = String.Empty;
+                                            string CorLVE = String.Empty;
 
                                             if (@Model.listanasa.BoletimModel == null)
                                             {
@@ -126,6 +126,16 @@
                                                 AnaliseNasaTLX = "Sim";
                                                 CorNasa = "text-success";
                                             }
+
+                                            if (@ViewBag.AnaliseLVE == "Sim")
+                                            {
+                                                CorLVE = "text-success";
+                                            }
+                                            else
+                                            {
+                                                CorLVE = "text-danger";
+                                            }
+
                                         }
                                         <div class="alert alert-dark small" role="alert">
                                             <div class="row font-weight-bold">
@@ -139,7 +149,7 @@
                                                     Análise Cognitiva - NASA TLX: <span class="@CorNasa"> @AnaliseNasaTLX </span>
                                                 </div>
                                                 <div class="col">
-                                                    Análise Ambiente - LVE:
+                                                    Análise Ambiente - LVE: <span class="@CorLVE"> @ViewBag.AnaliseLVE </span>
                                                 </div>
                                             </div>
                                         </div>
@@ -147,7 +157,7 @@
 
                                     <p>
                                         <div class="alert alert-dark" role="alert" data-toggle="collapse" href="#MenuAnalisePostura" aria-expanded="false" aria-controls="MenuAnalisePostura">
-                                            Análise Postura - OWAS
+                                            <i class="fas fa-street-view mr-2"></i> Análise Postura - OWAS
                                         </div>
                                     </p>
                                     <div class="collapse" id="MenuAnalisePostura">
@@ -205,7 +215,7 @@
 
                                     <p>
                                         <div class="alert alert-dark" role="alert" data-toggle="collapse" href="#MenuAnaliseCorpo" aria-expanded="false" aria-controls="MenuAnaliseCorpo">
-                                            Análise Cognitiva - NASA TLX
+                                            <i class="fas fa-brain mr-2"></i> Análise Cognitiva - NASA TLX
                                         </div>
                                     </p>
                                     <div class="collapse" id="MenuAnaliseCorpo">
@@ -328,12 +338,612 @@
 
                                     <p>
                                         <div class="alert alert-dark" role="alert" data-toggle="collapse" href="#MenuAnaliseAmbiete" aria-expanded="false" aria-controls="MenuAnaliseAmbiete">
-                                            Análise Ambiente
+                                            <i class="fas fa-home mr-2"></i> Análise Ambiente - LVE
                                         </div>
                                     </p>
                                     <div class="collapse" id="MenuAnaliseAmbiete">
                                         <div class="card card-body">
-                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+
+                                            @{
+                                                var CheckListBio = ViewBag.CheckListBio;
+                                                var CheckListErg = ViewBag.CheckListErg;
+
+                                                if (Equals(CheckListBio, null) && Equals(CheckListErg, null))
+                                                {
+                                                    <div class="col text-center mb-3">
+                                                        <p class="mb-0 text-center" style="font-size:12px;"><span class="font-weight-bold font-italic"> Não foi adicionado nenhuma Análise Ambiente - LVE !</span></p>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <p class="mb-0 mt-0 small">
+                                                        <div class="row">
+                                                            <div class="col col-sm col-md col-lg">
+                                                                <div class="alert alert-dark small mb-0 pt-2 pb-2 font-weight-bold" style="font-size:11px;" role="alert" data-toggle="collapse" href="#CheckListUm" aria-expanded="false" aria-controls="MenuAnaliseAmbiete">
+                                                                    CHECKLIST PARA AVALIAÇÃO DAS CONDIÇÕES BIOMECÂNICAS DO POSTO DE TRABALHO
+                                                                </div>
+                                                                <div class="collapse" id="CheckListUm">
+                                                                    <div class="card card-body mt-1">
+                                                                        @{
+                                                                            if (!Equals(CheckListBio, null))
+                                                                            {
+                                                                                int Qnt = Convert.ToInt32(@ViewBag.ResultadoCheckListBio);
+
+                                                                                if (Qnt == 14 || Qnt == 13)
+                                                                                {
+                                                                                    <div class="alert alert-success small" role="alert">
+                                                                                        Condição Biomecânica Excelente !
+                                                                                    </div>
+                                                                                }
+                                                                                else if (Qnt >= 10 && Qnt <= 12)
+                                                                                {
+                                                                                    <div class="alert alert-primary small p-2" role="alert">
+                                                                                        Boa Condição Biomecânica !
+                                                                                    </div>
+                                                                                }
+                                                                                else if (Qnt >= 7 && Qnt <= 9)
+                                                                                {
+                                                                                    <div class="alert alert-secondary small" role="alert">
+                                                                                        Condição Biomecânica Razoável !
+                                                                                    </div>
+                                                                                }
+                                                                                else if (Qnt >= 4 && Qnt <= 6)
+                                                                                {
+                                                                                    <div class="alert alert-warning small" role="alert">
+                                                                                        Condição Biomecânica Ruim !
+                                                                                    </div>
+                                                                                }
+                                                                                else if (Qnt <= 3)
+                                                                                {
+                                                                                    <div class="alert alert-danger small" role="alert">
+                                                                                        Condição Biomecânica Péssima !
+                                                                                    </div>
+                                                                                }
+
+                                                                                <div class="row">
+                                                                                    <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                                                                        <div class=" p-1 nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                                                                            <a class="card mb-1 nav-link active btn btn-sm" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-bancada" role="tab" aria-controls="v-pills-bancada" aria-selected="true">Bancada</a>
+                                                                                            <a class="card mb-1 nav-link btn btn-sm" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-acoes" role="tab" aria-controls="v-pills-acoes" aria-selected="false">Ações</a>
+                                                                                            <a class="card mb-1 nav-link btn btn-sm" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-sentado" role="tab" aria-controls="v-pills-sentado" aria-selected="false">Sentado</a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col col-sm col-md col-lg">
+                                                                                        <div class="tab-content" id="v-pills-tabContent">
+                                                                                            <div class="tab-pane fade show active" id="v-pills-bancada" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                                                                                                <table class="table table-sm table-bordered">
+                                                                                                    <thead class="thead-dark">
+                                                                                                        <tr>
+                                                                                                            <th class="small text-center" style="width: 80%;">Pergunta</th>
+                                                                                                            <th class="small text-center">Resposta</th>
+                                                                                                        </tr>
+                                                                                                    </thead>
+                                                                                                    <tbody>
+                                                                                                        <tr>
+                                                                                                            <td class="small">
+                                                                                                                A bancada de trabalho/máquIna está localizada em altura correta
+                                                                                                                (trabalho pesado: ao nível do púbis / trabalho moderado: na altura
+                                                                                                                do cotovelo / trabalho teve: a 30 cm dos olhos)?
+                                                                                                            </td>
+                                                                                                            <td class="align-middle" id="grupo1pergunta1">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListBio.Questao01 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td class="small">
+                                                                                                                A bancada ou máquina tem regulagem de altura deforma a possibilitar
+                                                                                                                ao trabalhador adequar a altura do posto de trabalho á sua?
+                                                                                                            </td>
+                                                                                                            <td class="align-middle" id="grupo1pergunta2">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListBio.Questao02 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td class="small">
+                                                                                                                Os objetos e materiais de uso freqüente estão dentro da área de alcance?
+                                                                                                            </td>
+                                                                                                            <td class="align-middle" id="grupo1pergunta3">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListBio.Questao03 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                    </tbody>
+                                                                                                </table>
+                                                                                            </div>
+                                                                                            <div class="tab-pane fade" id="v-pills-acoes" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                                                                                                <table class="table table-sm table-bordered">
+                                                                                                    <thead class="thead-dark">
+                                                                                                        <tr>
+                                                                                                            <th class="small text-center" style="width: 80%;">Pergunta</th>
+                                                                                                            <th class="small text-center">Resposta</th>
+                                                                                                        </tr>
+                                                                                                    </thead>
+                                                                                                    <tbody>
+                                                                                                        <tr>
+                                                                                                            <td class="small">
+                                                                                                                Tem-se que sustentar pesos com os membros superiores para evitar seu
+                                                                                                                deslocamento seja na vertical seja na horizontal?
+                                                                                                            </td>
+                                                                                                            <td class="align-middle" id="grupo1pergunta4">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListBio.Questao04 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td class="small">
+                                                                                                                Tem-se que apertar pedais estando de pé, em freqüência maior que 3 vezes por minuto?
+                                                                                                            </td>
+                                                                                                            <td class="align-middle" id="grupo1pergunta5">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListBio.Questao05 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td class="small">
+                                                                                                                O trabalho exige a elevação dos braços acima do nível dos ombros?
+                                                                                                            </td>
+                                                                                                            <td class="align-middle" id="grupo1pergunta6">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListBio.Questao06 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td class="small">O trabalho exige ficar parado na posição de pé durante grande parte do tempo (mais que 60%)?</td>
+                                                                                                            <td class="align-middle" id="grupo1pergunta7">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListBio.Questao07 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td class="small"> Os membros superiores têm que sustentar pesos? </td>
+                                                                                                            <td class="align-middle" id="grupo1pergunta8">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListBio.Questao08 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td class="small">  Ficar-se de pé, parado, durante a maior parte da jornada?  </td>
+                                                                                                            <td class="align-middle" id="grupo1pergunta9">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListBio.Questao09 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td class="small">
+                                                                                                                Existem pequenas contrações estáticas, porém por muito tempo (por exemplo, pescoço excessivamente
+                                                                                                                estendido, braços suspensos, sustentação dos antebraços pelos braços, falta de apoio para os antebraços)?
+                                                                                                            </td>
+                                                                                                            <td class="align-middle" id="grupo1pergunta10">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListBio.Questao10 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                    </tbody>
+                                                                                                </table>
+                                                                                            </div>
+                                                                                            <div class="tab-pane fade" id="v-pills-sentado" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                                                                                                <table class="table table-sm table-bordered">
+                                                                                                    <thead class="thead-dark">
+                                                                                                        <tr>
+                                                                                                            <th class="small text-center" style="width: 80%;">Pergunta</th>
+                                                                                                            <th class="small text-center">Resposta</th>
+                                                                                                        </tr>
+                                                                                                    </thead>
+                                                                                                    <tbody>
+                                                                                                        <tr>
+                                                                                                            <td class="small">
+                                                                                                                No caso de se trabalhar sentado, há espaço suficiente para as pernas?
+                                                                                                            </td>
+                                                                                                            <td class="align-middle" id="grupo1pergunta11">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListBio.Questao11 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td class="small">
+                                                                                                                A cadeira tem inclinação correta, compatível com o trabalho executado?
+                                                                                                            </td>
+                                                                                                            <td class="align-middle" id="grupo1pergunta12">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListBio.Questao12 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td class="small">
+                                                                                                                O corpo trabalha no eixo vertical natural, ou em ângulo de 100 graus entre
+                                                                                                                as coxas e o tronco (no caso de trabalho sentado?)
+                                                                                                            </td>
+                                                                                                            <td class="align-middle" id="grupo1pergunta13">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListBio.Questao13 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td class="small"> Estando sentado, fica-se em posição estática? </td>
+                                                                                                            <td class="align-middle" id="grupo1pergunta14">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListBio.Questao14 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                    </tbody>
+                                                                                                </table>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <div class="text-center">
+                                                                                    <span class="font-weight-bold font-italic" style="font-size:12px;">Não foi Adicionado o CheckList de Avaliações de Condição Biomecânicas do Posto de Trabalho !</span>
+                                                                                </div>
+                                                                            }
+                                                                        }
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </p>
+                                                    <p class="mb-0 mt-0 small">
+                                                        <div class="row">
+                                                            <div class="col col-sm col-md col-lg">
+                                                                <div class="alert alert-dark small mb-0 pt-2 pb-2 font-weight-bold" style="font-size:11px;" role="alert" data-toggle="collapse" href="#CheckListDois" aria-expanded="false" aria-controls="MenuAnaliseAmbiete">
+                                                                    CHECKLIST PARA AVALIAÇÃO DE CONDIÇÕES ERGONÔMICAS GERAIS DO AMBIENTE DE TRABALHO
+                                                                </div>
+
+                                                                <div class="collapse" id="CheckListDois">
+                                                                    <div class="card card-body mt-1">
+                                                                        @{
+                                                                            if (!Equals(CheckListErg, null))
+                                                                            {
+                                                                                int QntErg = Convert.ToInt32(@ViewBag.ResultadoCheckListErg);
+
+                                                                                if (QntErg >= 91 && QntErg <= 100)
+                                                                                {
+                                                                                    <div class="alert alert-success small" role="alert">
+                                                                                        Condição Biomecânica Excelente !
+                                                                                    </div>
+                                                                                }
+                                                                                else if (QntErg >= 71 && QntErg <= 90)
+                                                                                {
+                                                                                    <div class="alert alert-primary small p-2" role="alert">
+                                                                                        Boa Condição Biomecânica !
+                                                                                    </div>
+                                                                                }
+                                                                                else if (QntErg >= 51 && QntErg <= 70)
+                                                                                {
+                                                                                    <div class="alert alert-secondary small" role="alert">
+                                                                                        Condição Biomecânica Razoável !
+                                                                                    </div>
+                                                                                }
+                                                                                else if (QntErg >= 31 && QntErg <= 50)
+                                                                                {
+                                                                                    <div class="alert alert-warning small" role="alert">
+                                                                                        Condição Biomecânica Ruim !
+                                                                                    </div>
+                                                                                }
+                                                                                else if (QntErg <= 30)
+                                                                                {
+                                                                                    <div class="alert alert-danger small" role="alert">
+                                                                                        Condição Biomecânica Péssima !
+                                                                                    </div>
+                                                                                }
+                                                                                <div class="row">
+                                                                                    <div class="col-3 col-sm-3 col-md-3 col-lg-3">
+                                                                                        <div class=" p-1 nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                                                                            <a class="card mb-1 nav-link active btn btn-sm" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-p1" role="tab" aria-controls="v-pills-p1" aria-selected="true">Parte 1</a>
+                                                                                            <a class="card mb-1 nav-link btn btn-sm" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-p2" role="tab" aria-controls="v-pills-p2" aria-selected="false">Parte 2</a>
+                                                                                            <a class="card mb-1 nav-link btn btn-sm" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-p3" role="tab" aria-controls="v-pills-p3" aria-selected="false">Parte 3</a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-10 col-sm col-md col-lg">
+                                                                                        <div class="tab-content" id="v-pills-tabContent">
+                                                                                            <div class="tab-pane fade show active" id="v-pills-p1" role="tabpanel" aria-labelledby="v-pills-home-tab">
+
+                                                                                                <table class="table table-sm table-bordered">
+                                                                                                    <thead class="thead-dark">
+                                                                                                        <tr>
+                                                                                                            <th class="small text-center" style="width: 80%;">Pergunta</th>
+                                                                                                            <th class="small text-center">Resposta</th>
+                                                                                                        </tr>
+                                                                                                    </thead>
+                                                                                                    <tbody>
+                                                                                                        <tr>
+                                                                                                            <td class="small">
+                                                                                                                Exigências de trabalho excessivamente complexas em relação à habilitação dos funcionários?
+                                                                                                            </td>
+                                                                                                            <td class="align-middle" id="grupo2pergunta1">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListErg.Questao01 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td class="small">
+                                                                                                                Fatores externos que tornam o trabalho mais pesado (calor, barulho, odor, vibração)
+                                                                                                            </td>
+                                                                                                            <td class="align-middle" id="grupo2pergunta2">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListErg.Questao02 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td class="small">
+                                                                                                                Outros fatores de organização do trabalho que o tornam mais pesado (ausência de pausas, trabalho contra o relógio)
+                                                                                                            </td>
+                                                                                                            <td class="align-middle" id="grupo2pergunta3">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListErg.Questao03 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td class="small">
+                                                                                                                A altura do posto de trabalho está correta? (precisão: 30 cm dos olhos / normal: altura do cotovelo)
+                                                                                                            </td>
+                                                                                                            <td class="align-middle" id="grupo2pergunta4">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListErg.Questao04 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td class="small">A área mínima por pessoa (4 a 6 m2) é observada?</td>
+                                                                                                            <td class="align-middle" id="grupo2pergunta5">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListErg.Questao05 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td class="small">Existe espaço suficiente para movimentação?</td>
+                                                                                                            <td class="align-middle" id="grupo2pergunta6">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListErg.Questao06 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td class="small">
+                                                                                                                A temperatura efetiva do ambiente está entre 20º e 23º C?
+                                                                                                            </td>
+                                                                                                            <td class="align-middle" id="grupo2pergunta7">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListErg.Questao07 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td class="small">
+                                                                                                                Existe alguma forma de calor radiante que contribui para o desconforto térmico?
+                                                                                                            </td>
+                                                                                                            <td class="align-middle" id="grupo2pergunta8">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListErg.Questao08 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                    </tbody>
+                                                                                                </table>
+
+                                                                                            </div>
+                                                                                            <div class="tab-pane fade" id="v-pills-p2" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+
+                                                                                                <table class="table table-sm table-bordered">
+                                                                                                    <thead class="thead-dark">
+                                                                                                        <tr>
+                                                                                                            <th class="small text-center" style="width: 80%;">Pergunta</th>
+                                                                                                            <th class="small text-center">Resposta</th>
+                                                                                                        </tr>
+                                                                                                    </thead>
+                                                                                                    <tbody>
+                                                                                                        <tr>
+                                                                                                            <td class="small">
+                                                                                                                A circulação de ar ocorre de forma suficiente?
+                                                                                                            </td>
+                                                                                                            <td class="align-middle" id="grupo2pergunta9">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListErg.Questao09 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td class="small">
+                                                                                                                Iluminação suficiente de dia?
+                                                                                                            </td>
+                                                                                                            <td class="align-middle" id="grupo2pergunta10">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListErg.Questao10 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td class="small">
+                                                                                                                Iluminação suficiente á noite?
+                                                                                                            </td>
+                                                                                                            <td class="align-middle" id="grupo2pergunta11">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListErg.Questao11 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td class="small">
+                                                                                                                Objetos ou letras podem ser vistos ou lidos de forma nítida uma distância de 30 cm dos olhos?
+                                                                                                            </td>
+                                                                                                            <td class="align-middle" id="grupo2pergunta12">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListErg.Questao12 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td class="small">Há sombras comprometendo a visibilidade? </td>
+                                                                                                            <td class="align-middle" id="grupo2pergunta13">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListErg.Questao13 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td class="small">As mesas estão em ângulo correto em relação às janelas (perpendiculares)?</td>
+                                                                                                            <td class="align-middle" id="grupo2pergunta14">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListErg.Questao14 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td class="small">
+                                                                                                                Paredes de cor clara, com boa difusão de luz?
+                                                                                                            </td>
+                                                                                                            <td class="align-middle" id="grupo2pergunta15">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListErg.Questao15 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td class="small">
+                                                                                                                Reflexos de luz na mesa de trabalho?
+                                                                                                            </td>
+                                                                                                            <td class="align-middle" id="grupo2pergunta16">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListErg.Questao16 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                    </tbody>
+                                                                                                </table>
+
+                                                                                            </div>
+                                                                                            <div class="tab-pane fade" id="v-pills-p3" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                                                                                                <table class="table table-sm table-bordered">
+                                                                                                    <thead class="thead-dark">
+                                                                                                        <tr>
+                                                                                                            <th class="small text-center" style="width: 80%;">Pergunta</th>
+                                                                                                            <th class="small text-center">Resposta</th>
+                                                                                                        </tr>
+                                                                                                    </thead>
+                                                                                                    <tbody>
+                                                                                                        <tr>
+                                                                                                            <td class="small">
+                                                                                                                Reflexos de luz nos equipamentos?
+                                                                                                            </td>
+                                                                                                            <td class="align-middle" id="grupo2pergunta17">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListErg.Questao17 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td class="small">
+                                                                                                                Contraste satisfatório dos formulários?
+                                                                                                            </td>
+                                                                                                            <td class="align-middle" id="grupo2pergunta18">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListErg.Questao18 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td class="small">
+                                                                                                                Iluminação por lâmpadas fluorescentes?
+                                                                                                            </td>
+                                                                                                            <td class="align-middle" id="grupo2pergunta19">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListErg.Questao19 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td class="small">
+                                                                                                                Lâmpadas queimadas?
+                                                                                                            </td>
+                                                                                                            <td class="align-middle" id="grupo2pergunta20">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListErg.Questao20 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td class="small">Claridade das janelas interferindo no campo visual? </td>
+                                                                                                            <td class="align-middle" id="grupo2pergunta21">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListErg.Questao21 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td class="small">lncidência de luz do sol sobre a superfície de trabalho?</td>
+                                                                                                            <td class="align-middle" id="grupo2pergunta22">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListErg.Questao22 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td class="small">
+                                                                                                                Há poluição visual?
+                                                                                                            </td>
+                                                                                                            <td class="align-middle" id="grupo2pergunta23">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListErg.Questao23 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td class="small">
+                                                                                                                Nível de ruído menor que 65 dB?
+                                                                                                            </td>
+                                                                                                            <td class="align-middle" id="grupo2pergunta24">
+                                                                                                                <select class="custom-select custom-select-sm" disabled>
+                                                                                                                    @{ if (CheckListErg.Questao24 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                </select>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                    </tbody>
+                                                                                                </table>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <div class="text-center">
+                                                                                    <span class="font-weight-bold font-italic" style="font-size:12px;">Não foi Adicionado o CheckList de Avaliações de Condigções Ergonômicas Gerais do Ambiente de Trabalho !</span>
+                                                                                </div>
+                                                                            }
+                                                                        }
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </p>
+                                                }
+                                            }
+
                                         </div>
                                     </div>
 
