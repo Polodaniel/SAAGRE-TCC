@@ -63,6 +63,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Views\RelatorioCompleto\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\TmpCheckList\Index - Cópia.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

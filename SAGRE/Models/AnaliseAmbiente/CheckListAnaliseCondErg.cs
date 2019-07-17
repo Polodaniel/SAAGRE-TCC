@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -106,5 +107,39 @@ namespace SAGRE.Models.AnaliseAmbiente
 
         [StringLength(3)]
         public string Questao30 { get; set; }
+
+        [NotMapped]
+        public string Resultado
+        {
+            get
+            {
+                string resultado = string.Empty;
+                var QntErg = 0;
+
+
+                if (QntErg >= 91 && QntErg <= 100)
+                {
+                    resultado = "Condição Biomecânica Excelente !";
+                }
+                else if (QntErg >= 71 && QntErg <= 90)
+                {
+                    resultado = "Boa Condição Biomecânica !";
+                }
+                else if (QntErg >= 51 && QntErg <= 70)
+                {
+                    resultado = "Condição Biomecânica Razoável !";
+                }
+                else if (QntErg >= 31 && QntErg <= 50)
+                {
+                    resultado = "Condição Biomecânica Ruim !";
+                }
+                else if (QntErg <= 30)
+                {
+                    resultado = "Condição Biomecânica Péssima !";
+                }
+
+                return resultado;
+            }
+        }
     }
 }

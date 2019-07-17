@@ -695,7 +695,7 @@
                                             <td class="small">
                                                 A bancada de trabalho/máquIna está localizada em altura correta
                                                 (trabalho pesado: ao nível do púbis / trabalho moderado: na altura
-                                                do cotovelo / trabalho teve: a 30 cm dos olhos)?
+                                                do cotovelo / trabalho leve: a 30 cm dos olhos)?
                                             </td>
                                             <td class="align-middle" id="grupo1pergunta1">
                                                 <select class="custom-select custom-select-sm">
@@ -1884,6 +1884,9 @@
                 dataType: "html",
                 success: function (response) {
 
+                   var responseEditado = response.replace("\"","");
+                   responseEditado = responseEditado.replace("\"","");
+
                     var HTML = "<div class=\"ml-1 small\" id=\"NASATLX\">" +
                         "<div class=\"alert alert-info alert-dismissible fade show mb-0 mt-1\" role=\"alert\" data-toggle=\"collapse\" href=\"#AnaliseNASATLX\" aria-expanded=\"false\" aria-controls=\"DescricaoAnalise\">" +
                         "Análise de Cognitiva Informada" +
@@ -1893,7 +1896,7 @@
                         "</div>" +
                         "<div class=\"collapse mt-0\" id=\"AnaliseNASATLX\">" +
                         "<div id=\"AreaTabelaNASATLX\" class=\"card rounded-0\">" +
-                        response +
+                        responseEditado +
                         "</div>" +
                         "</div>" +
                         "</div>";
@@ -1904,7 +1907,7 @@
                         "</div>" +
                         "<div class=\"collapse mt-0\" id=\"AnaliseNASATLX\">" +
                         "<div id=\"AreaTabelaNASATLX\" class=\"card rounded-0\">" +
-                        response +
+                        responseEditado +
                         "</div>" +
                         "</div>" +
                         "</div>";
