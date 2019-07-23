@@ -8,7 +8,7 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="col mt-2">
+<div class="col mt-2 m-0">
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -18,7 +18,7 @@
     </nav>
 
     <div class="row">
-        <div class="col-9">
+        <div class="col-sm col-md-8 col-lg-8 col-8">
 
             @{
                 var Config = @UserManager.GetUserName(User).ToString();
@@ -31,77 +31,84 @@
 
                 Config = Config.Substring(0, Indice);
 
-                var Nome = Config ;
+                var Nome = Config;
 
             }
 
-            <div class="jumbotron pt-5 pl-5" style="height:498px">
-                <h1 class="display-4">Olá,<span class="text-capitalize"> @Nome!</span></h1>
-                <p class="lead">Sistema de Análise e Apoio a Gestão de Risco Ergonômico com base nos apontamentos realizado pelo fiscal.</p>
+            <div class="jumbotron pt-5 pl-5" @*style="height:498px"*@>
+                <h1 class="display-4">@*Olá*@ @ViewBag.Horario,<span class="text-capitalize"> @Nome!</span></h1>
+                <p class="lead">Seja Bem Vindo(a) ao Sistema de Análise e Apoio a Gestão de Risco Ergonômico com base nos apontamentos realizado pelo fiscal.</p>
                 <hr class="my-4">
-                <p>Segue ao lado direito a contagem de Boletins lançados no Sistema com os seus respectivos status.</p>
-                <p>Futuramente nessa área contara com graficos para ánalise.</p>
+                <p>Segue ao lado direito a contagem de Dados lançados no Sistema com os seus respectivos status.</p>
             </div>
 
         </div>
 
-        <div class="col">
+        <div class="col-sm col col-md col-lg">
             <div class="row">
                 <div class="col small">
                     <div class="card">
-                        <div class="card-header">Boletins Lançados</div>
+                        <div class="card-header p-2">Informação</div>
                         <div class="card-body p-0">
-                            <div class="row p-2">
-                                <div class="col">Risco Ergonômicos</div>
-                                <div class="col-3 text-right mr-3">@ViewBag.TotalBoletins</div>
+                            <div class="row p-1 alert alert-light ml-0 mr-0 mb-0 rounded-0 text-dark">
+                                <div class="col">Total Setores da Emp.</div>
+                                <div class="col-3 text-right mr-3 font-weight-bold">@ViewBag.TotalSetor</div>
+                            </div>
+                            <div class="row p-1 alert alert-light ml-0 mr-0 mb-0 rounded-0 text-dark">
+                                <div class="col">Total Local da Emp.</div>
+                                <div class="col-3 text-right mr-3 font-weight-bold">@ViewBag.TotalLocal</div>
+                            </div>
+                            <div class="row p-1 alert alert-light ml-0 mr-0 mb-0 rounded-0 text-dark">
+                                <div class="col">Total Atividade da Emp.</div>
+                                <div class="col-3 text-right mr-3 font-weight-bold">@ViewBag.TotalAtividade</div>
+                            </div>
+                            <div class="row p-1 alert alert-light ml-0 mr-0 mb-0 rounded-0 text-dark">
+                                <div class="col">Total Avaliadores da Emp.</div>
+                                <div class="col-3 text-right mr-3 font-weight-bold">@ViewBag.TotalAvaliadores</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            @*<div class="row mt-2">
+            <div class="row mt-4">
                 <div class="col small">
                     <div class="card">
-                        <div class="card-header">Boletins em Analise</div>
+                        <div class="card-header p-2">Ultimo Boletim</div>
                         <div class="card-body p-0">
-                            <div class="row p-2">
-                                <div class="col">Risco Ergonômicos</div>
-                                <div class="col-3 text-right mr-3">00</div>
+                            <div class="row p-1 alert alert-info ml-0 mr-0 mb-0 rounded-0 border-bottom-0 text-dark">
+                                <div class="col">Boletins Lançados</div>
+                                <div class="col text-right mr-3 font-weight-bold">@ViewBag.TotalBoletins</div>
+                            </div>
+                            <div class="row p-1 alert alert-light ml-0 mr-0 mb-0 rounded-0 text-dark">
+                                <div class="col">N° Boletim</div>
+                                <div class="col text-right mr-3 font-weight-bold">@ViewBag.UltimoBoletim.ID</div>
+                            </div>
+
+                            @{
+                                var Data = @ViewBag.UltimoBoletim.Data;
+
+                                Data = Convert.ToDateTime(Data).ToShortDateString();
+
+                                var Hora = @ViewBag.UltimoBoletim.HoraInicio + " - " + @ViewBag.UltimoBoletim.HoraTermino;
+                            }
+
+                            <div class="row p-1 alert alert-light ml-0 mr-0 mb-0 rounded-0 text-dark">
+                                <div class="col">Data de Lançamento</div>
+                                <div class="col text-right mr-3 font-weight-bold">@Data</div>
+                            </div>
+                            <div class="row p-1 alert alert-light ml-0 mr-0 mb-0 rounded-0 text-dark">
+                                <div class="col">Horario Inic./Term.</div>
+                                <div class="col text-right mr-3 font-weight-bold">@Hora</div>
+                            </div>
+                            <div class="row p-1 alert alert-light ml-0 mr-0 mb-0 rounded-0 text-dark">
+                                <div class="col">Nome do Avaliador</div>
+                                <div class="col text-right mr-3 font-weight-bold">@ViewBag.UltimoBoletim.NomeFiscal</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="row mt-2">
-                <div class="col small">
-                    <div class="card">
-                        <div class="card-header">Boletins Fechado</div>
-                        <div class="card-body p-0">
-                            <div class="row p-2">
-                                <div class="col">Risco Ergonômicos</div>
-                                <div class="col-3 text-right mr-3">00</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>*@
-
-            <div class="row mt-2">
-                <div class="col small">
-                    <div class="card">
-                        <div class="card-header">Grafico</div>
-                        <div class="card-body p-0">
-                            <div class="row p-2" style="height:185px;">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
-
 </div>

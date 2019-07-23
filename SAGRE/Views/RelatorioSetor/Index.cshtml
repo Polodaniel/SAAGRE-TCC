@@ -1,0 +1,176 @@
+﻿@{
+    ViewData["Title"] = "Relatório Setor";
+}
+
+<div class="col mt-2">
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Ínicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col">
+            <div class="bg-white mb-2" style="background-color: white">
+                <div class=" border bg-dark text-light p-2 mb-0 align-middle" role="alert" data-toggle="collapse" href="#CaixaBusca" aria-expanded="false" aria-controls="CaixaBusca">
+                    <div class="row">
+                        <div class="col">
+                            <i class="fas fa-search mr-3 ml-3 small align-middle"></i> Opções de Busca de Setor
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse show" id="CaixaBusca">
+                    <div class="border border-top-0 mt-0 mb-0 p-2">
+                        <div class="row mt-0 mb-0 small font-weight-bold ">
+                            <div class="col-2">
+                                <label class="control-label mb-0 small font-weight-bold">Código</label>
+                                <input type="number" class="form-control form-control form-control-sm" min="0" id="txtCodigo" />
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="control-label mb-0 small font-weight-bold">Data Ínicial</label>
+                                    <input type="date" class="form-control form-control-sm" id="CampoDataInicial" />
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="control-label mb-0 small font-weight-bold">Data Final</label>
+                                    <input type="date" class="form-control form-control-sm" id="CampoDataFinal" />
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="control-label mb-0 small font-weight-bold">Nome do Avaliador</label>
+                                    <input class="form-control form-control-sm" value=" " id="NomeAvaliador" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-0 mb-0 p-0 small">
+                            <div class="col-6 mt-0">
+                                <div class="form-group">
+                                    <label class="control-label mb-0 small font-weight-bold">Setor</label>
+                                    <select asp-items="@ViewBag.Setor" class="form-control form-control-sm" id="SetorSelecionado" onchange="javascript: BuscaLocal(this.value);"></select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="control-label mb-0 small font-weight-bold">Local</label>
+                                    <select asp-items="@ViewBag.Local" class="form-control form-control-sm" id="LocalSelecionado"></select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label class="control-label mb-0 small font-weight-bold">Atividade</label>
+                                    <select asp-items="@ViewBag.Atividade" class="form-control form-control-sm" id="AtividadeSelecionado"></select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col text-right">
+                                <button class="btn btn-success btn-sm" onclick="RealizarBusca()">Buscar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border bg-white mt-2 mb-2 text-center font-italic" id="MsgVazio">
+                <h6 class="pl-2 pt-2 pb-1 text-muted font-weight-bold small">Sem Dados de Relatório ! Realize uma nova Busca.</h6>
+            </div>
+
+            <div id="AreaBaseResultadoBusca">
+                <div class="resultado" id="AreaResultadoBusca"></div>
+            </div>
+
+            <!---->
+
+
+            <!---->
+
+
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+
+<script>
+
+    function RealizarBusca() {
+
+        var Filtros = {
+            codigo: $('#txtCodigo').val(),
+            datainicial: $('#CampoDataInicial').val(),
+            datafinal: $('#CampoDataFinal').val(),
+            nomeavaliador: $('#NomeAvaliador').val(),
+            setor: $('#SetorSelecionado').val(),
+            local: $('#LocalSelecionado').val(),
+            nomelocal: $('#LocalSelecionado option:Selected').text(),
+            atividade: $('#AtividadeSelecionado').val(),
+        };
+
+        $.ajax({
+            type: "GET",
+            url: "/RelatorioSetor/BuscarBoletins",
+            data: Filtros,
+            dataType: "html",
+            success: function (response) {
+
+                var MsgVazio = $('#MsgVazio');
+                var AreaBaseResultadoBusca = $('#AreaBaseResultadoBusca');
+                var AreaResultadoBusca = $('#AreaResultadoBusca');
+
+                var html = response.replace("\"", "");
+                html = html.replace("\"", "");
+
+                MsgVazio.remove();
+
+                AreaResultadoBusca.remove();
+
+                AreaBaseResultadoBusca.append("<div class=\"resultado\" id=\"AreaResultadoBusca\"></div>");
+
+                var AreaResultadoBusca = $('#AreaResultadoBusca');
+                AreaResultadoBusca.append(html);
+            }
+        });
+    }
+
+    function BuscaLocal(CodSetor) {
+        $.ajax({
+            type: "GET",
+            url: "/RelatorioSetor/BuscaLocal",
+            data: { CodSetor },
+            dataType: "html",
+            success: function (response) {
+
+                locais = JSON.parse(response);
+
+                // Limpo o Combobox
+                $('#LocalSelecionado').empty();
+
+                $("#LocalSelecionado").append($('<option>', {
+                    value: 0,
+                    text: ""
+                }));
+
+                // Adiciona as demais linhas (dinâmico).
+                $.each(locais, function (id, locais) {
+                    $("#LocalSelecionado").append($('<option>', {
+                        value: locais.iD_Local,
+                        text: locais.nome
+                    }));
+                });
+
+            }
+        });
+
+    }
+
+</script>
+
+}

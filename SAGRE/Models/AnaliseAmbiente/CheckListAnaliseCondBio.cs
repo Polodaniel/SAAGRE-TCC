@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,7 +9,7 @@ namespace SAGRE.Models.AnaliseAmbiente
 {
     public class CheckListAnaliseCondBio
     {
-        public CheckListAnaliseCondBio(){}
+        public CheckListAnaliseCondBio() { }
 
         public CheckListAnaliseCondBio(CheckListAnaliseCondBio x)
         {
@@ -145,5 +146,47 @@ namespace SAGRE.Models.AnaliseAmbiente
 
         [StringLength(3)]
         public string Questao30 { get; set; }
+
+        [NotMapped]
+        public string ResultadoGrafico
+        {
+            get
+            {
+                int Qnt = 0;
+                string Msg = string.Empty;
+
+                Qnt = ( Convert.ToInt32(Questao01) + Convert.ToInt32(Questao02) + Convert.ToInt32(Questao03) + Convert.ToInt32(Questao04) +
+                        Convert.ToInt32(Questao05) + Convert.ToInt32(Questao06) + Convert.ToInt32(Questao07) + Convert.ToInt32(Questao08) + 
+                        Convert.ToInt32(Questao09) + Convert.ToInt32(Questao10) + Convert.ToInt32(Questao11) + Convert.ToInt32(Questao12) + 
+                        Convert.ToInt32(Questao13) + Convert.ToInt32(Questao14) + Convert.ToInt32(Questao15) + Convert.ToInt32(Questao16) + 
+                        Convert.ToInt32(Questao17) + Convert.ToInt32(Questao18) + Convert.ToInt32(Questao19) + Convert.ToInt32(Questao20) + 
+                        Convert.ToInt32(Questao21) + Convert.ToInt32(Questao22) + Convert.ToInt32(Questao23) + Convert.ToInt32(Questao24) + 
+                        Convert.ToInt32(Questao25) + Convert.ToInt32(Questao26) + Convert.ToInt32(Questao27) + Convert.ToInt32(Questao28) +
+                        Convert.ToInt32(Questao29) + Convert.ToInt32(Questao30));
+
+                if (Qnt == 14 || Qnt == 13)
+                {
+                    Msg = "Condição Biomecânica Excelente !";
+                }
+                else if (Qnt >= 10 && Qnt <= 12)
+                {
+                    Msg = "Boa Condição Biomecânica !";
+                }
+                else if (Qnt >= 7 && Qnt <= 9)
+                {
+                    Msg = "Condição Biomecânica Razoável !";
+                }
+                else if (Qnt >= 4 && Qnt <= 6)
+                {
+                    Msg = "Condição Biomecânica Ruim !";
+                }
+                else if (Qnt <= 3)
+                {
+                    Msg = "Condição Biomecânica Péssima !";
+                }
+
+                return Msg;
+            }
+        }
     }
 }

@@ -15,16 +15,15 @@ using SAGRE.Models.AnaliseAmbiente;
 namespace SAGRE.Controllers
 {
     [Authorize]
-    public class RelatorioCompletoController : Controller
+    public class RelatorioSetorController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public RelatorioCompletoController(ApplicationDbContext context)
+        public RelatorioSetorController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: RelatorioCompleto
         public ActionResult Index()
         {
             var Setor = _context.SetorModel.Where(x => x.Inativo != true).ToList();
@@ -61,7 +60,27 @@ namespace SAGRE.Controllers
 
             ViewBag.Local = itemsLocal;
 
+
             return View();
+        }
+
+        public IActionResult BuscarBoletins(Filtro filtros)
+        {
+            List<BoletimModel> Lista = new List<BoletimModel>();
+            List<BoletimModel> ListaAux = new List<BoletimModel>();
+
+            Lista = _context.BoletimModel.Include("ListaAnalisePostura").Include("listanasa").Where(x => x.ID > 0).ToList();
+
+            if (Equals(filtros, null))
+                return Json(Lista);
+
+            if (!Equals(Lista, null) || !Equals(Lista.Count, 0))
+                ListaAux = BuscaBoletinsFiltro(Lista, filtros);
+
+            string HTML_Pesquisa = MontaHTMLPesquisa(ListaAux, filtros);
+
+            return Json(HTML_Pesquisa);
+            //return Json(ListaAux);
         }
 
         [HttpGet]
@@ -90,26 +109,6 @@ namespace SAGRE.Controllers
 
 
             return Json(ListaLocal);
-        }
-
-        [HttpGet]
-        public IActionResult BuscarBoletins(Filtro filtros)
-        {
-            List<BoletimModel> Lista = new List<BoletimModel>();
-            List<BoletimModel> ListaAux = new List<BoletimModel>();
-
-            Lista = _context.BoletimModel.Include("ListaAnalisePostura").Include("listanasa").Where(x => x.ID > 0).ToList();
-
-            if (Equals(filtros, null))
-                return Json(Lista);
-
-            if (!Equals(Lista, null) || !Equals(Lista.Count, 0))
-                ListaAux = BuscaBoletinsFiltro(Lista, filtros);
-
-            string HTML_Pesquisa = MontaHTMLPesquisa(ListaAux, filtros);
-
-            return Json(HTML_Pesquisa);
-            //return Json(ListaAux);
         }
 
         private List<BoletimModel> BuscaBoletinsFiltro(List<BoletimModel> lista, Filtro filtros)
@@ -159,7 +158,7 @@ namespace SAGRE.Controllers
 
         private string MontaHTMLPesquisa(List<BoletimModel> listaBoletim, Filtro filtros)
         {
-            if (!Equals(listaBoletim.Count,0))
+            if (!Equals(listaBoletim.Count, 0))
             {
                 #region Busca Setor/Atividade/Local
                 var Setor = _context.SetorModel.Where(x => x.ID > 0).ToList();
@@ -219,7 +218,7 @@ namespace SAGRE.Controllers
 
                 StringBuilder sb = new StringBuilder();
                 sb.AppendLine("<div class='border bg-white pb-3 pl-3 pr-3 mt-2 mb-2' data-toggle='collapse' href='##ID_Card_Collapse#' role='button' aria-expanded='false' aria-controls='##ID_Card_Collapse#'>");
-                sb.AppendLine("     <h5 class='mt-3'>#Nome_Avaliador#</h5>                                                                    ");
+                sb.AppendLine("     <h5 class='mt-3'>#Nome_Setor#</h5>                                                                        ");
                 sb.AppendLine("     <div class='collapse mt-4' id='#ID_Card_Collapse#'>                                                       ");
                 sb.AppendLine("         <div class='row'>                                                                                     ");
                 sb.AppendLine("             <div class='col-8'>                                                                               ");
@@ -229,7 +228,7 @@ namespace SAGRE.Controllers
                 sb.AppendLine("                             <tr class='text-light bg-dark'>                                                   ");
                 sb.AppendLine("                                 <td>N°</td>                                                                   ");
                 sb.AppendLine("                                 <td>Data</td>                                                                 ");
-                sb.AppendLine("                                 <td>Setor</td>                                                                ");
+                sb.AppendLine("                                 <td>Avaliador</td>                                                            ");
                 sb.AppendLine("                                 <td>Local</td>                                                                ");
                 sb.AppendLine("                                 <td>Atividade</td>                                                            ");
                 sb.AppendLine("                             </tr>                                                                             ");
@@ -280,7 +279,7 @@ namespace SAGRE.Controllers
                 Tabela_Dados_Boletins.AppendLine("<tr>                                                                   ");
                 Tabela_Dados_Boletins.AppendLine("  <td>#Numero_Boletim#</td>                                            ");
                 Tabela_Dados_Boletins.AppendLine("  <td>#Data_Boletim#</td>                                              ");
-                Tabela_Dados_Boletins.AppendLine("  <td>#Setor_Boletim#</td>                                             ");
+                Tabela_Dados_Boletins.AppendLine("  <td>#Avaliador_Boletim#</td>                                         ");
                 Tabela_Dados_Boletins.AppendLine("  <td>#Local_Boletim#</td>                                             ");
                 Tabela_Dados_Boletins.AppendLine("  <td>#Atividade_Boletim#</td>                                         ");
                 Tabela_Dados_Boletins.AppendLine("</tr>                                                                  ");
@@ -301,14 +300,15 @@ namespace SAGRE.Controllers
 
                 #endregion
 
-                var lista = listaBoletim.GroupBy(x => x.NomeFiscal).ToList();
+                var lista = listaBoletim.GroupBy(x => x.Setor).ToList();
 
                 foreach (var listaAgrupada in lista)
                 {
                     var HtmlEditado = HtmlBase;
+                    var SetorNome = Setor.Where(x => x.ID == Convert.ToInt32(listaAgrupada.Key)).Select(x => x.Nome).FirstOrDefault();
 
                     HtmlEditado = HtmlEditado.Replace("#ID_Card_Collapse#", "ID_Card_Collapse_" + Indice);
-                    HtmlEditado = HtmlEditado.Replace("#Nome_Avaliador#", listaAgrupada.Key);
+                    HtmlEditado = HtmlEditado.Replace("#Nome_Setor#", SetorNome);
                     var HtmlEditadoTabelaDadosBoletins = string.Empty;
                     var HtmlEditadoTabelaDadosBoletinsAnalise = string.Empty;
 
@@ -327,7 +327,7 @@ namespace SAGRE.Controllers
 
                         HtmlTabelaDadosBoletins = HtmlTabelaDadosBoletins.Replace("#Numero_Boletim#", item.ID.ToString());
                         HtmlTabelaDadosBoletins = HtmlTabelaDadosBoletins.Replace("#Data_Boletim#", Convert.ToDateTime(item.Data).ToShortDateString());
-                        HtmlTabelaDadosBoletins = HtmlTabelaDadosBoletins.Replace("#Setor_Boletim#", SetorBoletim.ToString());
+                        HtmlTabelaDadosBoletins = HtmlTabelaDadosBoletins.Replace("#Avaliador_Boletim#", item.NomeFiscal.ToString());
                         HtmlTabelaDadosBoletins = HtmlTabelaDadosBoletins.Replace("#Local_Boletim#", LocalBoletim.ToString());
                         HtmlTabelaDadosBoletins = HtmlTabelaDadosBoletins.Replace("#Atividade_Boletim#", AtividadeBoletim.ToString());
 
@@ -459,7 +459,6 @@ namespace SAGRE.Controllers
                 }
 
                 var QntTotalBoletim = listaBoletim.Count.ToString();
-
                 var UltimoBoletim = listaBoletim.Select(x => x.ID).LastOrDefault().ToString();
                 if (ListaFiltro.Count > 0)
                 {
@@ -484,8 +483,6 @@ namespace SAGRE.Controllers
                     else
                         HtmlBaseTotalizador = HtmlBaseTotalizador.Replace("#Local_Apontamento#", "");
                 }
-
-
 
                 var AnalisePostura = ContadorAnalisePostura;
                 var AnaliseCognitiva = ContadorAnaliseCognitiva;
@@ -603,27 +600,5 @@ namespace SAGRE.Controllers
         }
     }
 
-    public class Filtro
-    {
-        public string codigo { get; set; }
-        public string datainicial { get; set; }
-        public string datafinal { get; set; }
-        public string nomeavaliador { get; set; }
-        public string setor { get; set; }
-        public string local { get; set; }
-        public string nomelocal { get; set; }
-        public string atividade { get; set; }
-    }
 
-    public class FiltroBoletim
-    {
-        public FiltroBoletim(string nomeSetor, int qnt)
-        {
-            NomeSetor = nomeSetor;
-            Qnt = qnt;
-        }
-
-        public string NomeSetor { get; set; }
-        public int Qnt { get; set; }
-    }
 }

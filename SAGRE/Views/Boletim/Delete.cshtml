@@ -1,57 +1,121 @@
 ﻿@model SAGRE.Models.BoletimModel
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Deletar o Boletim";
 }
 
-<h2>Delete</h2>
+<div class="col mt-2">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Ínicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+        </ol>
+    </nav>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>BoletimModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NomeFiscal)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.NomeFiscal)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Data)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Data)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Setor)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Setor)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Descricao)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Descricao)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Flag)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Flag)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="ID" />
-        <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h5> <i class="fas fa-layer-group mr-3"></i>Boletim N° @Html.DisplayFor(model => model.ID)</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">
+                                <div class="col-3 font-weight-bold">
+                                    Nome do Avaliador: 
+                                </div>
+                                <div class="col">
+                                    @Html.DisplayFor(model => model.NomeFiscal)
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-3 font-weight-bold">
+                                    @Html.DisplayNameFor(model => model.Descricao):
+                                </div>
+                                <div class="col">
+                                    @{
+                                        @if (Model.Descricao == null)
+                                        {
+                                            <label class="font-italic font-weight-light">Sem Descrição Cadastrado</label>
+                                        }
+                                        else
+                                        {
+                                            @Html.DisplayFor(model => model.Descricao)
+                                        }
+                                    }
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-3 font-weight-bold">
+                                    Status
+                                </div>
+                                <div class="col">
+                                    @Html.DisplayFor(model => model.Status)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col text-right">
+                            <form asp-action="Delete">
+                                <input type="hidden" asp-for="ID" />
+                                <a asp-action="Index" class="btn btn-sm btn-secondary">Voltar</a>
+                                <input type="submit" value="Excluir" class="btn btn-danger btn-sm" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+
+    @*<h2>Delete</h2>
+
+        <h3>Are you sure you want to delete this?</h3>
+        <div>
+            <h4>BoletimModel</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.NomeFiscal)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.NomeFiscal)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Data)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Data)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Setor)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Setor)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Descricao)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Descricao)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Status)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Status)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Flag)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Flag)
+                </dd>
+            </dl>*@
+

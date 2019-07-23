@@ -1,17 +1,64 @@
 ﻿@page
 @model RegisterModel
+
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "Cadatro de um Novo Usuario";
 }
 
-<div class="col-4 mt-5">
-    <div class="row mt-5">
-        <div class="col small">
-            <div class="card">
-                <div class="card-header">Oque é ?</div>
-                <div class="card-body p-0">
-                    <div class="row p-2">
-                        <div class="col">Lorem ipsum metus curae fermentum sodales condimentum ultricies volutpat congue dolor, nam porta torquent sollicitudin congue magna vehicula habitasse arcu. iaculis aliquet eleifend hendrerit sit integer ac tristique primis, netus elementum augue sapien massa congue donec, ipsum hendrerit curabitur ad ipsum mi ad. nam torquent aliquet litora nunc egestas augue, netus suscipit hac maecenas luctus ornare habitant, quisque mi curabitur urna at</div>
+<div class="col mt-2">
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Ínicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+        </ol>
+    </nav>
+    <div class="row">
+        <div class="col">
+
+            <div class=" ml-1">
+                <div class="card">
+                    <div class="row"></div>
+                    <div class="card-header">
+                        Cadastro de um Novo Setor
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <h4>Informação</h4>
+                                Área para cadastro de um novo Setor da Empresa , onde tem a finalidade de apontar em qual área da empresa em que esta sendo realizado a análise , pois para uma tomada de decição fica mais facil a localização.
+                            </div>
+                            <div class="col-6">
+                                <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <div class="form-group">
+                                        <label asp-for="Input.Nome" class="control-label"></label>
+                                        <input asp-for="Input.Nome" class="form-control" />
+                                        <span asp-validation-for="Input.Nome" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Input.Email" class="control-label"></label>
+                                        <input asp-for="Input.Email" class="form-control" />
+                                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Input.Password" class="control-label"></label>
+                                        <input asp-for="Input.Password" class="form-control" />
+                                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Input.ConfirmPassword" class="control-label"></label>
+                                        <input asp-for="Input.ConfirmPassword" class="form-control" />
+                                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-succ   ess float-right ml-3">Salvar</button>
+                                        <a asp-action="Index" class="btn btn-warning float-right">Voltar</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -19,35 +66,50 @@
     </div>
 </div>
 
-<div class="col mt-5">
-    <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-        <h4>Criar Nova Conta.</h4>
-        <hr />
-        <div asp-validation-summary="All" class="text-danger"></div>
-        <div class="form-group">
-            <label asp-for="Input.Nome"></label>
-            <input asp-for="Input.Nome" class="form-control" />
-            <span asp-validation-for="Input.Nome" class="text-danger"></span>
+@*<div class="col-4 mt-5">
+        <div class="row mt-5">
+            <div class="col small">
+                <div class="card">
+                    <div class="card-header">Oque é ?</div>
+                    <div class="card-body p-0">
+                        <div class="row p-2">
+                            <div class="col">Lorem ipsum metus curae fermentum sodales condimentum ultricies volutpat congue dolor, nam porta torquent sollicitudin congue magna vehicula habitasse arcu. iaculis aliquet eleifend hendrerit sit integer ac tristique primis, netus elementum augue sapien massa congue donec, ipsum hendrerit curabitur ad ipsum mi ad. nam torquent aliquet litora nunc egestas augue, netus suscipit hac maecenas luctus ornare habitant, quisque mi curabitur urna at</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label asp-for="Input.Email"></label>
-            <input asp-for="Input.Email" class="form-control" />
-            <span asp-validation-for="Input.Email" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Input.Password"></label>
-            <input asp-for="Input.Password" class="form-control" />
-            <span asp-validation-for="Input.Password" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Input.ConfirmPassword"></label>
-            <input asp-for="Input.ConfirmPassword" class="form-control" />
-            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-        </div>
-        <button type="submit" class="btn btn-sm btn-success float-right ml-3">Register</button>
-    </form>
+    </div>
+
+    <div class="col mt-5">
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h4>Criar Nova Conta.</h4>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Input.Nome"></label>
+                <input asp-for="Input.Nome" class="form-control" />
+                <span asp-validation-for="Input.Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Email"></label>
+                <input asp-for="Input.Email" class="form-control" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Password"></label>
+                <input asp-for="Input.Password" class="form-control" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.ConfirmPassword"></label>
+                <input asp-for="Input.ConfirmPassword" class="form-control" />
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-sm btn-success float-right ml-3">Register</button>
+        </form>
         <button type="button" class="btn btn-sm btn-warning float-right" asp-controller="Home" asp-action="Index">Voltar</button>
-</div>
+    </div>*@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

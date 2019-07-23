@@ -1,0 +1,245 @@
+﻿@{
+    ViewData["Title"] = "Grafico dos Boletins Lançados";
+}
+
+<div class="col mt-2">
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Ínicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col">
+
+            <div class="">
+                <div class='border bg-white pb-4 pl-3 pr-3 mt-2 mb-2' data-toggle='collapse' href='##ID_Card_Collapse#' role='button' aria-expanded='false' aria-controls='##ID_Card_Collapse#'>
+                    <h5 class='mt-3'>Boletins dos Últimos 7 Dias</h5>
+                    <hr class='mt-1 mb-2' />
+                    <div class='row mb-1'>
+                        <div class='col'>
+                            <p class='small mb-0'><span class='small font-weight-bold'>Total de Boletins</span></p>
+                            <p class='mt-0 mb-0 ml-1'>@ViewBag.TotalBoletim
+                        </div>
+                        <div class='col'>
+                            <p class='small mb-0'><span class='small font-weight-bold'>Ultimo Boletim</span></p>
+                            <p class='mt-0 mb-0 ml-1'>@ViewBag.UltimoBoletim
+                        </div>
+                        <div class='col'>
+                            <p class='small mb-0'><span class='small font-weight-bold'>Data: </span><span class='small font-weight-bold' id="StringData0">@ViewBag.TotalizadoBoletim[0].Data</span></p>
+                            <p class='mt-0 mb-0 ml-1' id="ValorBoletim0">@ViewBag.TotalizadoBoletim[0].Valor
+                        </div>
+                    </div>
+                    <div class='row mb-1'>
+                        <div class='col'>
+                            <p class='small mb-0'><span class='small font-weight-bold'>Data: </span><span class='small font-weight-bold' id="StringData1">@ViewBag.TotalizadoBoletim[1].Data</span></p>
+                            <p class='mt-0 mb-0 ml-1' id="ValorBoletim1">@ViewBag.TotalizadoBoletim[1].Valor
+                        </div>
+                        <div class='col'>
+                            <p class='small mb-0'><span class='small font-weight-bold'>Data: </span><span class='small font-weight-bold' id="StringData2">@ViewBag.TotalizadoBoletim[2].Data</span></p>
+                            <p class='mt-0 mb-0 ml-1' id="ValorBoletim2">@ViewBag.TotalizadoBoletim[2].Valor
+                        </div>
+                        <div class='col'>
+                            <p class='small mb-0'><span class='small font-weight-bold'>Data: </span><span class='small font-weight-bold' id="StringData3">@ViewBag.TotalizadoBoletim[3].Data</span></p>
+                            <p class='mt-0 mb-0 ml-1' id="ValorBoletim3">@ViewBag.TotalizadoBoletim[3].Valor
+                        </div>
+                    </div>
+                    <div class='row mb-1'>
+                        <div class='col'>
+                            <p class='small mb-0'><span class='small font-weight-bold'>Data: </span><span class='small font-weight-bold' id="StringData4">@ViewBag.TotalizadoBoletim[4].Data</span></p>
+                            <p class='mt-0 mb-0 ml-1' id="ValorBoletim4">@ViewBag.TotalizadoBoletim[4].Valor
+                        </div>
+                        <div class='col'>
+                            <p class='small mb-0'><span class='small font-weight-bold'>Data: </span><span class='small font-weight-bold' id="StringData5">@ViewBag.TotalizadoBoletim[5].Data</span></p>
+                            <p class='mt-0 mb-0 ml-1' id="ValorBoletim5">@ViewBag.TotalizadoBoletim[5].Valor
+                        </div>
+                        <div class='col'>
+                            <p class='small mb-0'><span class='small font-weight-bold'>Data: </span><span class='small font-weight-bold' id="StringData6">@ViewBag.TotalizadoBoletim[6].Data</span></p>
+                            <p class='mt-0 ml-1' id="ValorBoletim6">@ViewBag.TotalizadoBoletim[6].Valor
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="col">
+
+            <div class="mt-2">
+                <div class="border bg-white pl-3 pr-3">
+                    <h5 class='mt-3'>Grafico de Boletins dos Últimos 7 Dias</h5>
+                    <hr class='mt-1 mb-2' />
+                    <div class="row">
+                        <div class="col-9">
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="GraficoBarraBoletim" role="tabpanel" aria-labelledby="list-home-list">
+                                    <div class="p-0" id="chartBoletimBarra"></div>
+                                </div>
+                                <div class="tab-pane fade" id="GraficoSetorBoletim" role="tabpanel" aria-labelledby="list-profile-list">
+                                    <div class="p-0" id="chartBoletimSetor"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="list-group" id="list-tab" role="tablist">
+                                <a class="list-group-item list-group-item-action active small p-1" id="list-home-list" data-toggle="list" href="#GraficoBarraBoletim" role="tab" aria-controls="home">Barra</a>
+                                <a class="list-group-item list-group-item-action small p-1" id="list-profile-list" data-toggle="list" href="#GraficoSetorBoletim" role="tab" aria-controls="profile">Setor</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+
+            <div class="">
+                <div class='border bg-white pb-4 pl-3 pr-3 mt-2 mb-2' data-toggle='collapse' href='##ID_Card_Collapse#' role='button' aria-expanded='false' aria-controls='##ID_Card_Collapse#'>
+                    <h5 class='mt-3'>Metodologias Lançadas nos Últimos 7 Dias</h5>
+                    <hr class='mt-1 mb-2' />
+                    <div class='row mb-1'>
+                        <div class='col'>
+                            <p class='small mb-0'><span class='small font-weight-bold'>Análise de Postura - Possível Risco de Aciente</span></p>
+                            <p class='mt-0 mb-0 ml-1' id="MetodologiaPostura">@ViewBag.AnalisePosturaRisco
+                        </div>
+                        <div class='col'>
+                            <p class='small mb-0'><span class='small font-weight-bold' id="StringData1">Análise Cognitiva - Possível Risco de Aciente</span></p>
+                            <p class='mt-0 mb-0 ml-1' id="MetodologiaCognitiva">@ViewBag.AnaliseCognitivaRisco
+                        </div>
+                    </div>
+                    <div class='row mb-5'>
+                        <div class='col'>
+                            <p class='small mb-0'><span class='small font-weight-bold' id="StringData5">CheckList Bio. - Possível Risco de Aciente</span></p>
+                            <p class='mt-0 mb-0 ml-1' id="MetodologiaCheckBio">@ViewBag.AnaliseCheckListBioRisco
+                        </div>
+                        <div class='col'>
+                            <p class='small mb-0'><span class='small font-weight-bold' id="StringData6">CheckList Erg. - Possível Risco de Aciente</span></p>
+                            <p class='mt-0 ml-1' id="MetodologiaCheckErg">@ViewBag.AnaliseCheckListErgRisco
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col">
+
+            <div class="mt-2">
+                <div class="border bg-white pl-3 pr-3">
+                    <h5 class='mt-3'>Grafico de Metodologia dos Últimos 7 Dias</h5>
+                    <hr class='mt-1 mb-2' />
+                    <div class="row">
+                        <div class="col-9">
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="GraficoBarraMetodologia" role="tabpanel" aria-labelledby="list-home-list">
+                                    <div class="p-0" id="chartMetodologiaBarra"></div>
+                                </div>
+                                <div class="tab-pane fade" id="GraficoSetorMetodologia" role="tabpanel" aria-labelledby="list-profile-list">
+                                    <div class="p-0" id="chartMetodologiaSetor"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="list-group" id="list-tab" role="tablist">
+                                <a class="list-group-item list-group-item-action active small p-1" id="list-home-list" data-toggle="list" href="#GraficoBarraMetodologia" role="tab" aria-controls="home">Barra</a>
+                                <a class="list-group-item list-group-item-action small p-1" id="list-profile-list" data-toggle="list" href="#GraficoSetorMetodologia" role="tab" aria-controls="profile">Setor</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</div>
+
+@section Scripts {
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script>
+        google.charts.load('current', { 'packages': ['corechart'] });
+
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+            var StringData0 = $('#StringData0').text();
+            var StringData1 = $('#StringData1').text();
+            var StringData2 = $('#StringData2').text();
+            var StringData3 = $('#StringData3').text();
+            var StringData4 = $('#StringData4').text();
+            var StringData5 = $('#StringData5').text();
+            var StringData6 = $('#StringData6').text();
+
+            var ValorData0 = parseInt($('#ValorBoletim0').text());
+            var ValorData1 = parseInt($('#ValorBoletim1').text());
+            var ValorData2 = parseInt($('#ValorBoletim2').text());
+            var ValorData3 = parseInt($('#ValorBoletim3').text());
+            var ValorData4 = parseInt($('#ValorBoletim4').text());
+            var ValorData5 = parseInt($('#ValorBoletim5').text());
+            var ValorData6 = parseInt($('#ValorBoletim6').text());
+
+            var ValorDataPostura = parseInt($('#MetodologiaPostura').text());
+            var ValorDataCogntiva = parseInt($('#MetodologiaCognitiva').text());
+            var ValorDataCheckBio = parseInt($('#MetodologiaCheckBio').text());
+            var ValorDataCheckErg = parseInt($('#MetodologiaCheckErg').text());
+
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Data');
+            data.addColumn('number', 'Qnt');
+            data.addRows([
+                [StringData0, ValorData0],
+                [StringData1, ValorData1],
+                [StringData2, ValorData2],
+                [StringData3, ValorData3],
+                [StringData4, ValorData4],
+                [StringData5, ValorData5],
+                [StringData6, ValorData6],
+            ]);
+
+            var data2 = new google.visualization.DataTable();
+            data2.addColumn('string', 'Análise');
+            data2.addColumn('number', 'Qnt');
+            data2.addRows([
+                ['Análise Postura', ValorDataPostura],
+                ['Análise Cognitiva', ValorDataCogntiva],
+                ['CheckList Bio.', ValorDataCheckBio],
+                ['CheckList Erg.', ValorDataCheckErg],
+            ]);
+
+            var options = {
+                'legend': 'left',
+                'is3D': true,
+                'width': 450,
+                'height': 180,
+                bar: { groupWidth: '90%' }
+                //colors: ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6']
+            };
+
+
+            // Instantiate and draw our chart, passing in some options.
+            var chartBoletimBarra = new google.visualization.ColumnChart(document.getElementById('chartBoletimBarra'));
+            var chartBoletimSetor = new google.visualization.PieChart(document.getElementById('chartBoletimSetor'));
+
+            var chartMetodologiaBarra = new google.visualization.ColumnChart(document.getElementById('chartMetodologiaBarra'));
+            var chartMetodologiaSetor = new google.visualization.PieChart(document.getElementById('chartMetodologiaSetor'));
+
+            chartBoletimBarra.draw(data, options);
+            chartBoletimSetor.draw(data, options);
+
+            chartMetodologiaBarra.draw(data2, options);
+            chartMetodologiaSetor.draw(data2, options);
+        }
+
+
+    </script>
+
+}
