@@ -31,26 +31,26 @@
     @if (SignInManager.IsSignedIn(User))
     {
 
-        <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
-            <a class="navbar-brand fontNavBar" href="#">Sistema de Análise e Apoio a Gestão de Risco Ergonômico</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+        <nav class="navbar navbar-dark bg-dark navbar-expand-lg p-0">
+            <a class="navbar-brand fontNavBar pl-3" href="#">Sistema de Análise e Apoio a Gestão de Risco Ergonômico</a>
+            <button class="navbar-toggler m-1" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+            <div class="collapse navbar-collapse w-100" id="conteudoNavbarSuportado">
                 <ul class="navbar-nav mr-auto">
                 </ul>
                 <div class="form-inline my-2 my-lg-0">
 
                     <ul class="navbar-nav mr-auto">
 
-                        <li class="nav-item active">
+                        <li class="nav-item active bg-info p-1">
                             <a class="nav-link" asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i> Ínicio <span class="sr-only">(página atual)</span></a>
                         </li>
-                        <li class="nav-item active">
+                        <li class="nav-item active bg-info mt-0 mb-0 p-1">
                             <a class="nav-link" asp-controller="Boletim" asp-action="Index"><i class="fas fa-edit"></i> Lançar Boletim</a>
                         </li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item active dropdown bg-info p-1">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-paste"></i> Relatórios
                             </a>
@@ -60,14 +60,14 @@
                                 <div class="dropdown-divider mt-0"></div>
                                 <a class="dropdown-item small" asp-controller="RelatorioCompleto" asp-action="Index"><i class="fas fa-user mr-2"></i>Relatório por Avaliador</a>
                                 <a class="dropdown-item small" asp-controller="RelatorioAtividade" asp-action="Index"><i class="fas fa-people-carry mr-2"></i>Relatório por Atividade</a>
-                                <a class="dropdown-item small" asp-controller="RelatorioSetor" asp-action="Index"><i class="fas fa-store-alt mr-2"></i>Relatório por Seto</a>
+                                <a class="dropdown-item small" asp-controller="RelatorioSetor" asp-action="Index"><i class="fas fa-store-alt mr-2"></i>Relatório por Setor</a>
                                 <div class="dropdown-divider mb-0"></div>
                                 <a class=" dropdown-item small mb-1 text-center"><span class="small font-weight-bold">Gráficos de Boletins</span></a>
                                 <div class="dropdown-divider mt-0"></div>
                                 <a class="dropdown-item small mt-0" asp-controller="GraficoBoletins" asp-action="Index"><i class="fas fa-chart-pie mr-2"></i>Boletins Lançados</a>
                             </div>
                         </li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown active bg-info p-1">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="far fa-plus-square"></i> Cadastros
                             </a>
@@ -83,7 +83,7 @@
                                 <a class="dropdown-item small mt-0" asp-controller="Atividades" asp-action="Index"><i class="fas fa-people-carry mr-3"></i>Atividades</a>
                             </div>
                         </li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown active bg-info p-1">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-cogs"></i> Configuração
                             </a>
@@ -101,7 +101,7 @@
                         </li>
                         @if (SignInManager.IsSignedIn(User))
                         {
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown active bg-info p-1">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-user"></i> @UserManager.GetUserName(User)
                                 </a>

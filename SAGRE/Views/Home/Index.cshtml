@@ -23,7 +23,7 @@
 
     <div class="row">
 
-        <div class="col-sm col-md col-lg col">
+        <div class="col-sm col-md-8 col-lg-8 col">
 
             @{
                 var Config = @UserManager.GetUserName(User).ToString();
@@ -40,9 +40,9 @@
 
             }
 
-            <div class="row pl-3">
+            <div class="row pl-3 mb-3">
                 <div class="col-sm col col-md col-lg  card p-3 bg-light">
-                    <h1 class="display-4"> @ViewBag.Horario,<span class="text-capitalize"> @Nome!</span></h1>
+                    <h1 class="display-4"> <span class="fontMsgBoasVindas">@ViewBag.Horario,<span class="text-capitalize"> @Nome!</span></span></h1>
                     <p class="lead">Seja Bem Vindo(a) ao Sistema de Análise e Apoio a Gestão de Risco Ergonômico com base nos apontamentos realizado pelo fiscal.</p>
                     <hr class="my-4">
                     <p>Segue ao lado direito a contagem de Dados lançados no Sistema com os seus respectivos status.</p>
@@ -50,7 +50,7 @@
             </div>
         </div>
 
-        <div class="col-sm col col-md col-lg mt-3 w-100 pr-0">
+        <div class="col-sm col col-md col-lg w-100 pr-0">
             <div class="row">
                 <div class="col small">
                     <div class="card">
