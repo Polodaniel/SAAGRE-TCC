@@ -25,10 +25,10 @@ namespace SAGRE.Controllers.AnaliseAmbiente
             return View(await _context.TmpCheckList.ToListAsync());
         }
 
-        public async Task<IActionResult> Questionario1()
-        {
-            return View();
-        }
+        //public async Task<IActionResult> Questionario1()
+        //{
+        //    return View();
+        //}
 
         // GET: TmpCheckList/Details/5
         public async Task<IActionResult> Details(int? id)

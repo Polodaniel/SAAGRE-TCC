@@ -40,7 +40,8 @@ body {
 /* max-width  */
 @media screen and (max-width: 600px) {
     .fontNavBar {
-        font-size: 10px;
+        font-size: 13px;
+        font-weight: bold;
     }
 }
 
@@ -53,6 +54,11 @@ body {
     span.gt900 {
         display: inline-block;
     }
+
+    .fontNavBar {
+        font-size: 13px;
+        font-weight: bold;
+    }
 }
 
 /* min-width & max-width */
@@ -64,11 +70,28 @@ body {
     span.bt600-900 {
         display: inline-block;
     }
+
+    .fontNavBar {
+        font-size: 12px;
+        font-weight: bold;
+    }
 }
 
 /* max device width */
 @media screen and (max-device-width: 480px) {
     .iphone {
         background: #ccc;
+    }
+
+    .fontNavBar {
+        font-size: 10px;
+        font-weight: bold;
+    }
+}
+
+@media screen and (max-device-width: 370px) {
+    .fontNavBar {
+        font-size: 9px;
+        font-weight: bold;
     }
 }

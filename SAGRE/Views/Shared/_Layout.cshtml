@@ -30,136 +30,113 @@
 <body class="p-0 m-0 bg-light">
     @if (SignInManager.IsSignedIn(User))
     {
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="btn fas fa-bars text-light float-right" data-toggle="collapse" href="#MenuLateral" role="button"
-               aria-expanded="false" aria-controls="MenuLateral"></a>
-            <a class="navbar-brand" href="#">
-                <span class="badge badge-dark">
-                    Sistema de Análise e Apoio a Gestão de Risco Ergonômico - <span class="badge badge-secondary">
-                        SAAGRE
-                    </span>
-                </span>
-            </a>
-            @if (SignInManager.IsSignedIn(User))
-            {
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado"
-                              aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
 
-                <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
-                        <ul class="navbar-nav mr-auto"></ul>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Seja Bem Vindo @UserManager.GetUserName(User)
-                            </button>
-                            <div class="dropdown-menu w-25" aria-labelledby="dropdownMenuButton">
-                                <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home" , new { area="" })" method="post" id="logoutForm" class="navbar-right form-inline my-2 my-lg-0">
-                                    <button type="submit" class="dropdown-item small"><i class="fas fa-sign-out-alt mr-3 ml-0"></i> Sair</button>
-                                </form>
+        <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+            <a class="navbar-brand fontNavBar" href="#">Sistema de Análise e Apoio a Gestão de Risco Ergonômico</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+                <ul class="navbar-nav mr-auto">
+                </ul>
+                <div class="form-inline my-2 my-lg-0">
+
+                    <ul class="navbar-nav mr-auto">
+
+                        <li class="nav-item active">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i> Ínicio <span class="sr-only">(página atual)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" asp-controller="Boletim" asp-action="Index"><i class="fas fa-edit"></i> Lançar Boletim</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-paste"></i> Relatórios
+                            </a>
+                            <div class="dropdown-menu pt-1" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-divider mb-0 mt-0"></div>
+                                <a class=" dropdown-item small mb-1 text-center"><span class="small font-weight-bold">Risco Ergonômico - Completo</span></a>
+                                <div class="dropdown-divider mt-0"></div>
+                                <a class="dropdown-item small" asp-controller="RelatorioCompleto" asp-action="Index"><i class="fas fa-user mr-2"></i>Relatório por Avaliador</a>
+                                <a class="dropdown-item small" asp-controller="RelatorioAtividade" asp-action="Index"><i class="fas fa-people-carry mr-2"></i>Relatório por Atividade</a>
+                                <a class="dropdown-item small" asp-controller="RelatorioSetor" asp-action="Index"><i class="fas fa-store-alt mr-2"></i>Relatório por Seto</a>
+                                <div class="dropdown-divider mb-0"></div>
+                                <a class=" dropdown-item small mb-1 text-center"><span class="small font-weight-bold">Gráficos de Boletins</span></a>
+                                <div class="dropdown-divider mt-0"></div>
+                                <a class="dropdown-item small mt-0" asp-controller="GraficoBoletins" asp-action="Index"><i class="fas fa-chart-pie mr-2"></i>Boletins Lançados</a>
                             </div>
-                        </div>
-                    </div>
-            }
-            else
-            {
-                <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
-                    <ul class="navbar-nav mr-auto"></ul>
-                    <form class="form-inline my-2 my-lg-0">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a asp-area="Identity" asp-page="/Account/Register" class="btn btn-sm btn-secondary mr-1">Registrar</a></li>
-                            <li><a asp-area="Identity" asp-page="/Account/Login" class="btn btn-sm btn-secondary mr-1">Logar-se</a></li>
-                        </ul>
-                    </form>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="far fa-plus-square"></i> Cadastros
+                            </a>
+                            <div class="dropdown-menu pt-1" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-divider mb-0 mt-0"></div>
+                                <a class=" dropdown-item small mb-1 text-center"><span class="small font-weight-bold">Empresa</span></a>
+                                <div class="dropdown-divider mt-0"></div>
+                                <a class="dropdown-item small ml-0" asp-controller="Setor" asp-action="Index"><i class="fas fa-store-alt mr-2"></i>Setor da Empresa</a>
+                                <a class="dropdown-item small" asp-controller="Local" asp-action="Index"><i class="fas fa-layer-group mr-3"></i>Local da Empresa</a>
+                                <div class="dropdown-divider mb-0"></div>
+                                <a class=" dropdown-item small mb-1 text-center"><span class="small font-weight-bold">Risco Ergonômicos</span></a>
+                                <div class="dropdown-divider mt-0"></div>
+                                <a class="dropdown-item small mt-0" asp-controller="Atividades" asp-action="Index"><i class="fas fa-people-carry mr-3"></i>Atividades</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-cogs"></i> Configuração
+                            </a>
+                            <div class="dropdown-menu pt-1" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-divider mb-0 mt-0"></div>
+                                <a class=" dropdown-item small mb-1 text-center"><span class="small font-weight-bold">Configuração de Sistema</span></a>
+                                <div class="dropdown-divider mt-0"></div>
+                                <a class="dropdown-item small ml-0" asp-controller="GruposRisco" asp-action="Index"><i class="fas fa-layer-group mr-3"></i>Grupo de Risco</a>
+                                <a class="dropdown-item small" asp-area="Identity" asp-page="/Account/Register"><i class="fas fa-user-plus mr-3"></i>Usuário</a>
+                                <div class="dropdown-divider mb-0"></div>
+                                <a class=" dropdown-item small mb-1 text-center"><span class="small font-weight-bold">Parâmetros de Análise</span></a>
+                                <div class="dropdown-divider mt-0"></div>
+                                <a class="dropdown-item small mt-0" asp-controller="ClassificaoOWAS" asp-action="Index"><i class="fas fa-layer-group mr-3"></i>Classificação OWAS</a>
+                            </div>
+                        </li>
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-user"></i> @UserManager.GetUserName(User)
+                                </a>
+                                <div class="dropdown-menu pt-1 pb-1" aria-labelledby="navbarDropdown">
+                                    <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home" , new { area="" })" method="post" id="logoutForm" class="navbar-right form-inline mb-1 mt-1">
+                                        <button type="submit" class="dropdown-item small"><i class="fas fa-sign-out-alt mr-3 ml-0"></i> Sair</button>
+                                    </form>
+                                </div>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+                                <form class="form-inline my-2 my-lg-0">
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li><a asp-area="Identity" asp-page="/Account/Register" class="btn btn-sm btn-secondary mr-1">Registrar</a></li>
+                                        <li><a asp-area="Identity" asp-page="/Account/Login" class="btn btn-sm btn-secondary mr-1">Logar-se</a></li>
+                                    </ul>
+                                </form>
+                            </li>
+                        }
+                    </ul>
+
                 </div>
-            }
+            </div>
         </nav>
     }
 
     <partial name="_CookieConsentPartial" />
 
-    <div class="container-fluid row " @*style="height: 91.1%;" *@>
-
-        @if (SignInManager.IsSignedIn(User))
-        {
-            <div class="col-12 col-sm-4 col-md-4 col-lg-2 bg-light p-0 border border-top-0 collapse show " id="MenuLateral" style="height:597px;">
-                <ul class="list-group rounded-0 border-left-0">
-                    <a class="list-group-item rounded-0 active border-right-0 border-left-0" asp-controller="Home" asp-action="Index">Ínicio</a>
-                    <a class="list-group-item rounded-0 border-right-0 border-left-0" asp-controller="Boletim" asp-action="Index">Lançar Boletim</a>
-
-                    @*Menu Relatorios*@
-                    <li class="mt-1 list-group-item rounded-0 border-right-0 border-left-0" data-toggle="collapse"
-                        href="#MenuRelatorios" role="button" aria-expanded="false" aria-controls="MenuRelatorios">
-                        Relatórios <i class="far fa-caret-square-down float-right align-bottom mt-1"></i>
-                    </li>
-                    <div class="collapse border-left-0" id="MenuRelatorios">
-                        <div class="card rounded-0 border-bottom border-right-0 border-left-0 pl-3 pt-2">
-                            <a class="ml-1 mb-0 small font-weight-bold"><span class="mr-2 small font-weight-bold">Risco Ergonômico - Completo</span></a>
-                            <hr class="mt-1 mb-2">
-                            <a class="ml-4 small mb-1" asp-controller="RelatorioCompleto" asp-action="Index"><i class="fas fa-user mr-2"></i><span class="mr-1"> Relatório por Avaliador</span></a>
-                            <a class="ml-4 small mb-1" asp-controller="RelatorioAtividade" asp-action="Index"><i class="fas fa-people-carry mr-2"></i><span class="mr-1">Relatório por Atividade</span></a>
-                            <a class="ml-4 small mb-2" asp-controller="RelatorioSetor" asp-action="Index"><i class="fas fa-store-alt mr-2"></i><span class="mr-1">Relatório por Setor</span></a>
-
-                            <a class="ml-1 mb-0 small font-weight-bold"><span class="mr-2 small font-weight-bold">Gráficos Boletins</span></a>
-                            <hr class="mt-1 mb-2">
-                            <a class="ml-4 small mb-3" asp-controller="GraficoBoletins" asp-action="Index"><i class="fas fa-chart-pie mr-2"></i><span class="mr-1">Boletins Lançados</span></a>
-
-                        </div>
-                    </div>
-
-                    @*Cadastro*@
-                    <li class="list-group-item rounded-0 border-right-0 border-left-0" data-toggle="collapse"
-                        href="#MenuRiscoErgonomico" role="button" aria-expanded="false" aria-controls="MenuRiscoErgonomico">
-                        @*Risco Ergonômicos*@
-                        Cadastros
-                        <i class="far fa-caret-square-down float-right align-bottom mt-1"></i>
-                    </li>
-                    <div class="collapse border-left-0" id="MenuRiscoErgonomico">
-                        <div class="card rounded-0 border-bottom-0 border-right-0 border-left-0 pl-3 pt-2">
-                            <a class="ml-1 mb-0 small font-weight-bold"><span class="mr-2 small font-weight-bold">Empresa</span></a>
-                            <hr class="mt-1 mb-2">
-                            <a class="ml-4 small mb-1" asp-controller="Setor" asp-action="Index"><i class="fas fa-store-alt mr-2"></i><span class="mr-2">Setor da Empresa</span></a>
-                            <a class="ml-4 small mb-1" asp-controller="Local" asp-action="Index"><i class="fas fa-layer-group mr-3"></i><span class="mr-2">Local da Empresa</span></a>
-
-                            <a class="ml-1 mb-0 mt-1 small font-weight-bold"><span class="mr-2 small font-weight-bold">Risco Ergonômicos</span></a>
-                            <hr class="mt-1">
-                            <a class="ml-4 small mb-3" asp-controller="Atividades" asp-action="Index"><i class="fas fa-people-carry mr-3"></i><span class="mr-2">Atividades</span></a>
-
-                        </div>
-                    </div>
-
-                    @*Menu Configuração*@
-                    <li class="list-group-item rounded-0 border-right-0 border-left-0" data-toggle="collapse"
-                        href="#MenuConfig" role="button" aria-expanded="false" aria-controls="MenuConfig">
-                        Configuração
-                        <i class="far fa-caret-square-down float-right align-bottom mt-1"></i>
-                    </li>
-                    <div class="collapse border-left-0" id="MenuConfig">
-                        <div class="card rounded-0 border-bottom-0 border-right-0 border-left-0 pl-3 pt-2">
-                            <a class="ml-1 mb-0 small font-weight-bold"><span class="mr-2 small font-weight-bold">Configuração de Sistema</span></a>
-                            <hr class="mt-1 mb-2">
-                            <a class="ml-4 small mb-1" asp-controller="GruposRisco" asp-action="Index"><i class="fas fa-layer-group mr-3"></i><span class="mr-2">Grupo de Risco</span></a>
-                            <a class="ml-4 small mb-3" asp-area="Identity" asp-page="/Account/Register"><i class="fas fa-users mr-3"></i><span class="mr-2">Usuário</span></a>
-
-                            <a class="ml-1 mb-0 small font-weight-bold"><span class="mr-2 small font-weight-bold">Parâmetros de Análise</span></a>
-                            <hr class="mt-1 mb-2">
-                            <a class="ml-4 small mb-1" asp-controller="ClassificaoOWAS" asp-action="Index"><i class="fas fa-layer-group mr-3"></i><span class="mr-2">Classificação OWAS</span></a>
-                            <a class="ml-4 small mb-3"></a>
-
-                        </div>
-                    </div>
-                </ul>
-            </div>
-        }
+    <div class="container-fluid row pl-5">
 
         @RenderBody()
 
     </div>
-
-    @*<footer>
-            <p>&copy; 2019 - SGPRA</p>
-        </footer>*@
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
