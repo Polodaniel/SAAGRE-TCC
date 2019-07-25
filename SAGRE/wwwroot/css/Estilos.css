@@ -1,5 +1,22 @@
-﻿.FundoNatureza {
-    background-image: url("/images/Fundo_Login.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+﻿/* min-width */
+@media screen and (min-width: 900px) {
+    .margin_left {
+        margin-left: 160px;
+        margin-bottom: 30px;
+    }
+}
+
+/* min-width & max-width */
+@media screen and (min-width: 600px) and (max-width: 900px) {
+    .margin_left {
+        margin-left: 25%;
+        margin-bottom: 30px;
+    }
+}
+
+@media screen and (min-width: 300px) and (max-width: 599px) {
+    .margin_left {
+        margin-left: 6%;
+        margin-bottom: 30px;
+    }
 }
