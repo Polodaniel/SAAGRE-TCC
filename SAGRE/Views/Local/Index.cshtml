@@ -24,63 +24,63 @@
                     <a asp-action="Create" class="btn btn-primary">Adicionar Novo</a>
                 </div>
             </div>
-
-            <table class="table table-hover table-sm small" id="table_id">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Nome)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Sigla)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Descricao)
-                        </th>
-                        <th>
-                            Setor
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Inativo)
-                        </th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
+            <div class="table-responsive">
+                <table class="table table-hover table-sm small" id="table_id">
+                    <thead class="thead-dark">
                         <tr>
-                            <td class="">
-                                @Html.DisplayFor(modelItem => item.Nome)
-                            </td>
-                            <td class="">
-                                @Html.DisplayFor(modelItem => item.Sigla)
-                            </td>
-                            <td class="">
-                                @Html.DisplayFor(modelItem => item.Descricao)
-                            </td>
-                            <td class="">
-                                @Html.DisplayFor(modelItem => item.Setor.Nome)
-                            </td>
-                            <td class="">
-                                @Html.DisplayFor(modelItem => item.Status)
-                            </td>
-                            <td class="">
-                                <a asp-action="Details" asp-route-id="@item.ID_Local" class="btn btn-sm btn-dark" style="padding:2px;" data-toggle="tooltip" data-placement="bottom" title="Visualizar">
-                                    <i class="far fa-eye"></i>
-                                </a>
-                                <a asp-action="Edit" asp-route-id="@item.ID_Local" class="btn btn-sm btn-dark" style="padding:2px;" data-toggle="tooltip" data-placement="bottom" title="Editar">
-                                    <i class="far fa-edit"></i>
-                                </a>
-                                <a asp-action="Delete" asp-route-id="@item.ID_Local" class="btn btn-sm btn-dark" style="padding:2px;" data-toggle="tooltip" data-placement="bottom" title="Excluir">
-                                    <i class="far fa-trash-alt"></i>
-                                </a>
-                            </td>
+                            <th class="p-2">
+                                @Html.DisplayNameFor(model => model.Nome)
+                            </th>
+                            <th class="p-2">
+                                @Html.DisplayNameFor(model => model.Sigla)
+                            </th>
+                            <th class="p-2">
+                                @Html.DisplayNameFor(model => model.Descricao)
+                            </th>
+                            <th class="p-2">
+                                Setor
+                            </th>
+                            <th class="p-2">
+                                @Html.DisplayNameFor(model => model.Inativo)
+                            </th>
+                            <th class="p-2"></th>
                         </tr>
-                    }
-                </tbody>
-            </table>
-
+                    </thead>
+                    <tbody style="background-color: white">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="">
+                                    @Html.DisplayFor(modelItem => item.Nome)
+                                </td>
+                                <td class="">
+                                    @Html.DisplayFor(modelItem => item.Sigla)
+                                </td>
+                                <td class="">
+                                    @Html.DisplayFor(modelItem => item.Descricao)
+                                </td>
+                                <td class="">
+                                    @Html.DisplayFor(modelItem => item.Setor.Nome)
+                                </td>
+                                <td class="">
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                </td>
+                                <td class="text-center">
+                                    <a asp-action="Details" asp-route-id="@item.ID_Local" class="btn btn-sm btn-dark" style="padding:2px;" data-toggle="tooltip" data-placement="bottom" title="Visualizar">
+                                        <i class="far fa-eye"></i>
+                                    </a>
+                                    <a asp-action="Edit" asp-route-id="@item.ID_Local" class="btn btn-sm btn-dark" style="padding:2px;" data-toggle="tooltip" data-placement="bottom" title="Editar">
+                                        <i class="far fa-edit"></i>
+                                    </a>
+                                    <a asp-action="Delete" asp-route-id="@item.ID_Local" class="btn btn-sm btn-dark" style="padding:2px;" data-toggle="tooltip" data-placement="bottom" title="Excluir">
+                                        <i class="far fa-trash-alt"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 

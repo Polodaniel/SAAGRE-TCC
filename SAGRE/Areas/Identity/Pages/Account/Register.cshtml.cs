@@ -46,6 +46,7 @@ namespace SAGRE.Areas.Identity.Pages.Account
 
             [Required]
             [EmailAddress]
+            [StringLength(100,ErrorMessage = "O {0} deve ter pelo menos {2} e no máximo {1} caracteres.", MinimumLength = 10)]
             [Display(Name = "E-mail")]
             public string Email { get; set; }
 
@@ -57,6 +58,7 @@ namespace SAGRE.Areas.Identity.Pages.Account
 
             [DataType(DataType.Password)]
             [Display(Name = "Confirme a Senha")]
+            [StringLength(100, ErrorMessage = "O {0} deve ter pelo menos {2} e no máximo {1} caracteres.", MinimumLength = 10)]
             [Compare("Password", ErrorMessage = "A senha e a senha de confirmação não correspondem.")]
             public string ConfirmPassword { get; set; }
         }

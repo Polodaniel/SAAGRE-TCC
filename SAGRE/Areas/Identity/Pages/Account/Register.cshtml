@@ -20,40 +20,40 @@
                 <div class="card">
                     <div class="row"></div>
                     <div class="card-header">
-                        Cadastro de um Novo Setor
+                        Cadastro de um Novo Usuario
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-6">
                                 <h4>Informação</h4>
-                                Área para cadastro de um novo Setor da Empresa , onde tem a finalidade de apontar em qual área da empresa em que esta sendo realizado a análise , pois para uma tomada de decição fica mais facil a localização.
+                                Área para cadastro de um novo Usuario para utilzar o SAAGRE,  tendo a finalidade de realizar apontamentos de possiveis riscos de regonômicos , pois será utilizado para uma tomada de decição com o intuito de reduzir possíveis danos.
                             </div>
                             <div class="col-6">
                                 <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
                                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                     <div class="form-group">
-                                        <label asp-for="Input.Nome" class="control-label"></label>
-                                        <input asp-for="Input.Nome" class="form-control" />
+                                        <label asp-for="Input.Nome" class="control-label mb-0"></label>
+                                        <input asp-for="Input.Nome" class="form-control mt-0" />
                                         <span asp-validation-for="Input.Nome" class="text-danger"></span>
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="Input.Email" class="control-label"></label>
-                                        <input asp-for="Input.Email" class="form-control" />
+                                        <label asp-for="Input.Email" class="control-label mb-0"></label>
+                                        <input asp-for="Input.Email" class="form-control mt-0" />
                                         <span asp-validation-for="Input.Email" class="text-danger"></span>
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="Input.Password" class="control-label"></label>
-                                        <input asp-for="Input.Password" class="form-control" />
+                                        <label asp-for="Input.Password" class="control-label mb-0"></label>
+                                        <input asp-for="Input.Password" class="form-control mt-0" />
                                         <span asp-validation-for="Input.Password" class="text-danger"></span>
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="Input.ConfirmPassword" class="control-label"></label>
-                                        <input asp-for="Input.ConfirmPassword" class="form-control" />
+                                        <label asp-for="Input.ConfirmPassword" class="control-label mb-0"></label>
+                                        <input asp-for="Input.ConfirmPassword" class="form-control mt-o" />
                                         <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                                     </div>
 
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-succ   ess float-right ml-3">Salvar</button>
+                                        <button type="submit" class="btn btn-success float-right ml-3">Salvar</button>
                                         <a asp-action="Index" class="btn btn-warning float-right">Voltar</a>
                                     </div>
                                 </form>

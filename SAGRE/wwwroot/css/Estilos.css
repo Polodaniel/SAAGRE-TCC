@@ -19,4 +19,12 @@
         margin-left: 6%;
         margin-bottom: 30px;
     }
+
+    .fonteTabelaConsulta {
+        font-size: 9px;
+    }
+
+    .tamanhoColunaIcons {
+        width: 150px;
+    }
 }

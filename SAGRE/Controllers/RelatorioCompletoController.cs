@@ -222,7 +222,7 @@ namespace SAGRE.Controllers
                 sb.AppendLine("     <h5 class='mt-3'>#Nome_Avaliador#</h5>                                                                    ");
                 sb.AppendLine("     <div class='collapse mt-4' id='#ID_Card_Collapse#'>                                                       ");
                 sb.AppendLine("         <div class='row'>                                                                                     ");
-                sb.AppendLine("             <div class='col-8'>                                                                               ");
+                sb.AppendLine("             <div class='col'>                                                                                 ");
                 sb.AppendLine("                 <div class='table-responsive'>                                                                ");
                 sb.AppendLine("                     <table class='table table-sm'>                                                            ");
                 sb.AppendLine("                         <thead class='thead-dark small'>                                                      ");
@@ -240,11 +240,6 @@ namespace SAGRE.Controllers
                 sb.AppendLine("                     </table>                                                                                  ");
                 sb.AppendLine("                 </div>                                                                                        ");
                 sb.AppendLine("             </div>                                                                                            ");
-                sb.AppendLine("             <div class='col'>                                                                                 ");
-                sb.AppendLine("                 <div class='card'>                                                                            ");
-                sb.AppendLine("                     #Grafico_Boletim#                                                                         ");
-                sb.AppendLine("                 </div>                                                                                        ");
-                sb.AppendLine("             </div>                                                                                            ");
                 sb.AppendLine("         </div>                                                                                                ");
                 sb.AppendLine("         <div class='row'>                                                                                     ");
                 sb.AppendLine("             <div class='col-12'>                                                                              ");
@@ -256,7 +251,7 @@ namespace SAGRE.Controllers
                 sb.AppendLine("                                 <td class='align-middle' rowspan='2'>Atividade Realizada</td>                 ");
                 sb.AppendLine("                                 <td class='align-middle' rowspan='2' class='text-center'>Análise Postura</td> ");
                 sb.AppendLine("                                 <td class='align-middle' rowspan='2'>Análise Cognitiva</td>                   ");
-                sb.AppendLine("                                 <td class='align-middle' colspan='2'>Análise Ambiente</td>                    ");
+                sb.AppendLine("                                 <td class='align-middle text-center' colspan='2'>Análise Ambiente</t          ");
                 sb.AppendLine("                             </tr>                                                                             ");
                 sb.AppendLine("                             <tr class='text-light bg-dark'>                                                   ");
                 sb.AppendLine("                                 <td class='small border-top-0'>Check List Análise Biomecânica</td>            ");

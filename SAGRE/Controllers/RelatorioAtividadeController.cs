@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -13,6 +14,7 @@ using SAGRE.Models.AnaliseAmbiente;
 
 namespace SAGRE.Controllers
 {
+    [Authorize]
     public class RelatorioAtividadeController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -219,7 +221,7 @@ namespace SAGRE.Controllers
                 sb.AppendLine("     <h5 class='mt-3'>#Nome_Setor#</h5>                                                                        ");
                 sb.AppendLine("     <div class='collapse mt-4' id='#ID_Card_Collapse#'>                                                       ");
                 sb.AppendLine("         <div class='row'>                                                                                     ");
-                sb.AppendLine("             <div class='col-8'>                                                                               ");
+                sb.AppendLine("             <div class='col'>                                                                                 ");
                 sb.AppendLine("                 <div class='table-responsive'>                                                                ");
                 sb.AppendLine("                     <table class='table table-sm'>                                                            ");
                 sb.AppendLine("                         <thead class='thead-dark small'>                                                      ");
@@ -237,11 +239,6 @@ namespace SAGRE.Controllers
                 sb.AppendLine("                     </table>                                                                                  ");
                 sb.AppendLine("                 </div>                                                                                        ");
                 sb.AppendLine("             </div>                                                                                            ");
-                sb.AppendLine("             <div class='col'>                                                                                 ");
-                sb.AppendLine("                 <div class='card'>                                                                            ");
-                sb.AppendLine("                     #Grafico_Boletim#                                                                         ");
-                sb.AppendLine("                 </div>                                                                                        ");
-                sb.AppendLine("             </div>                                                                                            ");
                 sb.AppendLine("         </div>                                                                                                ");
                 sb.AppendLine("         <div class='row'>                                                                                     ");
                 sb.AppendLine("             <div class='col-12'>                                                                              ");
@@ -253,7 +250,7 @@ namespace SAGRE.Controllers
                 sb.AppendLine("                                 <td class='align-middle' rowspan='2'>Atividade Realizada</td>                 ");
                 sb.AppendLine("                                 <td class='align-middle' rowspan='2' class='text-center'>Análise Postura</td> ");
                 sb.AppendLine("                                 <td class='align-middle' rowspan='2'>Análise Cognitiva</td>                   ");
-                sb.AppendLine("                                 <td class='align-middle' colspan='2'>Análise Ambiente</td>                    ");
+                sb.AppendLine("                                 <td class='align-middle text-center' colspan='2'>Análise Ambiente</td>        ");
                 sb.AppendLine("                             </tr>                                                                             ");
                 sb.AppendLine("                             <tr class='text-light bg-dark'>                                                   ");
                 sb.AppendLine("                                 <td class='small border-top-0'>Check List Análise Biomecânica</td>            ");

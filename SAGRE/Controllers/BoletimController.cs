@@ -30,6 +30,7 @@ namespace SAGRE.Controllers
         {
             var ListaSetor = await _context.SetorModel.Where(x => x.Inativo != true).ToListAsync();
             var ListaAtividade = await _context.AtividadesModel.Where(x => x.Inativo != true).ToListAsync();
+            var ListaLocal = await _context.LocalModel.Where(x => x.Inativo != true).ToListAsync();
 
             var Boletins = await _context.BoletimModel.ToListAsync();
 
@@ -37,9 +38,11 @@ namespace SAGRE.Controllers
             {
                 var NomeSetor = ListaSetor.Where(x => x.ID == (Convert.ToInt32(item.Setor))).FirstOrDefault();
                 var NomeAtividade = ListaAtividade.Where(x => x.ID == (Convert.ToInt32(item.Atividade))).FirstOrDefault();
+                var NomeLocal = ListaLocal.Where(x => x.ID_Local == (Convert.ToInt32(item.Local))).FirstOrDefault();
 
                 item.Setor = NomeSetor.Nome;
                 item.Atividade = NomeAtividade.NomeAtividade;
+                item.Local = NomeLocal.Nome;
             }
 
             Boletins = Boletins.OrderByDescending(x => x.ID).ToList();

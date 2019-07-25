@@ -3,7 +3,6 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -29,8 +28,8 @@
                 var Config = @UserManager.GetUserName(User).ToString();
 
                 Config = Config.Replace("_", " ")
-                               .Replace("-", " ")
-                               .Replace(".", " ");
+                .Replace("-", " ")
+                .Replace(".", " ");
 
                 var Indice = Config.IndexOf("@");
 
@@ -77,44 +76,50 @@
                 </div>
             </div>
 
-            <div class="row mt-4">
-                <div class="col small">
-                    <div class="card">
-                        <div class="card-header p-2">Ultimo Boletim</div>
-                        <div class="card-body p-0">
-                            <div class="row p-1 alert alert-info ml-0 mr-0 mb-0 rounded-0 border-bottom-0 text-dark">
-                                <div class="col">Boletins Lançados</div>
-                                <div class="col text-right mr-3 font-weight-bold">@ViewBag.TotalBoletins</div>
-                            </div>
-                            <div class="row p-1 alert alert-light ml-0 mr-0 mb-0 rounded-0 text-dark">
-                                <div class="col">N° Boletim</div>
-                                <div class="col text-right mr-3 font-weight-bold">@ViewBag.UltimoBoletim.ID</div>
-                            </div>
+            @{
+                var Hora = string.Empty;
+                var Data = string.Empty;
 
-                            @{
-                                var Data = @ViewBag.UltimoBoletim.Data;
+                if (!Equals(@ViewBag.UltimoBoletim, null))
+                {
+                    <div class="row mt-4">
+                        <div class="col small">
+                            <div class="card">
+                                <div class="card-header p-2">Ultimo Boletim</div>
+                                <div class="card-body p-0">
+                                    <div class="row p-1 alert alert-info ml-0 mr-0 mb-0 rounded-0 border-bottom-0 text-dark">
+                                        <div class="col">Boletins Lançados</div>
+                                        <div class="col text-right mr-3 font-weight-bold">@ViewBag.TotalBoletins</div>
+                                    </div>
+                                    <div class="row p-1 alert alert-light ml-0 mr-0 mb-0 rounded-0 text-dark">
+                                        <div class="col">N° Boletim</div>
+                                        <div class="col text-right mr-3 font-weight-bold">@ViewBag.UltimoBoletim.ID</div>
+                                    </div>
 
-                                Data = Convert.ToDateTime(Data).ToShortDateString();
+                                    @{ 
+                                        var data = @ViewBag.UltimoBoletim.Data;
+                                        Data = Convert.ToDateTime(data).ToShortDateString();
+                                        Hora = @ViewBag.UltimoBoletim.HoraInicio + " - " + @ViewBag.UltimoBoletim.HoraTermino;
+                                    }
 
-                                var Hora = @ViewBag.UltimoBoletim.HoraInicio + " - " + @ViewBag.UltimoBoletim.HoraTermino;
-                            }
-
-                            <div class="row p-1 alert alert-light ml-0 mr-0 mb-0 rounded-0 text-dark">
-                                <div class="col">Data de Lançamento</div>
-                                <div class="col text-right mr-3 font-weight-bold">@Data</div>
-                            </div>
-                            <div class="row p-1 alert alert-light ml-0 mr-0 mb-0 rounded-0 text-dark">
-                                <div class="col">Horario Inic./Term.</div>
-                                <div class="col text-right mr-3 font-weight-bold">@Hora</div>
-                            </div>
-                            <div class="row p-1 alert alert-light ml-0 mr-0 mb-0 rounded-0 text-dark">
-                                <div class="col">Nome do Avaliador</div>
-                                <div class="col text-right mr-3 font-weight-bold">@ViewBag.UltimoBoletim.NomeFiscal</div>
+                                    <div class="row p-1 alert alert-light ml-0 mr-0 mb-0 rounded-0 text-dark">
+                                        <div class="col">Data de Lançamento</div>
+                                        <div class="col text-right mr-3 font-weight-bold">@Data</div>
+                                    </div>
+                                    <div class="row p-1 alert alert-light ml-0 mr-0 mb-0 rounded-0 text-dark">
+                                        <div class="col">Horario Inic./Term.</div>
+                                        <div class="col text-right mr-3 font-weight-bold">@Hora</div>
+                                    </div>
+                                    <div class="row p-1 alert alert-light ml-0 mr-0 mb-0 rounded-0 text-dark">
+                                        <div class="col">Nome do Avaliador</div>
+                                        <div class="col text-right mr-3 font-weight-bold">@ViewBag.UltimoBoletim.NomeFiscal</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                }
+            }
         </div>
     </div>
 </div>
