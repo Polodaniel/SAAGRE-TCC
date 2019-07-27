@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SAGRE.Data;
+using SAGRE.Models;
 
 namespace SAGRE.Controllers
 {
@@ -24,11 +25,16 @@ namespace SAGRE.Controllers
         public ActionResult Index()
         {
             var DataAtual = DateTime.Now;
+            var DataInicial = DateTime.Now.AddDays(-6);
 
             List<ListaData> ListaDataBoletins = new List<ListaData>();
             List<ListaDataMetodologia> ListaDataMetodologia = new List<ListaDataMetodologia>();
 
-            var Lista = _context.BoletimModel.Include("ListaAnalisePostura").Include("listanasa").Where(x => x.ID > 0).ToList();
+            var Lista = _context.BoletimModel.Include("ListaAnalisePostura").Include("listanasa")
+                                                                            .Where(x => x.ID > 0 &&
+                                                                                    Convert.ToDateTime(Convert.ToDateTime(x.Data).ToShortDateString()) >= Convert.ToDateTime(DataInicial.ToShortDateString()) &&
+                                                                                    Convert.ToDateTime(Convert.ToDateTime(x.Data).ToShortDateString()) <= Convert.ToDateTime(DataAtual.ToShortDateString()))
+                                                                            .ToList();
 
             var ListaCkeckListBio = _context.CheckListAnaliseCondBio.ToList();
             var ListaCkeckListErg = _context.CheckListAnaliseCondErg.ToList();
@@ -314,35 +320,5 @@ namespace SAGRE.Controllers
 
             return NovaListaData;
         }
-    }
-
-    public class ListaData
-    {
-        public ListaData(string data, int valor)
-        {
-            Data = data;
-            Valor = valor;
-        }
-
-        public string Data { get; set; }
-        public int Valor { get; set; }
-    }
-
-    public class ListaDataMetodologia
-    {
-        public ListaDataMetodologia(string data, int metologiaPostura, int metologiaCognitiva, int metologiaAmbienteBio, int metologiaAmbienteErg)
-        {
-            Data = data;
-            MetologiaPostura = metologiaPostura;
-            MetologiaCognitiva = metologiaCognitiva;
-            MetologiaAmbienteBio = metologiaAmbienteBio;
-            MetologiaAmbienteErg = metologiaAmbienteErg;
-        }
-
-        public string Data { get; set; }
-        public int MetologiaPostura { get; set; }
-        public int MetologiaCognitiva { get; set; }
-        public int MetologiaAmbienteBio { get; set; }
-        public int MetologiaAmbienteErg { get; set; }
     }
 }

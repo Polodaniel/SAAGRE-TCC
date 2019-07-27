@@ -142,7 +142,10 @@ namespace SAGRE.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var setorModel = await _context.SetorModel.FindAsync(id);
-            _context.SetorModel.Remove(setorModel);
+            //_context.SetorModel.Remove(setorModel);
+            setorModel.Inativo = true;
+
+            _context.SetorModel.Update(setorModel);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

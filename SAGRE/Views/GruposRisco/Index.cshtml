@@ -34,7 +34,7 @@
                                 @Html.DisplayNameFor(model => model.Descricao)
                             </th>
                             <th class="p-2">
-                                @Html.DisplayNameFor(model => model.Inativo)
+                                Status
                             </th>
                             <th class="p-2"></th>
                         </tr>
@@ -47,7 +47,24 @@
                                     @Html.DisplayFor(modelItem => item.Nome)
                                 </td>
                                 <td class="w-50">
-                                    @Html.DisplayFor(modelItem => item.Descricao)
+                                    @*@Html.DisplayFor(modelItem => item.Descricao)*@
+
+                                    @{
+
+                                        var FraseDescricao = string.Empty;
+
+                                        if (item.Descricao.Length > 90)
+                                        {
+                                            FraseDescricao = item.Descricao.Substring(0, 90) + " ...";
+                                        }
+                                        else
+                                        {
+                                            FraseDescricao = item.Descricao;
+                                        }
+
+                                    }
+
+                                    @FraseDescricao
                                 </td>
                                 <td class="">
                                     @Html.DisplayFor(modelItem => item.Status)

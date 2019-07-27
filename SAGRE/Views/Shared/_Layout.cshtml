@@ -44,7 +44,7 @@
 
             <div class="collapse navbar-collapse w-100" id="conteudoNavbarSuportado">
                 <ul class="navbar-nav mr-auto"></ul>
-                <div class="form-inline my-2 my-lg-0">
+                <div class="form-inline my-2 my-lg-0 bg-info">
 
                     <ul class="navbar-nav mr-auto">
 
@@ -136,7 +136,7 @@
 
     <partial name="_CookieConsentPartial" />
 
-    <div class="container-fluid row pl-5">
+    <div class="container-fluid row pl-4">
 
         @RenderBody()
 
@@ -156,6 +156,20 @@
 
     </environment>
 
+    @*<div class="pos-f-t fixed-bottom">
+        <div class="collapse" id="navbarToggleExternalContent">
+            <div class="bg-dark p-4">
+                <h5 class="text-white h4">Conteúdo expandido</h5>
+                <span class="text-muted">Expansível, atráves da marca no navbar.</span>
+            </div>
+        </div>
+        <nav class="navbar navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Alterna navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+    </div>*@
     @RenderSection("Scripts", required: false)
+
 </body>
 </html>

@@ -31,8 +31,9 @@
 
                                     <div class="row">
                                         <div class="col-2">
-                                            <label asp-for="ID" class="control-label mb-0 small"></label>
-                                            <input asp-for="ID" class="form-control form-control-sm" id="CampoData" disabled />
+                                            @*<label asp-for="ID" class="control-label mb-0 small"></label>*@
+                                            <label class="control-label mb-0 small">Código</label>
+                                            <input asp-for="CodigoFormatado" class="form-control form-control-sm" id="CampoData" disabled />
                                             <span asp-validation-for="ID" class="text-danger"></span>
                                         </div>
                                         <div class="col">
@@ -427,7 +428,12 @@
                                                                                                             </td>
                                                                                                             <td class="align-middle" id="grupo1pergunta1">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListBio.Questao01 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                    @{ if (CheckListBio.Questao01 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -438,7 +444,12 @@
                                                                                                             </td>
                                                                                                             <td class="align-middle" id="grupo1pergunta2">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListBio.Questao02 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                    @{ if (CheckListBio.Questao02 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -448,7 +459,12 @@
                                                                                                             </td>
                                                                                                             <td class="align-middle" id="grupo1pergunta3">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListBio.Questao03 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                    @{ if (CheckListBio.Questao03 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -471,7 +487,12 @@
                                                                                                             </td>
                                                                                                             <td class="align-middle" id="grupo1pergunta4">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListBio.Questao04 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                    @{ if (CheckListBio.Questao04 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -481,7 +502,12 @@
                                                                                                             </td>
                                                                                                             <td class="align-middle" id="grupo1pergunta5">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListBio.Questao05 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                    @{ if (CheckListBio.Questao05 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -491,7 +517,12 @@
                                                                                                             </td>
                                                                                                             <td class="align-middle" id="grupo1pergunta6">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListBio.Questao06 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                    @{ if (CheckListBio.Questao06 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -499,7 +530,12 @@
                                                                                                             <td class="small">O trabalho exige ficar parado na posição de pé durante grande parte do tempo (mais que 60%)?</td>
                                                                                                             <td class="align-middle" id="grupo1pergunta7">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListBio.Questao07 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                    @{ if (CheckListBio.Questao07 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -507,7 +543,12 @@
                                                                                                             <td class="small"> Os membros superiores têm que sustentar pesos? </td>
                                                                                                             <td class="align-middle" id="grupo1pergunta8">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListBio.Questao08 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                    @{ if (CheckListBio.Questao08 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -515,7 +556,12 @@
                                                                                                             <td class="small">  Ficar-se de pé, parado, durante a maior parte da jornada?  </td>
                                                                                                             <td class="align-middle" id="grupo1pergunta9">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListBio.Questao09 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                    @{ if (CheckListBio.Questao09 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -526,7 +572,12 @@
                                                                                                             </td>
                                                                                                             <td class="align-middle" id="grupo1pergunta10">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListBio.Questao10 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                    @{ if (CheckListBio.Questao10 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -548,7 +599,12 @@
                                                                                                             </td>
                                                                                                             <td class="align-middle" id="grupo1pergunta11">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListBio.Questao11 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                    @{ if (CheckListBio.Questao11 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -558,7 +614,12 @@
                                                                                                             </td>
                                                                                                             <td class="align-middle" id="grupo1pergunta12">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListBio.Questao12 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                    @{ if (CheckListBio.Questao12 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -569,7 +630,12 @@
                                                                                                             </td>
                                                                                                             <td class="align-middle" id="grupo1pergunta13">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListBio.Questao13 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                    @{ if (CheckListBio.Questao13 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -577,7 +643,12 @@
                                                                                                             <td class="small"> Estando sentado, fica-se em posição estática? </td>
                                                                                                             <td class="align-middle" id="grupo1pergunta14">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListBio.Questao14 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                    @{ if (CheckListBio.Questao14 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -672,7 +743,12 @@
                                                                                                             </td>
                                                                                                             <td class="align-middle" id="grupo2pergunta1">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListErg.Questao01 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                    @{ if (CheckListErg.Questao01 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -682,7 +758,12 @@
                                                                                                             </td>
                                                                                                             <td class="align-middle" id="grupo2pergunta2">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListErg.Questao02 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                    @{ if (CheckListErg.Questao02 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -692,7 +773,12 @@
                                                                                                             </td>
                                                                                                             <td class="align-middle" id="grupo2pergunta3">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListErg.Questao03 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                    @{ if (CheckListErg.Questao03 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -702,7 +788,12 @@
                                                                                                             </td>
                                                                                                             <td class="align-middle" id="grupo2pergunta4">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListErg.Questao04 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                    @{ if (CheckListErg.Questao04 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -710,7 +801,12 @@
                                                                                                             <td class="small">A área mínima por pessoa (4 a 6 m2) é observada?</td>
                                                                                                             <td class="align-middle" id="grupo2pergunta5">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListErg.Questao05 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                    @{ if (CheckListErg.Questao05 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -718,7 +814,12 @@
                                                                                                             <td class="small">Existe espaço suficiente para movimentação?</td>
                                                                                                             <td class="align-middle" id="grupo2pergunta6">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListErg.Questao06 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                    @{ if (CheckListErg.Questao06 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -728,7 +829,12 @@
                                                                                                             </td>
                                                                                                             <td class="align-middle" id="grupo2pergunta7">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListErg.Questao07 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                    @{ if (CheckListErg.Questao07 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -738,7 +844,12 @@
                                                                                                             </td>
                                                                                                             <td class="align-middle" id="grupo2pergunta8">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListErg.Questao08 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                    @{ if (CheckListErg.Questao08 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -762,7 +873,12 @@
                                                                                                             </td>
                                                                                                             <td class="align-middle" id="grupo2pergunta9">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListErg.Questao09 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                    @{ if (CheckListErg.Questao09 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -772,7 +888,12 @@
                                                                                                             </td>
                                                                                                             <td class="align-middle" id="grupo2pergunta10">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListErg.Questao10 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                    @{ if (CheckListErg.Questao10 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -782,7 +903,12 @@
                                                                                                             </td>
                                                                                                             <td class="align-middle" id="grupo2pergunta11">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListErg.Questao11 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                    @{ if (CheckListErg.Questao11 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -792,7 +918,12 @@
                                                                                                             </td>
                                                                                                             <td class="align-middle" id="grupo2pergunta12">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListErg.Questao12 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                    @{ if (CheckListErg.Questao12 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -800,7 +931,12 @@
                                                                                                             <td class="small">Há sombras comprometendo a visibilidade? </td>
                                                                                                             <td class="align-middle" id="grupo2pergunta13">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListErg.Questao13 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                    @{ if (CheckListErg.Questao13 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -808,7 +944,12 @@
                                                                                                             <td class="small">As mesas estão em ângulo correto em relação às janelas (perpendiculares)?</td>
                                                                                                             <td class="align-middle" id="grupo2pergunta14">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListErg.Questao14 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                    @{ if (CheckListErg.Questao14 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -818,7 +959,12 @@
                                                                                                             </td>
                                                                                                             <td class="align-middle" id="grupo2pergunta15">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListErg.Questao15 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                    @{ if (CheckListErg.Questao15 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -828,7 +974,12 @@
                                                                                                             </td>
                                                                                                             <td class="align-middle" id="grupo2pergunta16">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListErg.Questao16 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                    @{ if (CheckListErg.Questao16 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -851,7 +1002,12 @@
                                                                                                             </td>
                                                                                                             <td class="align-middle" id="grupo2pergunta17">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListErg.Questao17 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                    @{ if (CheckListErg.Questao17 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -861,7 +1017,12 @@
                                                                                                             </td>
                                                                                                             <td class="align-middle" id="grupo2pergunta18">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListErg.Questao18 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                    @{ if (CheckListErg.Questao18 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -871,7 +1032,12 @@
                                                                                                             </td>
                                                                                                             <td class="align-middle" id="grupo2pergunta19">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListErg.Questao19 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                    @{ if (CheckListErg.Questao19 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -881,7 +1047,12 @@
                                                                                                             </td>
                                                                                                             <td class="align-middle" id="grupo2pergunta20">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListErg.Questao20 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                    @{ if (CheckListErg.Questao20 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -889,7 +1060,12 @@
                                                                                                             <td class="small">Claridade das janelas interferindo no campo visual? </td>
                                                                                                             <td class="align-middle" id="grupo2pergunta21">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListErg.Questao21 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                    @{ if (CheckListErg.Questao21 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -897,7 +1073,12 @@
                                                                                                             <td class="small">lncidência de luz do sol sobre a superfície de trabalho?</td>
                                                                                                             <td class="align-middle" id="grupo2pergunta22">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListErg.Questao22 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                    @{ if (CheckListErg.Questao22 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -907,7 +1088,12 @@
                                                                                                             </td>
                                                                                                             <td class="align-middle" id="grupo2pergunta23">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListErg.Questao23 == "1"){ <option> Não </option> } else{ <option> Sim </option> }}
+                                                                                                                    @{ if (CheckListErg.Questao23 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
@@ -917,7 +1103,12 @@
                                                                                                             </td>
                                                                                                             <td class="align-middle" id="grupo2pergunta24">
                                                                                                                 <select class="custom-select custom-select-sm" disabled>
-                                                                                                                    @{ if (CheckListErg.Questao24 == "1"){ <option> Sim </option> } else{ <option> Não </option> }}
+                                                                                                                    @{ if (CheckListErg.Questao24 == "1")
+                                                                                                                        {
+                                                                                                                            <option> Sim </option> }
+                                                                                                                        else
+                                                                                                                        {
+                                                                                                                            <option> Não </option> }}
                                                                                                                 </select>
                                                                                                             </td>
                                                                                                         </tr>
