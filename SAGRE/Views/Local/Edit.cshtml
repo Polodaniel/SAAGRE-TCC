@@ -1,54 +1,87 @@
 ﻿@model SAGRE.Models.LocalModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Editar Local";
 }
 
-<h2>Edit</h2>
+<div class="col mt-2">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Ínicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@ViewData["Title"]</li>
+        </ol>
+    </nav>
+    <div class="row">
+        <div class="col">
+            <div class="card">
 
-<h4>LocalModel</h4>
-<hr />
-<div class="row">
-    <div class="col">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="ID_Local" />
-            <div class="form-group">
-                <label asp-for="ID" class="control-label"></label>
-                <select asp-for="ID" class="form-control" asp-items="ViewBag.ID"></select>
-                <span asp-validation-for="ID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Sigla" class="control-label"></label>
-                <input asp-for="Sigla" class="form-control" />
-                <span asp-validation-for="Sigla" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Nome" class="control-label"></label>
-                <input asp-for="Nome" class="form-control" />
-                <span asp-validation-for="Nome" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Descricao" class="control-label"></label>
-                <input asp-for="Descricao" class="form-control" />
-                <span asp-validation-for="Descricao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="Inativo" /> @Html.DisplayNameFor(model => model.Inativo)
-                    </label>
+                <div class="card-header">
+                    <h5><i class="fas fa-layer-group mr-3"></i> @Html.DisplayFor(model => model.Nome)</h5>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="ID_Local" />
+                        <div class="row">
+                            <div class="col-2 font-weight-bold">
+                                <label asp-for="ID" class="control-label">Local</label>
+                            </div>
+                            <div class="col">
+                                <select asp-for="ID" class="form-control custom-select" asp-items="ViewBag.ID"></select>
+                                <span asp-validation-for="ID" class="text-danger"></span>
+                            </div>
+                            <div class="col-2 font-weight-bold">
+                                <label asp-for="Sigla" class="control-label"></label>
+                            </div>
+                            <div class="col">
+                                <input asp-for="Sigla" class="form-control" />
+                                <span asp-validation-for="Sigla" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-2 font-weight-bold">
+                                <label asp-for="Nome" class="control-label"></label>
+                            </div>
+                            <div class="col">
+                                <input asp-for="Nome" class="form-control" />
+                                <span asp-validation-for="Nome" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-2 font-weight-bold">
+                                <label asp-for="Descricao" class="control-label"></label>
+                            </div>
+                            <div class="col">
+                                <textarea asp-for="Descricao" class="form-control"></textarea>
+                                <span asp-validation-for="Descricao" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-2 font-weight-bold">
+                                Status
+                            </div>
+                            <div class="col">
+                                <div class="checkbox">
+                                    <label>
+                                        <input asp-for="Inativo" /> @Html.DisplayNameFor(model => model.Inativo)
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col text-right">
+                                <a asp-action="Index" class="btn btn-sm btn-secondary">Voltar</a>
+                                <input type="submit" value="Salvar" class="btn btn-sm btn-success" />
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

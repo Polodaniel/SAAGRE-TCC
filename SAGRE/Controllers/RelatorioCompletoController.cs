@@ -320,14 +320,14 @@ namespace SAGRE.Controllers
                         var HtmlTabelaDadosAnaliseBoletins = Tabela_DadosAnalise_Boletins.ToString();
                         HtmlTabelaDadosAnaliseBoletins = HtmlTabelaDadosAnaliseBoletins.Replace("\r\n", "").Replace("\r", "").Replace("\n", "").Replace("\"", "");
 
-                        HtmlTabelaDadosBoletins = HtmlTabelaDadosBoletins.Replace("#Numero_Boletim#", item.ID.ToString());
+                        HtmlTabelaDadosBoletins = HtmlTabelaDadosBoletins.Replace("#Numero_Boletim#", item.CodigoFormatado.ToString());
                         HtmlTabelaDadosBoletins = HtmlTabelaDadosBoletins.Replace("#Data_Boletim#", Convert.ToDateTime(item.Data).ToShortDateString());
                         HtmlTabelaDadosBoletins = HtmlTabelaDadosBoletins.Replace("#Setor_Boletim#", SetorBoletim.ToString());
                         HtmlTabelaDadosBoletins = HtmlTabelaDadosBoletins.Replace("#Local_Boletim#", LocalBoletim.ToString());
                         HtmlTabelaDadosBoletins = HtmlTabelaDadosBoletins.Replace("#Atividade_Boletim#", AtividadeBoletim.ToString());
 
                         //
-                        HtmlTabelaDadosAnaliseBoletins = HtmlTabelaDadosAnaliseBoletins.Replace("#Numero_Boletim#", item.ID.ToString());
+                        HtmlTabelaDadosAnaliseBoletins = HtmlTabelaDadosAnaliseBoletins.Replace("#Numero_Boletim#", item.CodigoFormatado.ToString());
 
                         HtmlEditadoTabelaDadosBoletins += HtmlTabelaDadosBoletins;
                         //
@@ -341,14 +341,14 @@ namespace SAGRE.Controllers
                         {
                             if (item.ListaAnalisePostura.Count == 1)
                             {
-                                HtmlTabelaDadosAnaliseBoletins = HtmlTabelaDadosAnaliseBoletins.Replace("#Numero_Boletim#", item.ID.ToString());
+                                HtmlTabelaDadosAnaliseBoletins = HtmlTabelaDadosAnaliseBoletins.Replace("#Numero_Boletim#", item.CodigoFormatado.ToString());
                                 HtmlTabelaDadosAnaliseBoletins = HtmlTabelaDadosAnaliseBoletins.Replace("#Analise_Postura#", itemPostura.AcaoDescricao.ToString());
                             }
                             else if (item.ListaAnalisePostura.Count >= 2)
                             {
                                 if (IndiceAnalise == 0)
                                 {
-                                    HtmlTabelaDadosAnaliseBoletins = HtmlTabelaDadosAnaliseBoletins.Replace("#Numero_Boletim#", item.ID.ToString());
+                                    HtmlTabelaDadosAnaliseBoletins = HtmlTabelaDadosAnaliseBoletins.Replace("#Numero_Boletim#", item.CodigoFormatado.ToString());
                                     HtmlTabelaDadosAnaliseBoletins = HtmlTabelaDadosAnaliseBoletins.Replace("#Analise_Postura#", itemPostura.AcaoDescricao.ToString() + "<br>#Continuação_Analise#</br>");
                                     IndiceAnalise++;
                                 }

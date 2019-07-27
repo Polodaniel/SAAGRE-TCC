@@ -70,7 +70,7 @@
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label asp-for="Setor" class="control-label mb-0"></label>
-                                            <select asp-for="Setor" asp-items="@ViewBag.Setor" class="form-control form-control-sm" id="SetorSelecionado" onchange="javascript: BuscaLocal(this.value);"></select>
+                                            <select asp-for="Setor" asp-items="@ViewBag.Setor" class="form-control form-control-sm custom-select" id="SetorSelecionado" onchange="javascript: BuscaLocal(this.value);"></select>
                                             <span asp-validation-for="Setor" class="text-danger"></span>
                                         </div>
                                     </div>
@@ -103,7 +103,7 @@
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label asp-for="Local" class="control-label mb-0"></label>
-                                                    <select asp-for="Local" asp-items="@ViewBag.Local" class="form-control form-control-sm" id="LocalSelecionado"></select>
+                                                    <select asp-for="Local" asp-items="@ViewBag.Local" class="form-control form-control-sm custom-select" id="LocalSelecionado"></select>
                                                     <span asp-validation-for="Local" class="text-danger"></span>
                                                 </div>
                                             </div>
@@ -112,7 +112,7 @@
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label class="control-label mb-0">Atividade</label>
-                                                    <select asp-for="Atividade" asp-items="@ViewBag.Atividade" class="form-control form-control-sm" id="AtividadeSelecionado"></select>
+                                                    <select asp-for="Atividade" asp-items="@ViewBag.Atividade" class="form-control form-control-sm custom-select" id="AtividadeSelecionado"></select>
                                                     <span asp-validation-for="Atividade" class="text-danger"></span>
                                                 </div>
                                             </div>

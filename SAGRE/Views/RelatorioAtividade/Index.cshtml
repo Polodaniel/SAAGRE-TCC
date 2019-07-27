@@ -17,7 +17,7 @@
                 <div class=" border bg-dark text-light p-2 mb-0 align-middle" role="alert" data-toggle="collapse" href="#CaixaBusca" aria-expanded="false" aria-controls="CaixaBusca">
                     <div class="row">
                         <div class="col">
-                            <i class="fas fa-search mr-3 ml-3 small align-middle"></i> Opções de Busca de Atividade
+                            <i class="fas fa-search mr-3 ml-3 small align-middle"></i> Opções de Busca por Atividade
                         </div>
                     </div>
                 </div>
@@ -52,19 +52,19 @@
                             <div class="col-6 mt-0">
                                 <div class="form-group">
                                     <label class="control-label mb-0 small font-weight-bold">Setor</label>
-                                    <select asp-items="@ViewBag.Setor" class="form-control form-control-sm" id="SetorSelecionado" onchange="javascript: BuscaLocal(this.value);"></select>
+                                    <select asp-items="@ViewBag.Setor" class="form-control form-control-sm custom-select" id="SetorSelecionado" onchange="javascript: BuscaLocal(this.value);"></select>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="form-group">
                                     <label class="control-label mb-0 small font-weight-bold">Local</label>
-                                    <select asp-items="@ViewBag.Local" class="form-control form-control-sm" id="LocalSelecionado"></select>
+                                    <select asp-items="@ViewBag.Local" class="form-control form-control-sm custom-select" id="LocalSelecionado"></select>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="form-group">
                                     <label class="control-label mb-0 small font-weight-bold">Atividade</label>
-                                    <select asp-items="@ViewBag.Atividade" class="form-control form-control-sm" id="AtividadeSelecionado"></select>
+                                    <select asp-items="@ViewBag.Atividade" class="form-control form-control-sm custom-select" id="AtividadeSelecionado"></select>
                                 </div>
                             </div>
                         </div>
